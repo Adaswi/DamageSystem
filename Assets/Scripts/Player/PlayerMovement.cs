@@ -20,6 +20,24 @@ public class Movement : MonoBehaviour
     public KeyCode jumpKey = KeyCode.Space;
 
     private float angle;
+
+    public float Angle
+    {
+        get
+        {
+            return angle;
+        }
+        set
+        {
+            if (angle != value)
+            {
+                angle = value;
+                OnAngleChange?.Invoke();
+            }
+        }
+    }
+
+    public Action OnAngleChange;
    
     private RaycastHit slope;
     private Vector3 slopeMovementDirection;
@@ -31,7 +49,7 @@ public class Movement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        OnAngleChange += OnSlopeEnter;
     }
 
     // Update is called once per frame
@@ -44,44 +62,24 @@ public class Movement : MonoBehaviour
     void FixedUpdate()
     {
        //When player is on slope
-        if(IsOnSlope() && isOnSlope && groundCheck.isGrounded)
+        if(IsOnSlope() && groundCheck.isGrounded)
         {
             playerBody.drag = onGroundDrag;
             slopeMovementDirection = Vector3.ProjectOnPlane(movementDirection, slope.normal);
             playerBody.AddForce(slopeMovementDirection.normalized * movementSpeed, ForceMode.Force);
             playerBody.AddForce(-Physics.gravity, ForceMode.Acceleration);
-
         }
-        //When player just entered slope
-        else if(IsOnSlope() && !isOnSlope && groundCheck.isGrounded)
-        {
-            isOnSlope = true;
-            playerBody.drag = onGroundDrag;
-            OnSlopeEnter(playerBody);
-            slopeMovementDirection = Vector3.ProjectOnPlane(movementDirection, slope.normal);
-            playerBody.AddForce(slopeMovementDirection.normalized * movementSpeed, ForceMode.Force);
-            playerBody.AddForce(-Physics.gravity, ForceMode.Acceleration);
-        }
-        //When player just exited slope
-        else if(!IsOnSlope() && isOnSlope && groundCheck.isGrounded)
-        {
-            isOnSlope = false;
-            playerBody.drag = onGroundDrag;
-            OnSlopeExit(playerBody);
-            playerBody.AddForce(movementDirection.normalized * movementSpeed, ForceMode.Force);
-        }
-        //When player is on solid ground
-        else if(!IsOnSlope() && !isOnSlope && groundCheck.isGrounded)
+        else if(!IsOnSlope() && groundCheck.isGrounded)
         {
             playerBody.drag = onGroundDrag;
             playerBody.AddForce(movementDirection.normalized * movementSpeed, ForceMode.Force);
         }
-        else
+        else if (!groundCheck.isGrounded)
         {
             playerBody.drag = inAirDrag;
         }
 
-        if (Input.GetKey(jumpKey) && groundCheck.isGrounded && isJumping == false)
+        if (Input.GetKey(jumpKey) && groundCheck.isGrounded && !isJumping)
         {
             isJumping = true;
             Jump();
@@ -110,18 +108,11 @@ public class Movement : MonoBehaviour
 
     public bool IsOnSlope()
     {
-        if (Physics.Raycast(transform.position, Vector3.down, out slope, transform.localScale.y + 0.8f))
+        if (Physics.Raycast(transform.position, Vector3.down, out slope, transform.localScale.y + 0.5f))
         {
-            if (slope.normal != Vector3.up)
-            {
-                angle = Vector3.Angle(slope.normal, Vector3.up);
-                if (angle < 45f)
+            Angle = Vector3.Angle(slope.normal, Vector3.up);
+            if (angle < 45f)
                 return true;
-            }
-            else
-            {
-                return false;
-            }
         }
         return false;
     }
@@ -131,8 +122,8 @@ public class Movement : MonoBehaviour
         player.velocity = new Vector3(player.velocity.x, 0, playerBody.velocity.z);
     }
 
-    public void OnSlopeEnter(Rigidbody player)
+    public void OnSlopeEnter()
     {
-        player.velocity = Vector3.ProjectOnPlane(player.velocity, slope.normal);
+        playerBody.velocity = Vector3.ProjectOnPlane(playerBody.velocity, slope.normal);
     }
 }
