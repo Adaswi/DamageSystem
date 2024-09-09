@@ -1,0 +1,26 @@
+using Assets.Scripts.ScriptableObjects;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.Events;
+
+public class GameEventListener<T> : MonoBehaviour
+{
+    public GameEvent<T> Event;
+    public UnityEvent<T> Response;
+
+    private void OnEnable()
+    {
+        Event.RegisterListener(this);
+    }
+
+    private void OnDisable()
+    {
+        Event.RemoveListener(this);
+    }
+
+    public void OnEventRaised(T arg)
+    {
+        Response.Invoke(arg);
+    }
+}
