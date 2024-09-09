@@ -8,8 +8,8 @@ public class Entity : MonoBehaviour
     [SerializeField] private HealthSystem healthSystem;
     [SerializeField] private Rigidbody[] rigidbodies;
 
-    public GameEvent OnEntityHit;
-    public GameEvent OnEntityDeath;
+    public GameEvent<GameObject> OnEntityHit;
+    public GameEvent<GameObject> OnEntityDeath;
 
     public int Health
     {
@@ -50,7 +50,7 @@ public class Entity : MonoBehaviour
 
             Debug.Log("Entity " + gameObject.name + " hit! Health left: " + Health);
 
-            OnEntityHit.Raise();
+            OnEntityHit.Raise(this.gameObject);
         }
     }
 
@@ -58,6 +58,6 @@ public class Entity : MonoBehaviour
     {
         Debug.Log("Entity " + gameObject.name + " died");
 
-        OnEntityDeath.Raise();
+        OnEntityDeath.Raise(this.gameObject);
     }
 }

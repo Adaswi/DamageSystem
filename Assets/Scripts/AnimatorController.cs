@@ -10,9 +10,12 @@ public class AnimatorController : MonoBehaviour
         animator = GetComponent<Animator>();
     }
 
-    public void Hit()
+    public void Hit(GameObject gameObject)
     {
-        animator.SetTrigger("IsHit");
+        if (this.gameObject == gameObject)
+        {
+            animator.SetTrigger("IsHit");
+        }
     }
 
     public void TurnOn()
@@ -25,13 +28,16 @@ public class AnimatorController : MonoBehaviour
         }
     }
 
-    public void TurnOff()
+    public void TurnOff(GameObject gameObject)
     {
-        animator.enabled = false;
-        var rigidbodies = GetComponentsInChildren<Rigidbody>();
-        foreach (var rigidbody in rigidbodies)
+        if (this.gameObject == gameObject)
         {
-            rigidbody.isKinematic = false;
+            animator.enabled = false;
+            var rigidbodies = GetComponentsInChildren<Rigidbody>();
+            foreach (var rigidbody in rigidbodies)
+            {
+                rigidbody.isKinematic = false;
+            }
         }
     }
 }
