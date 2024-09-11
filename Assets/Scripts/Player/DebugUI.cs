@@ -6,10 +6,10 @@ using UnityEngine;
 public class DebugUI : MonoBehaviour
 {
     [SerializeField]private TMP_Text textComponent;
-    [SerializeField]private Rigidbody rigidbody;
+    [SerializeField]private Rigidbody rb;
 
     private void Update()
     {
-        textComponent.text = "Speed: " + rigidbody.velocity.magnitude.ToString();
+        textComponent.text = "Speed: " + rb.velocity.magnitude.ToString();
     }
 }

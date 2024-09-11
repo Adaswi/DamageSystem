@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.UI;
@@ -5,15 +6,41 @@ using UnityEngine;
 
 public class GroundCollider : MonoBehaviour
 {
-    public bool isGrounded;
+    [SerializeField] private List<Collider> colliders = new List<Collider>();
+    [SerializeField] private bool isGrounded = false;
 
-    private void OnTriggerStay()
+    public bool IsGrounded
     {
-            isGrounded = true;
+        get
+        {
+            return isGrounded;
+        }
+        set
+        {
+            if (isGrounded != value)
+            {
+                isGrounded = value;
+                OnGroundedChange?.Invoke();
+            }
+        }
     }
 
-    private void OnTriggerExit()
+    public Action OnGroundedChange;
+
+    private void OnTriggerEnter(Collider other)
     {
-            isGrounded = false;
+        colliders.Add(other);
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        colliders.Remove(other);
+    }
+
+    private void Update()
+    {
+        if (colliders.Count == 0)
+            IsGrounded = false;
+        else
+            IsGrounded = true;
     }
 }
