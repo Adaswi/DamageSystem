@@ -1,25 +1,23 @@
 using System;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
 
-    public Rigidbody playerBody;
-    public Transform playerOrientation;
-    public GroundCollider groundCheck;
-
-    public float movementSpeed;
-    public float horizontalInput;
-    public float verticalInput;
-    public float jumpPower;
-    public float jumpCooldown;
-    public float onGroundDrag = 5;
-    public float inAirDrag = 0.1f;
-    public KeyCode jumpKey = KeyCode.Space;
+    [SerializeField] private Rigidbody playerBody;
+    [SerializeField] private Transform playerOrientation;
+    [SerializeField] private GroundCollider groundCheck;
+    [SerializeField] private JumpDetection jumpDetection;
+    [SerializeField] private float movementSpeed;
+    [SerializeField] private float onGroundDrag = 5;
+    [SerializeField] private float inAirDrag = 0.1f;
 
     private float angle;
     private float angle2;
+    private RaycastHit slope;
+    private RaycastHit slope2;
+    private Vector3 projectedMovementDirection;
+    private Vector3 movementDirection;
 
     public float Angle
     {
@@ -38,31 +36,15 @@ public class Movement : MonoBehaviour
     }
 
     public Action OnAngleChange;
-   
-    private RaycastHit slope;
-    private RaycastHit slope2;
-    private Vector3 projectedMovementDirection;
-    private Vector3 movementDirection;
 
-    public bool isJumping;
-
-    // Start is called before the first frame update
     void Start()
     {
         OnAngleChange += AngleChange;
         groundCheck.OnGroundedChange += GroundedChange;
     }
 
-    // Update is called once per frame
-    private void Update()
-    {
-        ReadDirection();
-    }
-
-    // FixedUpdate is called once per physics event
     void FixedUpdate()
     {
-
         if (groundCheck.IsGrounded)
         {
             if (Physics.Raycast(transform.position + Vector3.down, Vector3.down, out slope, 0.5f))
@@ -82,7 +64,7 @@ public class Movement : MonoBehaviour
 
             playerBody.drag = onGroundDrag;
             projectedMovementDirection = Vector3.ProjectOnPlane(movementDirection, slope.normal);
-            playerBody.AddForce(projectedMovementDirection.normalized * movementSpeed * (float)Math.Pow(Mathf.Clamp(angle2, 45, 90) - 44f, -0.8), ForceMode.Force);
+            playerBody.AddForce(projectedMovementDirection.normalized * movementSpeed * (float)Math.Pow(Mathf.Clamp(angle2, 45, 90) - 44f, -0.8), ForceMode.Force); //This math equation smoothens player's speed drop in slope angles above 45
 
             Debug.Log("Is on ground");
         }
@@ -93,39 +75,18 @@ public class Movement : MonoBehaviour
 
             Debug.Log("Is in air");
         }
-
-        if (Input.GetKey(jumpKey) && groundCheck.IsGrounded && !isJumping)
-        {
-            isJumping = true;
-            Jump();
-            Invoke(nameof(JumpExit), jumpCooldown);
-
-            Debug.Log("Jumping");
-        }
     }
 
     //Get movement direction for player
-    private void ReadDirection()
+    public void ReadDirection(MovementData data)
     {
-        horizontalInput = Input.GetAxisRaw("Horizontal");
-        verticalInput = Input.GetAxisRaw("Vertical");
-        movementDirection = (playerOrientation.forward * verticalInput + playerOrientation.right * horizontalInput);
+        movementDirection = (playerOrientation.right * data.horizontal + playerOrientation.forward * data.vertical).normalized;
     }
 
-    private void Jump()
+    //Stops player from launching off slopes
+    private void GroundedChange()
     {
-        playerBody.velocity = new Vector3(playerBody.velocity.x, 0, playerBody.velocity.z);
-        playerBody.AddForce(transform.up * jumpPower, ForceMode.Impulse);
-    }
-
-    public void JumpExit()
-    {
-        isJumping = false;
-    }
-
-    public void GroundedChange()
-    {
-        if (!groundCheck.IsGrounded && !isJumping && playerBody.velocity.y > 0)
+        if (!groundCheck.IsGrounded && playerBody.velocity.y > 0 && !jumpDetection.isJumping)
         {
             playerBody.velocity = new Vector3(playerBody.velocity.x, 0, playerBody.velocity.z);
 
@@ -133,9 +94,10 @@ public class Movement : MonoBehaviour
         }
     }
 
-    public void AngleChange()
+    //Roughly preserves speed when player gets on new slope (doesn't work perfect because of collider shape)
+    private void AngleChange()
     {
-        if (groundCheck.IsGrounded && !isJumping)
+        if (groundCheck.IsGrounded && !jumpDetection.isJumping)
             playerBody.velocity = Vector3.ProjectOnPlane(playerBody.velocity, slope.normal);
     }
 }

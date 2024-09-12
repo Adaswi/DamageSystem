@@ -1,9 +1,4 @@
-using Assets.Scripts.ScriptableObjects;
-using System.Collections.Generic;
-using System.Linq;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Events;
 
 public class HitDetection : MonoBehaviour
 {
@@ -45,11 +40,6 @@ public class HitDetection : MonoBehaviour
         }
     }
 
-    private void EnterAttack()
-    {
-        isAttacking = true;
-    }
-
     private void ExitAttack()
     {
         isAttacking = false;
@@ -59,7 +49,7 @@ public class HitDetection : MonoBehaviour
     {
         if (isReady && !isAttacking && Physics.Raycast(new Ray(playerCam.transform.position, playerCam.transform.forward), out hit, weapon.data.range, mask)) //On hit when attack isn't being executed
         {
-            EnterAttack();
+            isAttacking = true;
             OnAttack.Raise(new HitData(hit.transform.gameObject, gameObject, weapon));
             Invoke(nameof(ExitAttack), weapon.data.speed);
         }

@@ -1065,16 +1065,19 @@ GameObject:
   m_Component:
   - component: {fileID: 223513437}
   - component: {fileID: 223513436}
+  - component: {fileID: 223513445}
   - component: {fileID: 223513440}
   - component: {fileID: 223513435}
   - component: {fileID: 223513448}
   - component: {fileID: 223513441}
-  - component: {fileID: 223513445}
   - component: {fileID: 223513444}
   - component: {fileID: 223513443}
   - component: {fileID: 223513442}
   - component: {fileID: 223513446}
   - component: {fileID: 223513447}
+  - component: {fileID: 223513449}
+  - component: {fileID: 223513450}
+  - component: {fileID: 223513451}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -1097,16 +1100,10 @@ MonoBehaviour:
   playerBody: {fileID: 223513436}
   playerOrientation: {fileID: 1682220424}
   groundCheck: {fileID: 223513448}
+  jumpDetection: {fileID: 223513449}
   movementSpeed: 400
-  horizontalInput: 0
-  verticalInput: 0
-  jumpPower: 60
-  jumpCooldown: 1
   onGroundDrag: 5
   inAirDrag: 0.1
-  jumpKey: 32
-  isOnSlope: 0
-  isJumping: 0
 --- !u!54 &223513436
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1281,6 +1278,7 @@ MonoBehaviour:
   OnDrop: {fileID: 11400000, guid: 8e6bdb2afc57b6c468695cce066608bd, type: 2}
   OnHit: {fileID: 11400000, guid: 5e4aa3dea77dffa46af2dc88663bf480, type: 2}
   OnJump: {fileID: 11400000, guid: 514fb3ee286bad446a19694b357ffe5d, type: 2}
+  OnMove: {fileID: 11400000, guid: 2f1c16a9c6f56c743af4703bdb39e971, type: 2}
 --- !u!114 &223513446
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1351,6 +1349,79 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colliders: []
   isGrounded: 0
+--- !u!114 &223513449
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 223513434}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4636b9866eb91514fbd175eb58f9412b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jumpPower: 60
+  jumpCooldown: 1
+  rb: {fileID: 223513436}
+  gc: {fileID: 223513448}
+  isJumping: 0
+--- !u!114 &223513450
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 223513434}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a66942ffd39d3644921f516858a297b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: 514fb3ee286bad446a19694b357ffe5d, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 223513449}
+        m_TargetAssemblyTypeName: JumpDetection, Assembly-CSharp
+        m_MethodName: Jump
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &223513451
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 223513434}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fcf1a6c4937c1e4fa3ea3a98f1338dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: 2f1c16a9c6f56c743af4703bdb39e971, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 223513435}
+        m_TargetAssemblyTypeName: Movement, Assembly-CSharp
+        m_MethodName: ReadDirection
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &369759311
 GameObject:
   m_ObjectHideFlags: 0
