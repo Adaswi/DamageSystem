@@ -47,11 +47,11 @@ public class Bodypart : MonoBehaviour
         }
     }
 
-    public void Heal()
+    public void Heal(int heal)
     {
         if (healthSystem != null)
         {
-
+            healthSystem.Heal(heal);
         }
     }
 

@@ -56,6 +56,8 @@ public class Entity : MonoBehaviour
 
     public void Death()
     {
+        ItemHolder.ItemDropped(this.gameObject);
+
         Debug.Log("Entity " + gameObject.name + " died");
 
         OnEntityDeath.Raise(this.gameObject);

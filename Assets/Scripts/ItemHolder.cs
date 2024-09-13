@@ -1,23 +1,28 @@
-using Assets.Scripts.ScriptableObjects;
 using UnityEngine;
 
 public class ItemHolder : MonoBehaviour
 {
     [SerializeField] private float dropForce;
-    private bool equipped = false;
+    [SerializeField] private GameObject item;
 
-    private GameObject item;
     private Rigidbody rb;
     private Collider col;
     private bool isKinematic;
     private bool isTrigger;
+    private bool equipped = false;
 
     public GameEvent<GameObject> OnEquipped;
     public GameEvent<GameObject> OnDropped;
 
+    private void Awake()
+    {
+        if (item != null)
+            ItemEquip(item);
+    }
+
     public void ItemEquip(GameObject item_)
     {
-        if (!equipped)
+        if (!equipped && item_.GetComponentInParent<ItemHolder>() == null)
         {
             equipped = true;
 
