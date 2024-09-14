@@ -1,43 +1,48 @@
 using UnityEngine;
 
-public class AnimatorController : MonoBehaviour
+public class AnimatorController : EntitySystem
 {
     [SerializeField] private Animator animator;
 
-    private void Awake()
+    private void OnEnable()
     {
-        if (animator == null)
-        animator = GetComponent<Animator>();
-    }
-
-    public void Hit(GameObject gameObject)
-    {
-        if (this.gameObject == gameObject)
-        {
-            animator.SetTrigger("IsHit");
-        }
-    }
-
-    public void TurnOn()
-    {
-        animator.enabled = true;
         var rigidbodies = GetComponentsInChildren<Rigidbody>();
         foreach (var rigidbody in rigidbodies)
         {
             rigidbody.isKinematic = true;
         }
+        
+        entityID.events.OnEntityDeath += Disable;
+        entityID.events.OnEntityHit += PlayHit;
     }
 
-    public void TurnOff(GameObject gameObject)
+    public void OnDisable()
     {
-        if (this.gameObject == gameObject)
+        var rigidbodies = GetComponentsInChildren<Rigidbody>();
+        foreach (var rigidbody in rigidbodies)
         {
-            animator.enabled = false;
-            var rigidbodies = GetComponentsInChildren<Rigidbody>();
-            foreach (var rigidbody in rigidbodies)
-            {
-                rigidbody.isKinematic = false;
-            }
+            rigidbody.isKinematic = false;
         }
+
+        entityID.events.OnEntityDeath -= Disable;
+        entityID.events.OnEntityHit -= PlayHit;
+    }
+
+    protected override void Awake()
+    {
+        base.Awake();
+        if (animator == null)
+            animator = GetComponent<Animator>();
+    }
+
+    public void PlayHit()
+    {
+        animator.SetTrigger("IsHit");
+    }
+
+    public void Disable()
+    {
+        animator.enabled = false;
+        enabled = false;
     }
 }

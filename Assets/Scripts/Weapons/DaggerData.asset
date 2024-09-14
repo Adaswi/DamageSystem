@@ -16,6 +16,3 @@ MonoBehaviour:
   speed: 1.2
   range: 1.5
   effects: []
-  mask:
-    serializedVersion: 2
-    m_Bits: 64

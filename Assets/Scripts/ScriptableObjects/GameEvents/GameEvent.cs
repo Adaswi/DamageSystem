@@ -1,8 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-namespace Assets.Scripts.ScriptableObjects
-{
     [CreateAssetMenu]
     public class GameEvent : ScriptableObject
     {
@@ -26,4 +24,3 @@ namespace Assets.Scripts.ScriptableObjects
             listeners.Remove(listener);
         }
     }
-}

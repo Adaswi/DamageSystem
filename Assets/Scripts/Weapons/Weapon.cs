@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public abstract class Weapon : MonoBehaviour
+public class Weapon : MonoBehaviour
 {
     public WeaponData data;
 
@@ -8,6 +8,4 @@ public abstract class Weapon : MonoBehaviour
     {
         gameObject.layer = LayerMask.NameToLayer("Weapon");   
     }
-
-    public abstract void Attack();
 }

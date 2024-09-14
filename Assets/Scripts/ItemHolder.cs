@@ -1,9 +1,10 @@
 using UnityEngine;
 
-public class ItemHolder : MonoBehaviour
+public class ItemHolder : EntitySystem
 {
     [SerializeField] private float dropForce;
     [SerializeField] private GameObject item;
+    [SerializeField] private GameObject dropper;
 
     private Rigidbody rb;
     private Collider col;
@@ -12,12 +13,24 @@ public class ItemHolder : MonoBehaviour
     private bool equipped = false;
 
     public GameEvent<GameObject> OnEquipped;
-    public GameEvent<GameObject> OnDropped;
+    public GameEvent OnDropped;
 
-    private void Awake()
+    protected override void Awake()
+    {
+        base.Awake();
+        if (dropper == null)
+            dropper = gameObject.transform.parent.gameObject;
+    }
+
+    private void Start()
     {
         if (item != null)
             ItemEquip(item);
+    }
+
+    private void OnEnable()
+    {
+        entityID.events.OnEntityDeath += ItemDropped;
     }
 
     public void ItemEquip(GameObject item_)
@@ -46,11 +59,12 @@ public class ItemHolder : MonoBehaviour
                 col.isTrigger = true;
             }
 
-            OnEquipped.Raise(item);
+            entityID.events.OnItemEquip?.Invoke();
+            OnEquipped?.Raise(item);
         }
     }
 
-    public void ItemDropped(GameObject dropper)
+    public void ItemDropped()
     {
         if (equipped)
         {
@@ -58,11 +72,8 @@ public class ItemHolder : MonoBehaviour
             item.transform.position = dropper.transform.position;
 
             var dropperRb = dropper.GetComponent<Rigidbody>();
-           
-            if (dropperRb != null && rb != null)
-            rb.velocity = dropper.GetComponent<Rigidbody>().velocity;
 
-            if(col != null)
+            if (col != null)
                 col.isTrigger = isTrigger;
 
             if (rb != null)
@@ -71,8 +82,13 @@ public class ItemHolder : MonoBehaviour
                 rb.AddForce(transform.forward * dropForce * rb.mass, ForceMode.Impulse);
             }
 
+            if (dropperRb != null && rb != null)
+                rb.velocity = dropperRb.velocity;
+
             equipped = false;
-            OnDropped.Raise(item);
+
+            entityID.events.OnItemDrop?.Invoke();
+            OnDropped?.Raise();
         }
     }
 }

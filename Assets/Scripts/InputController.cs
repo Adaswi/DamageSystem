@@ -1,4 +1,3 @@
-using Assets.Scripts.ScriptableObjects;
 using UnityEngine;
 
 public class InputController : MonoBehaviour

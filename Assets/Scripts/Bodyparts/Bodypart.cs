@@ -1,65 +1,41 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bodypart : MonoBehaviour
+public class Bodypart : EntitySystem
 {
+    [SerializeField] private EntityIdInitializer bodypartIdInitializer;
+    [SerializeField] private EntityID bodypartID;
     [SerializeField] public BodypartData data;
-    [SerializeField] protected HealthSystem healthSystem;
-    [SerializeField] protected Entity entity;
 
-    public GameEvent<HitData> OnBodypartHit;
-
-    public int Health
+    protected override void Awake()
     {
-        get => healthSystem.Health;
-        set => healthSystem.Health = value;
+        base.Awake();
+        if (bodypartIdInitializer == null)
+            bodypartIdInitializer = GetComponent<EntityIdInitializer>();
+        bodypartID = bodypartIdInitializer.EntityId;
     }
 
-    private void Awake()
-    {
-        if(healthSystem == null)
-        healthSystem = GetComponent<HealthSystem>();
-        if(entity == null)
-        entity = GetComponentInParent<Entity>();
-    }
+    public void Hit(int damage, List<float> effects)
+    {       
+        OnHit();
+        var newEffects = new List<float>(effects);
+        newEffects.Add(data.damageMultiplier);
 
-    private void Start()
-    {
-        if (healthSystem != null && Health == 0)
-        {
-            healthSystem.FullyHeal();
-        }
-    }
+        Debug.Log("Bodypart " + gameObject.name + " hit!");
 
-    public void Hit(HitData hitData)
-    {
-        if(hitData.HitObject.GetComponent<Bodypart>() == this && entity.Health != 0)
-        {
-            if (healthSystem != null)
-            {
-                OnHit();
-                healthSystem.DealDamage(hitData.weapon.data.attack, hitData.weapon.data.effects);
-
-                Debug.Log("Bodypart " + gameObject.name + " hit! Health left: " + Health);
-            }
-
-            OnBodypartHit.Raise(new HitData(this.gameObject, hitData.AttackerObject, hitData.weapon));
-        }
-    }
-
-    public void Heal(int heal)
-    {
-        if (healthSystem != null)
-        {
-            healthSystem.Heal(heal);
-        }
+        entityID.events.OnBodypartHit?.Invoke(damage, newEffects);
+        bodypartID.events.OnBodypartHit?.Invoke(damage, effects);
     }
 
     public void Death()
     {
         OnDeath();
         data.damageMultiplier = data.afterDeathMultiplier;
+
         Debug.Log("Bodypart " + gameObject.name + " died");
+
+        entityID.events.OnBodypartDeath?.Invoke();
+        bodypartID.events.OnBodypartDeath?.Invoke();
     }
 
     protected virtual void OnHit() { }
