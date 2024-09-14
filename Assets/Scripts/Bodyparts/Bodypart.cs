@@ -23,8 +23,8 @@ public class Bodypart : EntitySystem
 
         Debug.Log("Bodypart " + gameObject.name + " hit!");
 
-        entityID.events.OnBodypartHit?.Invoke(damage, newEffects);
-        bodypartID.events.OnBodypartHit?.Invoke(damage, effects);
+        entityID.events.OnHit?.Invoke(damage, newEffects);
+        bodypartID.events.OnHit?.Invoke(damage, effects);
     }
 
     public void Death()
@@ -34,8 +34,7 @@ public class Bodypart : EntitySystem
 
         Debug.Log("Bodypart " + gameObject.name + " died");
 
-        entityID.events.OnBodypartDeath?.Invoke();
-        bodypartID.events.OnBodypartDeath?.Invoke();
+        bodypartID.events.OnDeath?.Invoke();
     }
 
     protected virtual void OnHit() { }

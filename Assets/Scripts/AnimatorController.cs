@@ -12,8 +12,8 @@ public class AnimatorController : EntitySystem
             rigidbody.isKinematic = true;
         }
         
-        entityID.events.OnEntityDeath += Disable;
-        entityID.events.OnEntityHit += PlayHit;
+        entityID.events.OnDeath += Disable;
+        entityID.events.OnHit0arg += PlayHit;
     }
 
     public void OnDisable()
@@ -24,8 +24,8 @@ public class AnimatorController : EntitySystem
             rigidbody.isKinematic = false;
         }
 
-        entityID.events.OnEntityDeath -= Disable;
-        entityID.events.OnEntityHit -= PlayHit;
+        entityID.events.OnDeath -= Disable;
+        entityID.events.OnHit0arg -= PlayHit;
     }
 
     protected override void Awake()

@@ -30,7 +30,7 @@ public class ItemHolder : EntitySystem
 
     private void OnEnable()
     {
-        entityID.events.OnEntityDeath += ItemDropped;
+        entityID.events.OnDeath += ItemDropped;
     }
 
     public void ItemEquip(GameObject item_)

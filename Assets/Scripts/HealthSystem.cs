@@ -36,12 +36,12 @@ public class HealthSystem : EntitySystem
 
     private void OnEnable()
     {
-        entityID.events.OnBodypartHit += DealDamage;
+        entityID.events.OnHit += DealDamage;
     }
 
     private void OnDisable()
     {
-        entityID.events.OnBodypartHit -= DealDamage;
+        entityID.events.OnHit -= DealDamage;
     }
 
     //Deal damage with external effects and internal effects applied

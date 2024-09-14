@@ -256,7 +256,6 @@ MonoBehaviour:
   health: 90
   healthMax: 90
   internalEffects: []
-  onDeath: {fileID: 0}
 --- !u!114 &3622149
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -269,7 +268,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12957d7f76ba4b049a66ac2738a1caa7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  entityId: {fileID: 0}
 --- !u!114 &5855401
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -282,7 +280,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12957d7f76ba4b049a66ac2738a1caa7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  entityId: {fileID: 0}
 --- !u!54 &5855402
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -326,7 +323,6 @@ MonoBehaviour:
   health: 50
   healthMax: 50
   internalEffects: []
-  onDeath: {fileID: 0}
 --- !u!114 &5855404
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -545,7 +541,6 @@ MonoBehaviour:
   health: 50
   healthMax: 50
   internalEffects: []
-  onDeath: {fileID: 0}
 --- !u!114 &39609879
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -558,7 +553,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12957d7f76ba4b049a66ac2738a1caa7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  entityId: {fileID: 0}
 --- !u!114 &70288628
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1136,7 +1130,6 @@ MonoBehaviour:
   health: 100
   healthMax: 100
   internalEffects: []
-  onDeath: {fileID: 0}
 --- !u!114 &215074209
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1149,7 +1142,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12957d7f76ba4b049a66ac2738a1caa7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  entityId: {fileID: 0}
 --- !u!1 &223513434
 GameObject:
   m_ObjectHideFlags: 0
@@ -1573,7 +1565,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12957d7f76ba4b049a66ac2738a1caa7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  entityId: {fileID: 0}
 --- !u!1001 &271776010
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2206,7 +2197,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12957d7f76ba4b049a66ac2738a1caa7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  entityId: {fileID: 0}
 --- !u!114 &271776029
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2219,7 +2209,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12957d7f76ba4b049a66ac2738a1caa7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  entityId: {fileID: 0}
 --- !u!54 &271776030
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2263,7 +2252,6 @@ MonoBehaviour:
   health: 50
   healthMax: 50
   internalEffects: []
-  onDeath: {fileID: 0}
 --- !u!114 &271776032
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2365,7 +2353,6 @@ MonoBehaviour:
   health: 100
   healthMax: 100
   internalEffects: []
-  onDeath: {fileID: 0}
 --- !u!114 &369446835
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2686,7 +2673,6 @@ MonoBehaviour:
   health: 90
   healthMax: 90
   internalEffects: []
-  onDeath: {fileID: 0}
 --- !u!114 &400712172
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2715,7 +2701,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12957d7f76ba4b049a66ac2738a1caa7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  entityId: {fileID: 0}
 --- !u!144 &400712174
 CharacterJoint:
   m_ObjectHideFlags: 0
@@ -3375,7 +3360,6 @@ MonoBehaviour:
   health: 90
   healthMax: 90
   internalEffects: []
-  onDeath: {fileID: 0}
 --- !u!114 &759611855
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3388,7 +3372,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12957d7f76ba4b049a66ac2738a1caa7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  entityId: {fileID: 0}
 --- !u!136 &759611856
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -3652,7 +3635,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12957d7f76ba4b049a66ac2738a1caa7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  entityId: {fileID: 0}
 --- !u!54 &831000444
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3712,7 +3694,6 @@ MonoBehaviour:
   health: 50
   healthMax: 50
   internalEffects: []
-  onDeath: {fileID: 0}
 --- !u!144 &831000447
 CharacterJoint:
   m_ObjectHideFlags: 0
@@ -4877,7 +4858,6 @@ MonoBehaviour:
   health: 90
   healthMax: 90
   internalEffects: []
-  onDeath: {fileID: 0}
 --- !u!114 &1196494082
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4890,7 +4870,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12957d7f76ba4b049a66ac2738a1caa7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  entityId: {fileID: 0}
 --- !u!1 &1201115841 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7202854524658543452, guid: 64b182395c0b6744a920c74bce3ece13, type: 3}
@@ -4933,7 +4912,6 @@ MonoBehaviour:
   health: 60
   healthMax: 60
   internalEffects: []
-  onDeath: {fileID: 0}
 --- !u!114 &1201115846
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5035,7 +5013,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12957d7f76ba4b049a66ac2738a1caa7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  entityId: {fileID: 0}
 --- !u!1 &1202803690 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 9178351893006462165, guid: 64b182395c0b6744a920c74bce3ece13, type: 3}
@@ -5153,7 +5130,6 @@ MonoBehaviour:
   health: 50
   healthMax: 50
   internalEffects: []
-  onDeath: {fileID: 0}
 --- !u!114 &1202803696
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5182,7 +5158,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12957d7f76ba4b049a66ac2738a1caa7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  entityId: {fileID: 0}
 --- !u!114 &1234627678
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5493,7 +5468,6 @@ MonoBehaviour:
   health: 60
   healthMax: 60
   internalEffects: []
-  onDeath: {fileID: 0}
 --- !u!114 &1376575536
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5522,7 +5496,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12957d7f76ba4b049a66ac2738a1caa7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  entityId: {fileID: 0}
 --- !u!144 &1376575538
 CharacterJoint:
   m_ObjectHideFlags: 0
@@ -5813,7 +5786,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12957d7f76ba4b049a66ac2738a1caa7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  entityId: {fileID: 0}
 --- !u!54 &1441900852
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5873,7 +5845,6 @@ MonoBehaviour:
   health: 50
   healthMax: 50
   internalEffects: []
-  onDeath: {fileID: 0}
 --- !u!144 &1441900855
 CharacterJoint:
   m_ObjectHideFlags: 0
@@ -6468,7 +6439,6 @@ MonoBehaviour:
   health: 50
   healthMax: 50
   internalEffects: []
-  onDeath: {fileID: 0}
 --- !u!114 &1548179134
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6497,7 +6467,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12957d7f76ba4b049a66ac2738a1caa7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  entityId: {fileID: 0}
 --- !u!144 &1557383313
 CharacterJoint:
   m_ObjectHideFlags: 0
@@ -7040,7 +7009,6 @@ MonoBehaviour:
   health: 50
   healthMax: 50
   internalEffects: []
-  onDeath: {fileID: 0}
 --- !u!114 &1854828790
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7053,7 +7021,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12957d7f76ba4b049a66ac2738a1caa7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  entityId: {fileID: 0}
 --- !u!1 &1927722898
 GameObject:
   m_ObjectHideFlags: 0
