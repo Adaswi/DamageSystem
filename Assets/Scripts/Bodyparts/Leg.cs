@@ -1,7 +1,3 @@
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.Events;
-
 public class Leg : Bodypart
 {
     protected override void OnHit()
@@ -11,5 +7,6 @@ public class Leg : Bodypart
 
     protected override void OnDeath()
     {
+        entityID.events.OnLegDeath?.Invoke();
     }
 }

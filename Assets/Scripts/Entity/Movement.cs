@@ -1,13 +1,15 @@
 using System;
+using Unity.VisualScripting;
 using UnityEngine;
 
-public class Movement : MonoBehaviour
+public class Movement : EntitySystem
 {
 
-    [SerializeField] private Rigidbody playerBody;
+    [SerializeField] private Rigidbody rb;
     [SerializeField] private Transform playerOrientation;
     [SerializeField] private GroundCollider groundCheck;
     [SerializeField] private JumpDetection jumpDetection;
+
     [SerializeField] private float movementSpeed;
     [SerializeField] private float onGroundDrag = 5;
     [SerializeField] private float inAirDrag = 0.1f;
@@ -37,10 +39,34 @@ public class Movement : MonoBehaviour
 
     public Action OnAngleChange;
 
-    void Start()
+    protected override void Awake()
+    {
+        base.Awake();
+
+        if (rb == null)
+            rb = GetComponent<Rigidbody>();
+
+        if (groundCheck == null)
+            groundCheck = GetComponent<GroundCollider>();
+
+        if (jumpDetection == null)
+            jumpDetection = GetComponent<JumpDetection>();
+    }
+
+    private void OnEnable()
     {
         OnAngleChange += AngleChange;
         groundCheck.OnGroundedChange += GroundedChange;
+
+        entityID.events.OnLegDeath += Impair;
+    }
+
+    private void OnDisable()
+    {
+        OnAngleChange -= AngleChange;
+        groundCheck.OnGroundedChange -= GroundedChange;
+
+        entityID.events.OnLegDeath -= Impair;
     }
 
     void FixedUpdate()
@@ -58,20 +84,20 @@ public class Movement : MonoBehaviour
                 angle2 = 0;
 
             if (Angle < 45 && Angle > 0)
-                playerBody.useGravity = false;
+                rb.useGravity = false;
             else
-                playerBody.useGravity = true;
+                rb.useGravity = true;
 
-            playerBody.drag = onGroundDrag;
+            rb.drag = onGroundDrag;
             projectedMovementDirection = Vector3.ProjectOnPlane(movementDirection, slope.normal);
-            playerBody.AddForce(projectedMovementDirection.normalized * movementSpeed * (float)Math.Pow(Mathf.Clamp(angle2, 45, 90) - 44f, -0.8), ForceMode.Force); //This math equation smoothens player's speed drop in slope angles above 45
+            rb.AddForce(projectedMovementDirection.normalized * movementSpeed * (float)Math.Pow(Mathf.Clamp(angle2, 45, 90) - 44f, -0.8), ForceMode.Force); //This math equation smoothens player's speed drop in slope angles above 45
 
             Debug.Log("Is on ground");
         }
         else if (!groundCheck.IsGrounded)
         {
-            playerBody.drag = inAirDrag;
-            playerBody.useGravity = true;
+            rb.drag = inAirDrag;
+            rb.useGravity = true;
 
             Debug.Log("Is in air");
         }
@@ -86,9 +112,9 @@ public class Movement : MonoBehaviour
     //Stops player from launching off slopes
     private void GroundedChange()
     {
-        if (!groundCheck.IsGrounded && playerBody.velocity.y > 0 && !jumpDetection.isJumping)
+        if (!groundCheck.IsGrounded && rb.velocity.y > 0 && !jumpDetection.isJumping)
         {
-            playerBody.velocity = new Vector3(playerBody.velocity.x, 0, playerBody.velocity.z);
+            rb.velocity = new Vector3(rb.velocity.x, 0, rb.velocity.z);
 
             Debug.Log("Changed ground state");
         }
@@ -98,6 +124,11 @@ public class Movement : MonoBehaviour
     private void AngleChange()
     {
         if (groundCheck.IsGrounded && !jumpDetection.isJumping)
-            playerBody.velocity = Vector3.ProjectOnPlane(playerBody.velocity, slope.normal);
+            rb.velocity = Vector3.ProjectOnPlane(rb.velocity, slope.normal);
+    }
+
+    private void Impair()
+    {
+        movementSpeed /= 2;
     }
 }

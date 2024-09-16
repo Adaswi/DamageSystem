@@ -24,7 +24,9 @@ public class Bodypart : EntitySystem
         Debug.Log("Bodypart " + gameObject.name + " hit!");
 
         entityID.events.OnHit?.Invoke(damage, newEffects);
+        entityID.events.OnHit0arg?.Invoke();
         bodypartID.events.OnHit?.Invoke(damage, effects);
+        bodypartID.events.OnHit0arg?.Invoke();
     }
 
     public void Death()
