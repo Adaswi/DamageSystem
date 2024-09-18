@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class Arm : Bodypart
 {
-    protected override void OnHit()
+    protected override void InHit()
     {
 
     }
 
-    protected override void OnDeath()
+    protected override void InDeath()
     {
         
     }

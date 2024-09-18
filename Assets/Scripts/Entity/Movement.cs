@@ -1,8 +1,7 @@
 using System;
-using Unity.VisualScripting;
 using UnityEngine;
 
-public class Movement : EntitySystem
+public class Movement : MonoBehaviour
 {
 
     [SerializeField] private Rigidbody rb;
@@ -39,10 +38,8 @@ public class Movement : EntitySystem
 
     public Action OnAngleChange;
 
-    protected override void Awake()
+    private void Awake()
     {
-        base.Awake();
-
         if (rb == null)
             rb = GetComponent<Rigidbody>();
 
@@ -56,17 +53,11 @@ public class Movement : EntitySystem
     private void OnEnable()
     {
         OnAngleChange += AngleChange;
-        groundCheck.OnGroundedChange += GroundedChange;
-
-        entityID.events.OnLegDeath += Impair;
     }
 
     private void OnDisable()
     {
         OnAngleChange -= AngleChange;
-        groundCheck.OnGroundedChange -= GroundedChange;
-
-        entityID.events.OnLegDeath -= Impair;
     }
 
     void FixedUpdate()
@@ -110,7 +101,7 @@ public class Movement : EntitySystem
     }
 
     //Stops player from launching off slopes
-    private void GroundedChange()
+    public void ResetUpwardVelocity()
     {
         if (!groundCheck.IsGrounded && rb.velocity.y > 0 && !jumpDetection.isJumping)
         {
@@ -127,7 +118,7 @@ public class Movement : EntitySystem
             rb.velocity = Vector3.ProjectOnPlane(rb.velocity, slope.normal);
     }
 
-    private void Impair()
+    public void Impair()
     {
         movementSpeed /= 2;
     }

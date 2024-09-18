@@ -1,6 +1,7 @@
 using UnityEngine;
+using UnityEngine.Events;
 
-public class ItemHolder : EntitySystem
+public class ItemHolder : MonoBehaviour
 {
     [SerializeField] private float dropForce;
     [SerializeField] private GameObject item;
@@ -12,12 +13,11 @@ public class ItemHolder : EntitySystem
     private bool isTrigger;
     private bool equipped = false;
 
-    public GameEvent<GameObject> OnEquipped;
-    public GameEvent OnDropped;
+    public UnityEvent<GameObject> OnEquipItem;
+    public UnityEvent OnDropItem;
 
-    protected override void Awake()
+    private void Awake()
     {
-        base.Awake();
         if (dropper == null)
             dropper = gameObject.transform.parent.gameObject;
     }
@@ -25,27 +25,22 @@ public class ItemHolder : EntitySystem
     private void Start()
     {
         if (item != null)
-            ItemEquip(item);
+            EquipItem(item);
     }
 
-    private void OnEnable()
+    public void EquipItem(GameObject item)
     {
-        entityID.events.OnDeath += ItemDropped;
-    }
-
-    public void ItemEquip(GameObject item_)
-    {
-        if (!equipped && item_.GetComponentInParent<ItemHolder>() == null)
+        if (!equipped && item.GetComponentInParent<ItemHolder>() == null)
         {
             equipped = true;
 
-            item = item_;
-            rb = item.GetComponent<Rigidbody>();
-            col = item.GetComponent<Collider>();
+            this.item = item;
+            rb = this.item.GetComponent<Rigidbody>();
+            col = this.item.GetComponent<Collider>();
 
-            item.transform.SetParent(gameObject.transform);
-            item.transform.localPosition = Vector3.zero;
-            item.transform.localRotation = Quaternion.Euler(Vector3.zero);
+            this.item.transform.SetParent(gameObject.transform);
+            this.item.transform.localPosition = Vector3.zero;
+            this.item.transform.localRotation = Quaternion.Euler(Vector3.zero);
 
             if (rb != null)
             {
@@ -59,12 +54,11 @@ public class ItemHolder : EntitySystem
                 col.isTrigger = true;
             }
 
-            entityID.events.OnItemEquip?.Invoke();
-            OnEquipped?.Raise(item);
+            OnEquipItem?.Invoke(item);
         }
     }
 
-    public void ItemDropped()
+    public void DropItem()
     {
         if (equipped)
         {
@@ -87,8 +81,7 @@ public class ItemHolder : EntitySystem
 
             equipped = false;
 
-            entityID.events.OnItemDrop?.Invoke();
-            OnDropped?.Raise();
+            OnDropItem?.Invoke();
         }
     }
 }

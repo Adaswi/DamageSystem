@@ -1,14 +1,17 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
-public class HealthSystem : EntitySystem
+public class HealthSystem : MonoBehaviour
 {
     [SerializeField] private int health;
     [SerializeField] private int healthMax;
     [SerializeField] private List<float> internalEffects = new List<float>();
 
-    public Action entityIDeventsOnHealthDecreased;
+    public UnityEvent OnDealDamage;
+    public UnityEvent OnHeal;
+    public UnityEvent OnDeath;
 
     public int Health
     {
@@ -17,7 +20,7 @@ public class HealthSystem : EntitySystem
             if (value <= 0 && health != 0) //When health reaches zero for the first time
             {
                 health = 0;
-                entityID.events.OnDeath?.Invoke();
+                OnDeath?.Invoke();
             }
             else if (value <= 0) //When health reaches zero even if it's already zero
             {
@@ -34,16 +37,6 @@ public class HealthSystem : EntitySystem
         }
     }
 
-    private void OnEnable()
-    {
-        entityID.events.OnHit += DealDamage;
-    }
-
-    private void OnDisable()
-    {
-        entityID.events.OnHit -= DealDamage;
-    }
-
     //Deal damage with external effects and internal effects applied
     public void DealDamage(int damage, List<float> externalEffects)
     {
@@ -53,7 +46,7 @@ public class HealthSystem : EntitySystem
             damage = (int)Math.Round(damage * effect);
         }
         Health -= damage;
-        entityID.events.OnHealthDecreased?.Invoke();
+        OnDealDamage?.Invoke();
     }
 
     //Deal damage with extrenal effect and internal effects applied
@@ -65,7 +58,7 @@ public class HealthSystem : EntitySystem
         }
         damage = Convert.ToInt32(damage * externalEffect);
         Health -= damage;
-        entityID.events.OnHealthDecreased?.Invoke();
+        OnDealDamage?.Invoke();
     }
 
     //Deal damage with internal effects applied
@@ -76,7 +69,7 @@ public class HealthSystem : EntitySystem
             damage = Convert.ToInt32(damage*effect);
         }
         Health -= damage;
-        entityID.events.OnHealthDecreased?.Invoke();
+        OnDealDamage?.Invoke();
     }
 
     //Deal damage with external effects applied and internal effects ignored
@@ -87,7 +80,7 @@ public class HealthSystem : EntitySystem
             damage = Convert.ToInt32(damage * effect);
         }
         Health -= damage;
-        entityID.events.OnHealthDecreased?.Invoke();
+        OnDealDamage?.Invoke();
     }
 
     //Deal damage with external effect applied and internal effects ignored
@@ -95,26 +88,27 @@ public class HealthSystem : EntitySystem
     {
         damage = Convert.ToInt32(damage * externalEffect);
         Health -= damage;
-        entityID.events.OnHealthDecreased?.Invoke();
+        OnDealDamage?.Invoke();
     }
 
     //Deal damage with effects ignored
     public void DealRawDamage(int damage)
     {
         Health -= damage;
-        entityID.events.OnHealthDecreased?.Invoke();
+        OnDealDamage?.Invoke();
     }
 
     //Restores given amount of health
     public void Heal(int heal)
     {
         Health += heal;
-        entityID.events.OnHealthIncreased?.Invoke();
+        OnHeal?.Invoke();
     }
 
     public void FullyHeal()
     {
         Health = healthMax;
+        OnHeal?.Invoke();
     }
 
     //Adds an effect
@@ -138,7 +132,7 @@ public class HealthSystem : EntitySystem
     //Brings health to zero
     public void Kill()
     {
-        entityID.events.OnHealthDecreased?.Invoke();
         Health = 0;
+        OnDealDamage?.Invoke();
     }
 }

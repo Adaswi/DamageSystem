@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class AnimatorController : EntitySystem
+public class AnimatorController : MonoBehaviour
 {
     [SerializeField] private Animator animator;
 
@@ -11,9 +11,6 @@ public class AnimatorController : EntitySystem
         {
             rigidbody.isKinematic = true;
         }
-        
-        entityID.events.OnDeath += Disable;
-        entityID.events.OnHit0arg += PlayHit;
     }
 
     public void OnDisable()
@@ -23,14 +20,10 @@ public class AnimatorController : EntitySystem
         {
             rigidbody.isKinematic = false;
         }
-
-        entityID.events.OnDeath -= Disable;
-        entityID.events.OnHit0arg -= PlayHit;
     }
 
-    protected override void Awake()
+    private void Awake()
     {
-        base.Awake();
         if (animator == null)
             animator = GetComponent<Animator>();
     }

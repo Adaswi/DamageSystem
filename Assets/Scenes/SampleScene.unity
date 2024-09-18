@@ -143,7 +143,7 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -163,7 +163,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0.00000000873115, y: 0.3953348, z: 0.038443837}
+  m_ConnectedAnchor: {x: 0.000000017113054, y: 0.3953348, z: 0.038443837}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 0, z: 1}
   m_TwistLimitSpring:
@@ -207,7 +207,7 @@ Rigidbody:
   serializedVersion: 4
   m_Mass: 1.25
   m_Drag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -236,10 +236,40 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 439efe0eb0664da40a769407564d4f8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  entityIdInitializer: {fileID: 215074209}
-  bodypartIdInitializer: {fileID: 3622149}
-  bodypartID: {fileID: 11400000, guid: 939f8dbd364700b42ac0a0670da01131, type: 2}
   data: {fileID: 11400000, guid: 8429d671ed5c12b4e8cd7d7bba4a9fa3, type: 2}
+  OnHit:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3622147}
+        m_TargetAssemblyTypeName: HealthSystem, Assembly-CSharp
+        m_MethodName: DealDamage
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnHitWithMultiplier:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 215074208}
+        m_TargetAssemblyTypeName: HealthSystem, Assembly-CSharp
+        m_MethodName: DealDamage
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnDeath:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &3622147
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -252,22 +282,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6685057d4e36fc947ad64492273c5ace, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  entityIdInitializer: {fileID: 3622149}
   health: 90
   healthMax: 90
   internalEffects: []
---- !u!114 &3622149
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3622141}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 12957d7f76ba4b049a66ac2738a1caa7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  OnDealDamage:
+    m_PersistentCalls:
+      m_Calls: []
+  OnHeal:
+    m_PersistentCalls:
+      m_Calls: []
+  OnDeath:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3622146}
+        m_TargetAssemblyTypeName: Bodypart, Assembly-CSharp
+        m_MethodName: Death
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &39609869 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 629561006819824117, guid: 64b182395c0b6744a920c74bce3ece13, type: 3}
@@ -283,7 +321,7 @@ Rigidbody:
   serializedVersion: 4
   m_Mass: 1.875
   m_Drag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -312,7 +350,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 0, y: 0, z: 1}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0.0920529, y: -0.15948749, z: 0.0006078482}
+  m_ConnectedAnchor: {x: 0.09205294, y: -0.15948749, z: 0.0006077886}
   serializedVersion: 2
   m_SwingAxis: {x: 1, y: 0, z: 0}
   m_TwistLimitSpring:
@@ -361,7 +399,7 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -381,10 +419,40 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29f8afe5b0afc6b4bb42334b7c9a300f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  entityIdInitializer: {fileID: 215074209}
-  bodypartIdInitializer: {fileID: 39609879}
-  bodypartID: {fileID: 11400000, guid: 4d90448b5f9fdc84dad11cbbed9acd50, type: 2}
   data: {fileID: 11400000, guid: d350d6af141bfc9408345a1c018311b0, type: 2}
+  OnHit:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 39609875}
+        m_TargetAssemblyTypeName: HealthSystem, Assembly-CSharp
+        m_MethodName: DealDamage
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnHitWithMultiplier:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 215074208}
+        m_TargetAssemblyTypeName: HealthSystem, Assembly-CSharp
+        m_MethodName: DealDamage
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnDeath:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &39609875
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -397,22 +465,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6685057d4e36fc947ad64492273c5ace, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  entityIdInitializer: {fileID: 39609879}
   health: 50
   healthMax: 50
   internalEffects: []
---- !u!114 &39609879
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 39609869}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 12957d7f76ba4b049a66ac2738a1caa7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  OnDealDamage:
+    m_PersistentCalls:
+      m_Calls: []
+  OnHeal:
+    m_PersistentCalls:
+      m_Calls: []
+  OnDeath:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 215074213}
+        m_TargetAssemblyTypeName: Movement, Assembly-CSharp
+        m_MethodName: Impair
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &91228479 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6289509544602478623, guid: 64b182395c0b6744a920c74bce3ece13, type: 3}
@@ -542,7 +618,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -2.0474289e-10, y: -0.15948747, z: 0.00000005122275}
+  m_ConnectedAnchor: {x: 0.000000017883323, y: -0.15948747, z: -0.000000008381904}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 1, z: 0}
   m_TwistLimitSpring:
@@ -586,7 +662,7 @@ Rigidbody:
   serializedVersion: 4
   m_Mass: 2
   m_Drag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -725,7 +801,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: -1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0.000000078231054, y: 0.29291975, z: 0.00000020861614}
+  m_ConnectedAnchor: {x: 0.000000065192545, y: 0.29291973, z: 0.00000014901153}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: -1, z: 0}
   m_TwistLimitSpring:
@@ -769,7 +845,7 @@ Rigidbody:
   serializedVersion: 4
   m_Mass: 1.25
   m_Drag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -801,7 +877,7 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -821,28 +897,45 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b9c04608ff8fc646a45044acb41a186, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  entityIdInitializer: {fileID: 215074209}
-  bodypartIdInitializer: {fileID: 1202803698}
-  bodypartID: {fileID: 11400000, guid: 2a5f095edae251e459275a10fdb9a3ec, type: 2}
   data: {fileID: 11400000, guid: 63116d70ce6dc104d9bf933cd767dc33, type: 2}
+  OnHit:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1202803695}
+        m_TargetAssemblyTypeName: HealthSystem, Assembly-CSharp
+        m_MethodName: DealDamage
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnHitWithMultiplier:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 215074208}
+        m_TargetAssemblyTypeName: HealthSystem, Assembly-CSharp
+        m_MethodName: DealDamage
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnDeath:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &215074198 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8434589221339364836, guid: 64b182395c0b6744a920c74bce3ece13, type: 3}
   m_PrefabInstance: {fileID: 985888530}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &215074200
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 215074198}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1432a9ff33382e146bccd332d0b60ed6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  entityIdInitializer: {fileID: 215074209}
 --- !u!95 &215074204 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 2929119099450096932, guid: 64b182395c0b6744a920c74bce3ece13, type: 3}
@@ -860,7 +953,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd3f7325c62ff76428fd38b08bef91dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  entityIdInitializer: {fileID: 215074209}
   animator: {fileID: 215074204}
 --- !u!114 &215074208
 MonoBehaviour:
@@ -874,48 +966,47 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6685057d4e36fc947ad64492273c5ace, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  entityIdInitializer: {fileID: 215074209}
   health: 100
   healthMax: 100
   internalEffects: []
---- !u!114 &215074209
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 215074198}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 12957d7f76ba4b049a66ac2738a1caa7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  OnDealDamage:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 215074206}
+        m_TargetAssemblyTypeName: AnimatorController, Assembly-CSharp
+        m_MethodName: PlayHit
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnHeal:
+    m_PersistentCalls:
+      m_Calls: []
+  OnDeath:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 215074206}
+        m_TargetAssemblyTypeName: AnimatorController, Assembly-CSharp
+        m_MethodName: Disable
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!4 &215074210 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9099099296081717086, guid: 64b182395c0b6744a920c74bce3ece13, type: 3}
   m_PrefabInstance: {fileID: 985888530}
   m_PrefabAsset: {fileID: 0}
---- !u!65 &215074211
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 215074198}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 8
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.5, y: 0.05, z: 0.5}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &215074212
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -928,9 +1019,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50b33f232a7468043af94eaec1270700, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  entityIdInitializer: {fileID: 215074209}
   colliders: []
   isGrounded: 0
+  OnGroundedChange:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 215074213}
+        m_TargetAssemblyTypeName: Movement, Assembly-CSharp
+        m_MethodName: ResetUpwardVelocity
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &215074213
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -943,12 +1048,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8b0c1dd8136e2248af6b9bb1265a78e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  entityIdInitializer: {fileID: 215074209}
   rb: {fileID: 215074215}
   playerOrientation: {fileID: 215074210}
   groundCheck: {fileID: 215074212}
   jumpDetection: {fileID: 215074214}
-  movementSpeed: 250
+  movementSpeed: 150
   onGroundDrag: 5
   inAirDrag: 0.1
 --- !u!114 &215074214
@@ -968,6 +1072,9 @@ MonoBehaviour:
   rb: {fileID: 215074215}
   gc: {fileID: 215074212}
   isJumping: 0
+  OnJump:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!54 &215074215
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -976,9 +1083,9 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 215074198}
   serializedVersion: 4
-  m_Mass: 20
+  m_Mass: 1
   m_Drag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0.5
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -987,14 +1094,66 @@ Rigidbody:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 72
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 80
   m_CollisionDetection: 0
+--- !u!136 &215074216
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 215074198}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 72
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.45
+  m_Height: 0.9
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.4, z: 0}
+--- !u!114 &215074217
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 215074198}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47eae0c4715dd36459674bdf99647359, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 1682220424}
+  smooth: 5
+  OnChasePlayer:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 215074213}
+        m_TargetAssemblyTypeName: Movement, Assembly-CSharp
+        m_MethodName: ReadDirection
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &223513434
 GameObject:
   m_ObjectHideFlags: 0
@@ -1005,23 +1164,13 @@ GameObject:
   m_Component:
   - component: {fileID: 223513437}
   - component: {fileID: 223513436}
-  - component: {fileID: 223513445}
   - component: {fileID: 223513440}
+  - component: {fileID: 223513445}
   - component: {fileID: 223513435}
   - component: {fileID: 223513448}
   - component: {fileID: 223513441}
   - component: {fileID: 223513444}
-  - component: {fileID: 223513443}
-  - component: {fileID: 223513442}
-  - component: {fileID: 223513447}
   - component: {fileID: 223513449}
-  - component: {fileID: 223513450}
-  - component: {fileID: 223513451}
-  - component: {fileID: 223513453}
-  - component: {fileID: 223513452}
-  - component: {fileID: 223513454}
-  - component: {fileID: 223513455}
-  - component: {fileID: 223513456}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -1041,7 +1190,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8b0c1dd8136e2248af6b9bb1265a78e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  entityIdInitializer: {fileID: 0}
   rb: {fileID: 223513436}
   playerOrientation: {fileID: 1682220424}
   groundCheck: {fileID: 223513448}
@@ -1132,63 +1280,9 @@ MonoBehaviour:
   mask:
     serializedVersion: 2
     m_Bits: 8
-  OnAttack: {fileID: 11400000, guid: c512a11160d0b524c8787942fcdcc856, type: 2}
---- !u!114 &223513442
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 223513434}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 923a38435658d924db246460e5bdf733, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Event: {fileID: 11400000, guid: 0a9f6e5b0f6159a409486f1f55cf7914, type: 2}
-  Response:
+  OnAttack:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 223513441}
-        m_TargetAssemblyTypeName: HitDetection, Assembly-CSharp
-        m_MethodName: ReadyToAttack
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &223513443
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 223513434}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2a66942ffd39d3644921f516858a297b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Event: {fileID: 11400000, guid: 903ef6970363ac0498417ec42284d2d7, type: 2}
-  Response:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 223513444}
-        m_TargetAssemblyTypeName: PickUpController, Assembly-CSharp
-        m_MethodName: PickUp
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &223513444
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1206,7 +1300,21 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   playerCam: {fileID: 1482657016}
-  OnPickUp: {fileID: 11400000, guid: e6d7ae582bf5cee4e8da6ec2e998446b, type: 2}
+  OnPickUp:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1927722902}
+        m_TargetAssemblyTypeName: ItemHolder, Assembly-CSharp
+        m_MethodName: EquipItem
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &223513445
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1219,31 +1327,73 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c22fb3e6af499534182b5d254a66b588, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnInteraction: {fileID: 11400000, guid: 903ef6970363ac0498417ec42284d2d7, type: 2}
-  OnDrop: {fileID: 11400000, guid: 8e6bdb2afc57b6c468695cce066608bd, type: 2}
-  OnHit: {fileID: 11400000, guid: 5e4aa3dea77dffa46af2dc88663bf480, type: 2}
-  OnJump: {fileID: 11400000, guid: 514fb3ee286bad446a19694b357ffe5d, type: 2}
-  OnMove: {fileID: 11400000, guid: 2f1c16a9c6f56c743af4703bdb39e971, type: 2}
---- !u!114 &223513447
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 223513434}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2a66942ffd39d3644921f516858a297b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Event: {fileID: 11400000, guid: 5e4aa3dea77dffa46af2dc88663bf480, type: 2}
-  Response:
+  OnInteraction:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 223513444}
+        m_TargetAssemblyTypeName: PickUpController, Assembly-CSharp
+        m_MethodName: PickUp
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnDrop:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1927722902}
+        m_TargetAssemblyTypeName: ItemHolder, Assembly-CSharp
+        m_MethodName: DropItem
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnHit:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 223513441}
         m_TargetAssemblyTypeName: HitDetection, Assembly-CSharp
         m_MethodName: Attack
         m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnJump:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 223513449}
+        m_TargetAssemblyTypeName: JumpDetection, Assembly-CSharp
+        m_MethodName: Jump
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnMove:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 223513435}
+        m_TargetAssemblyTypeName: Movement, Assembly-CSharp
+        m_MethodName: ReadDirection
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1264,9 +1414,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50b33f232a7468043af94eaec1270700, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  entityIdInitializer: {fileID: 0}
   colliders: []
   isGrounded: 0
+  OnGroundedChange:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 223513435}
+        m_TargetAssemblyTypeName: Movement, Assembly-CSharp
+        m_MethodName: ResetUpwardVelocity
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &223513449
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1284,159 +1448,9 @@ MonoBehaviour:
   rb: {fileID: 223513436}
   gc: {fileID: 223513448}
   isJumping: 0
---- !u!114 &223513450
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 223513434}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2a66942ffd39d3644921f516858a297b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Event: {fileID: 11400000, guid: 514fb3ee286bad446a19694b357ffe5d, type: 2}
-  Response:
+  OnJump:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 223513449}
-        m_TargetAssemblyTypeName: JumpDetection, Assembly-CSharp
-        m_MethodName: Jump
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &223513451
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 223513434}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7fcf1a6c4937c1e4fa3ea3a98f1338dc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Event: {fileID: 11400000, guid: 2f1c16a9c6f56c743af4703bdb39e971, type: 2}
-  Response:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 223513435}
-        m_TargetAssemblyTypeName: Movement, Assembly-CSharp
-        m_MethodName: ReadDirection
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &223513452
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 223513434}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 923a38435658d924db246460e5bdf733, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Event: {fileID: 11400000, guid: e6d7ae582bf5cee4e8da6ec2e998446b, type: 2}
-  Response:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1927722902}
-        m_TargetAssemblyTypeName: ItemHolder, Assembly-CSharp
-        m_MethodName: ItemEquip
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &223513453
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 223513434}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1432a9ff33382e146bccd332d0b60ed6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  entityIdInitializer: {fileID: 0}
---- !u!114 &223513454
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 223513434}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2a66942ffd39d3644921f516858a297b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Event: {fileID: 11400000, guid: 2f7b54c13feb165449b4e44912a1180a, type: 2}
-  Response:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 223513441}
-        m_TargetAssemblyTypeName: HitDetection, Assembly-CSharp
-        m_MethodName: UnreadyToAttack
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &223513455
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 223513434}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 12957d7f76ba4b049a66ac2738a1caa7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &223513456
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 223513434}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6685057d4e36fc947ad64492273c5ace, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  entityIdInitializer: {fileID: 223513455}
-  health: 100
-  healthMax: 100
-  internalEffects: []
+      m_Calls: []
 --- !u!1 &369759311
 GameObject:
   m_ObjectHideFlags: 0
@@ -1631,7 +1645,7 @@ Rigidbody:
   serializedVersion: 4
   m_Mass: 1.25
   m_Drag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -1663,7 +1677,7 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -1683,10 +1697,40 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b9c04608ff8fc646a45044acb41a186, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  entityIdInitializer: {fileID: 215074209}
-  bodypartIdInitializer: {fileID: 1854828790}
-  bodypartID: {fileID: 11400000, guid: c33a8f080e7b4ab47827bfaef5132545, type: 2}
   data: {fileID: 11400000, guid: 63116d70ce6dc104d9bf933cd767dc33, type: 2}
+  OnHit:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1854828788}
+        m_TargetAssemblyTypeName: HealthSystem, Assembly-CSharp
+        m_MethodName: DealDamage
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnHitWithMultiplier:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 215074208}
+        m_TargetAssemblyTypeName: HealthSystem, Assembly-CSharp
+        m_MethodName: DealDamage
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnDeath:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &430327538
 GameObject:
   m_ObjectHideFlags: 0
@@ -1731,12 +1775,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24b516962dc65fa4d8c72cb3198cc900, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  entityIdInitializer: {fileID: 215074209}
   dropForce: 0
   item: {fileID: 1266314811}
   dropper: {fileID: 91228479}
-  OnEquipped: {fileID: 0}
-  OnDropped: {fileID: 0}
+  OnEquipItem:
+    m_PersistentCalls:
+      m_Calls: []
+  OnDropItem:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1001 &509189311
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1803,6 +1850,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2142021146967332986, guid: b84d7ca3927758646a65731cc107aa76, type: 3}
       propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2142021146967332986, guid: b84d7ca3927758646a65731cc107aa76, type: 3}
+      propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -2110,7 +2161,6 @@ RectTransform:
   m_Children:
   - {fileID: 841783054}
   - {fileID: 1011018543}
-  - {fileID: 947558302}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -2384,11 +2434,11 @@ Transform:
   m_GameObject: {fileID: 947558299}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -354.75, y: -265.2, z: 4}
+  m_LocalPosition: {x: 0, y: 0, z: 4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 747876232}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &979513845 stripped
 GameObject:
@@ -2535,6 +2585,14 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 3983322368406506902, guid: 64b182395c0b6744a920c74bce3ece13, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3983322368406506902, guid: 64b182395c0b6744a920c74bce3ece13, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4132312772176831909, guid: 64b182395c0b6744a920c74bce3ece13, type: 3}
       propertyPath: m_Name
       value: Rio
@@ -2574,6 +2632,18 @@ PrefabInstance:
     - target: {fileID: 4766753524117216085, guid: 64b182395c0b6744a920c74bce3ece13, type: 3}
       propertyPath: m_Layer
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4926503525435288778, guid: 64b182395c0b6744a920c74bce3ece13, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4926503525435288778, guid: 64b182395c0b6744a920c74bce3ece13, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4926503525435288778, guid: 64b182395c0b6744a920c74bce3ece13, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
       objectReference: {fileID: 0}
     - target: {fileID: 5386964855662857588, guid: 64b182395c0b6744a920c74bce3ece13, type: 3}
       propertyPath: m_Layer
@@ -2709,7 +2779,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8434589221339364836, guid: 64b182395c0b6744a920c74bce3ece13, type: 3}
       propertyPath: m_Layer
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8835930005342052818, guid: 64b182395c0b6744a920c74bce3ece13, type: 3}
       propertyPath: m_Layer
@@ -2738,14 +2808,11 @@ PrefabInstance:
       addedObject: {fileID: 430327539}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 8434589221339364836, guid: 64b182395c0b6744a920c74bce3ece13, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 215074211}
+      insertIndex: 1
+      addedObject: {fileID: 215074215}
     - targetCorrespondingSourceObject: {fileID: 8434589221339364836, guid: 64b182395c0b6744a920c74bce3ece13, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 215074209}
-    - targetCorrespondingSourceObject: {fileID: 8434589221339364836, guid: 64b182395c0b6744a920c74bce3ece13, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 215074200}
+      insertIndex: 2
+      addedObject: {fileID: 215074216}
     - targetCorrespondingSourceObject: {fileID: 8434589221339364836, guid: 64b182395c0b6744a920c74bce3ece13, type: 3}
       insertIndex: -1
       addedObject: {fileID: 215074206}
@@ -2760,13 +2827,13 @@ PrefabInstance:
       addedObject: {fileID: 215074212}
     - targetCorrespondingSourceObject: {fileID: 8434589221339364836, guid: 64b182395c0b6744a920c74bce3ece13, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 215074215}
+      addedObject: {fileID: 215074214}
     - targetCorrespondingSourceObject: {fileID: 8434589221339364836, guid: 64b182395c0b6744a920c74bce3ece13, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 215074214}
+      addedObject: {fileID: 215074217}
     - targetCorrespondingSourceObject: {fileID: 3766844547119126924, guid: 64b182395c0b6744a920c74bce3ece13, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 2101341372}
+      addedObject: {fileID: 2101341375}
     - targetCorrespondingSourceObject: {fileID: 3977682566442343928, guid: 64b182395c0b6744a920c74bce3ece13, type: 3}
       insertIndex: -1
       addedObject: {fileID: 160464380}
@@ -2784,9 +2851,6 @@ PrefabInstance:
       addedObject: {fileID: 1201115849}
     - targetCorrespondingSourceObject: {fileID: 7202854524658543452, guid: 64b182395c0b6744a920c74bce3ece13, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1201115851}
-    - targetCorrespondingSourceObject: {fileID: 7202854524658543452, guid: 64b182395c0b6744a920c74bce3ece13, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 1201115846}
     - targetCorrespondingSourceObject: {fileID: 7202854524658543452, guid: 64b182395c0b6744a920c74bce3ece13, type: 3}
       insertIndex: -1
@@ -2800,9 +2864,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8835930005342052818, guid: 64b182395c0b6744a920c74bce3ece13, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1196494077}
-    - targetCorrespondingSourceObject: {fileID: 8835930005342052818, guid: 64b182395c0b6744a920c74bce3ece13, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1196494082}
     - targetCorrespondingSourceObject: {fileID: 8835930005342052818, guid: 64b182395c0b6744a920c74bce3ece13, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1196494079}
@@ -2820,25 +2881,19 @@ PrefabInstance:
       addedObject: {fileID: 3622143}
     - targetCorrespondingSourceObject: {fileID: 5578753358700792370, guid: 64b182395c0b6744a920c74bce3ece13, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 3622149}
-    - targetCorrespondingSourceObject: {fileID: 5578753358700792370, guid: 64b182395c0b6744a920c74bce3ece13, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 3622147}
     - targetCorrespondingSourceObject: {fileID: 5578753358700792370, guid: 64b182395c0b6744a920c74bce3ece13, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3622146}
     - targetCorrespondingSourceObject: {fileID: 9178351893006462165, guid: 64b182395c0b6744a920c74bce3ece13, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1202803694}
-    - targetCorrespondingSourceObject: {fileID: 9178351893006462165, guid: 64b182395c0b6744a920c74bce3ece13, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 1202803692}
     - targetCorrespondingSourceObject: {fileID: 9178351893006462165, guid: 64b182395c0b6744a920c74bce3ece13, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1202803693}
+      addedObject: {fileID: 1202803694}
     - targetCorrespondingSourceObject: {fileID: 9178351893006462165, guid: 64b182395c0b6744a920c74bce3ece13, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1202803698}
+      addedObject: {fileID: 1202803693}
     - targetCorrespondingSourceObject: {fileID: 9178351893006462165, guid: 64b182395c0b6744a920c74bce3ece13, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1202803696}
@@ -2868,9 +2923,6 @@ PrefabInstance:
       addedObject: {fileID: 1854828785}
     - targetCorrespondingSourceObject: {fileID: 6418296502664614542, guid: 64b182395c0b6744a920c74bce3ece13, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1854828790}
-    - targetCorrespondingSourceObject: {fileID: 6418296502664614542, guid: 64b182395c0b6744a920c74bce3ece13, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 1854828788}
     - targetCorrespondingSourceObject: {fileID: 6418296502664614542, guid: 64b182395c0b6744a920c74bce3ece13, type: 3}
       insertIndex: -1
@@ -2898,9 +2950,6 @@ PrefabInstance:
       addedObject: {fileID: 1548179131}
     - targetCorrespondingSourceObject: {fileID: 4176553025200046990, guid: 64b182395c0b6744a920c74bce3ece13, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1548179136}
-    - targetCorrespondingSourceObject: {fileID: 4176553025200046990, guid: 64b182395c0b6744a920c74bce3ece13, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 1548179134}
     - targetCorrespondingSourceObject: {fileID: 4176553025200046990, guid: 64b182395c0b6744a920c74bce3ece13, type: 3}
       insertIndex: -1
@@ -2926,9 +2975,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 629561006819824117, guid: 64b182395c0b6744a920c74bce3ece13, type: 3}
       insertIndex: -1
       addedObject: {fileID: 39609872}
-    - targetCorrespondingSourceObject: {fileID: 629561006819824117, guid: 64b182395c0b6744a920c74bce3ece13, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 39609879}
     - targetCorrespondingSourceObject: {fileID: 629561006819824117, guid: 64b182395c0b6744a920c74bce3ece13, type: 3}
       insertIndex: -1
       addedObject: {fileID: 39609875}
@@ -3000,6 +3046,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textComponent: {fileID: 1011018545}
   rb: {fileID: 223513436}
+  enemyRb: {fileID: 215074215}
 --- !u!114 &1011018545
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3020,7 +3067,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Speed: '
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3114,7 +3161,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 0, y: 0, z: 1}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.000000050291412, y: 0.34861282, z: 0.000000011175869}
+  m_ConnectedAnchor: {x: 0.0000000046566124, y: 0.34861282, z: -0.000000015832482}
   serializedVersion: 2
   m_SwingAxis: {x: 1, y: 0, z: 0}
   m_TwistLimitSpring:
@@ -3158,7 +3205,7 @@ Rigidbody:
   serializedVersion: 4
   m_Mass: 1.875
   m_Drag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -3190,7 +3237,7 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -3210,10 +3257,40 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29f8afe5b0afc6b4bb42334b7c9a300f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  entityIdInitializer: {fileID: 215074209}
-  bodypartIdInitializer: {fileID: 39609879}
-  bodypartID: {fileID: 11400000, guid: 4d90448b5f9fdc84dad11cbbed9acd50, type: 2}
   data: {fileID: 11400000, guid: d350d6af141bfc9408345a1c018311b0, type: 2}
+  OnHit:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 39609875}
+        m_TargetAssemblyTypeName: HealthSystem, Assembly-CSharp
+        m_MethodName: DealDamage
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnHitWithMultiplier:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 215074208}
+        m_TargetAssemblyTypeName: HealthSystem, Assembly-CSharp
+        m_MethodName: DealDamage
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnDeath:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!54 &1196494076
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3224,7 +3301,7 @@ Rigidbody:
   serializedVersion: 4
   m_Mass: 3.125
   m_Drag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -3253,7 +3330,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 1.13800525e-10, y: 0.159488, z: -0.00000003445894}
+  m_ConnectedAnchor: {x: -0.0000000390009, y: 0.159488, z: -0.00000003445894}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 0, z: 1}
   m_TwistLimitSpring:
@@ -3302,7 +3379,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -3320,10 +3397,40 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc1feab89f7171b499d12d52e584279e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  entityIdInitializer: {fileID: 215074209}
-  bodypartIdInitializer: {fileID: 1196494082}
-  bodypartID: {fileID: 11400000, guid: 2295cd0fca79f5242a0eaac440d684f9, type: 2}
   data: {fileID: 11400000, guid: 111489be1af81554681b5fe392ea2f24, type: 2}
+  OnHit:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1196494080}
+        m_TargetAssemblyTypeName: HealthSystem, Assembly-CSharp
+        m_MethodName: DealDamage
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnHitWithMultiplier:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 215074208}
+        m_TargetAssemblyTypeName: HealthSystem, Assembly-CSharp
+        m_MethodName: DealDamage
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnDeath:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1196494080
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3336,22 +3443,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6685057d4e36fc947ad64492273c5ace, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  entityIdInitializer: {fileID: 1196494082}
   health: 90
   healthMax: 90
   internalEffects: []
---- !u!114 &1196494082
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 679374340}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 12957d7f76ba4b049a66ac2738a1caa7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  OnDealDamage:
+    m_PersistentCalls:
+      m_Calls: []
+  OnHeal:
+    m_PersistentCalls:
+      m_Calls: []
+  OnDeath:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1196494079}
+        m_TargetAssemblyTypeName: Bodypart, Assembly-CSharp
+        m_MethodName: Death
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1201115841 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7202854524658543452, guid: 64b182395c0b6744a920c74bce3ece13, type: 3}
@@ -3372,7 +3487,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -3390,10 +3505,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6685057d4e36fc947ad64492273c5ace, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  entityIdInitializer: {fileID: 1201115851}
   health: 60
   healthMax: 60
   internalEffects: []
+  OnDealDamage:
+    m_PersistentCalls:
+      m_Calls: []
+  OnHeal:
+    m_PersistentCalls:
+      m_Calls: []
+  OnDeath:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1201115846}
+        m_TargetAssemblyTypeName: Bodypart, Assembly-CSharp
+        m_MethodName: Death
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1201115846
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3406,10 +3541,40 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9364b2ebfe784fb428fffd07e040b686, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  entityIdInitializer: {fileID: 215074209}
-  bodypartIdInitializer: {fileID: 1201115851}
-  bodypartID: {fileID: 11400000, guid: d2cf3b8a3b47ae849bcc0e643233ded3, type: 2}
   data: {fileID: 11400000, guid: abad03728331d5c44a12c488b2b299d0, type: 2}
+  OnHit:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1201115845}
+        m_TargetAssemblyTypeName: HealthSystem, Assembly-CSharp
+        m_MethodName: DealDamage
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnHitWithMultiplier:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 215074208}
+        m_TargetAssemblyTypeName: HealthSystem, Assembly-CSharp
+        m_MethodName: DealDamage
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnDeath:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!54 &1201115848
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3420,7 +3585,7 @@ Rigidbody:
   serializedVersion: 4
   m_Mass: 3.125
   m_Drag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -3449,7 +3614,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 1.0791369e-13, y: -0.15948755, z: 0.00000006459216}
+  m_ConnectedAnchor: {x: 0.0000000065193673, y: -0.15948755, z: 0.00000006459211}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 1, z: 0}
   m_TwistLimitSpring:
@@ -3483,18 +3648,6 @@ CharacterJoint:
   m_EnablePreprocessing: 1
   m_MassScale: 1
   m_ConnectedMassScale: 1
---- !u!114 &1201115851
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1201115841}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 12957d7f76ba4b049a66ac2738a1caa7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1202803690 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 9178351893006462165, guid: 64b182395c0b6744a920c74bce3ece13, type: 3}
@@ -3510,7 +3663,7 @@ Rigidbody:
   serializedVersion: 4
   m_Mass: 1.25
   m_Drag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -3539,7 +3692,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 0, y: -1, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.17410429, y: 0.24144024, z: -0.010188559}
+  m_ConnectedAnchor: {x: -0.17410427, y: 0.24144024, z: -0.010188559}
   serializedVersion: 2
   m_SwingAxis: {x: -1, y: 0, z: 0}
   m_TwistLimitSpring:
@@ -3588,7 +3741,7 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -3608,10 +3761,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6685057d4e36fc947ad64492273c5ace, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  entityIdInitializer: {fileID: 1202803698}
   health: 50
   healthMax: 50
   internalEffects: []
+  OnDealDamage:
+    m_PersistentCalls:
+      m_Calls: []
+  OnHeal:
+    m_PersistentCalls:
+      m_Calls: []
+  OnDeath:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1202803696
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3624,22 +3785,40 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b9c04608ff8fc646a45044acb41a186, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  entityIdInitializer: {fileID: 215074209}
-  bodypartIdInitializer: {fileID: 1202803698}
-  bodypartID: {fileID: 11400000, guid: 2a5f095edae251e459275a10fdb9a3ec, type: 2}
   data: {fileID: 11400000, guid: 63116d70ce6dc104d9bf933cd767dc33, type: 2}
---- !u!114 &1202803698
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1202803690}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 12957d7f76ba4b049a66ac2738a1caa7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  OnHit:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1202803695}
+        m_TargetAssemblyTypeName: HealthSystem, Assembly-CSharp
+        m_MethodName: DealDamage
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnHitWithMultiplier:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 215074208}
+        m_TargetAssemblyTypeName: HealthSystem, Assembly-CSharp
+        m_MethodName: DealDamage
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnDeath:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1266314811 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 355312524381552382, guid: b84d7ca3927758646a65731cc107aa76, type: 3}
@@ -4317,7 +4496,7 @@ Rigidbody:
   serializedVersion: 4
   m_Mass: 1.875
   m_Drag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -4346,7 +4525,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 0, y: 0, z: -1}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.09205289, y: -0.15948753, z: -0.00060775044}
+  m_ConnectedAnchor: {x: -0.09205295, y: -0.15948753, z: -0.00060781004}
   serializedVersion: 2
   m_SwingAxis: {x: -1, y: 0, z: 0}
   m_TwistLimitSpring:
@@ -4395,7 +4574,7 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -4415,10 +4594,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6685057d4e36fc947ad64492273c5ace, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  entityIdInitializer: {fileID: 1548179136}
   health: 50
   healthMax: 50
   internalEffects: []
+  OnDealDamage:
+    m_PersistentCalls:
+      m_Calls: []
+  OnHeal:
+    m_PersistentCalls:
+      m_Calls: []
+  OnDeath:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 215074213}
+        m_TargetAssemblyTypeName: Movement, Assembly-CSharp
+        m_MethodName: Impair
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1548179134
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4431,22 +4630,40 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29f8afe5b0afc6b4bb42334b7c9a300f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  entityIdInitializer: {fileID: 215074209}
-  bodypartIdInitializer: {fileID: 1548179136}
-  bodypartID: {fileID: 11400000, guid: e07774ae03676164bb6cd09285aa5168, type: 2}
   data: {fileID: 11400000, guid: d350d6af141bfc9408345a1c018311b0, type: 2}
---- !u!114 &1548179136
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1548179128}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 12957d7f76ba4b049a66ac2738a1caa7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  OnHit:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1548179133}
+        m_TargetAssemblyTypeName: HealthSystem, Assembly-CSharp
+        m_MethodName: DealDamage
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnHitWithMultiplier:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 215074208}
+        m_TargetAssemblyTypeName: HealthSystem, Assembly-CSharp
+        m_MethodName: DealDamage
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnDeath:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!4 &1620777293 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8073086772555192299, guid: 64b182395c0b6744a920c74bce3ece13, type: 3}
@@ -4464,7 +4681,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 0, y: 0, z: -1}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0.000000025145704, y: 0.34861258, z: -0.000000011175873}
+  m_ConnectedAnchor: {x: -0.0000000018626447, y: 0.34861258, z: -0.000000023283068}
   serializedVersion: 2
   m_SwingAxis: {x: -1, y: 0, z: 0}
   m_TwistLimitSpring:
@@ -4508,7 +4725,7 @@ Rigidbody:
   serializedVersion: 4
   m_Mass: 1.875
   m_Drag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -4540,7 +4757,7 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -4560,10 +4777,40 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29f8afe5b0afc6b4bb42334b7c9a300f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  entityIdInitializer: {fileID: 215074209}
-  bodypartIdInitializer: {fileID: 1548179136}
-  bodypartID: {fileID: 11400000, guid: e07774ae03676164bb6cd09285aa5168, type: 2}
   data: {fileID: 11400000, guid: d350d6af141bfc9408345a1c018311b0, type: 2}
+  OnHit:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1548179133}
+        m_TargetAssemblyTypeName: HealthSystem, Assembly-CSharp
+        m_MethodName: DealDamage
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnHitWithMultiplier:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 215074208}
+        m_TargetAssemblyTypeName: HealthSystem, Assembly-CSharp
+        m_MethodName: DealDamage
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnDeath:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1682220420
 GameObject:
   m_ObjectHideFlags: 0
@@ -4686,7 +4933,7 @@ Rigidbody:
   serializedVersion: 4
   m_Mass: 1.25
   m_Drag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -4715,7 +4962,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 0, y: -1, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0.17410435, y: 0.2414402, z: -0.010188719}
+  m_ConnectedAnchor: {x: 0.17410432, y: 0.2414402, z: -0.010188719}
   serializedVersion: 2
   m_SwingAxis: {x: 1, y: 0, z: 0}
   m_TwistLimitSpring:
@@ -4764,7 +5011,7 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -4784,10 +5031,40 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b9c04608ff8fc646a45044acb41a186, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  entityIdInitializer: {fileID: 215074209}
-  bodypartIdInitializer: {fileID: 1854828790}
-  bodypartID: {fileID: 11400000, guid: c33a8f080e7b4ab47827bfaef5132545, type: 2}
   data: {fileID: 11400000, guid: 63116d70ce6dc104d9bf933cd767dc33, type: 2}
+  OnHit:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1854828788}
+        m_TargetAssemblyTypeName: HealthSystem, Assembly-CSharp
+        m_MethodName: DealDamage
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnHitWithMultiplier:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 215074208}
+        m_TargetAssemblyTypeName: HealthSystem, Assembly-CSharp
+        m_MethodName: DealDamage
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnDeath:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1854828788
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4800,22 +5077,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6685057d4e36fc947ad64492273c5ace, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  entityIdInitializer: {fileID: 1854828790}
   health: 50
   healthMax: 50
   internalEffects: []
---- !u!114 &1854828790
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1854828782}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 12957d7f76ba4b049a66ac2738a1caa7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  OnDealDamage:
+    m_PersistentCalls:
+      m_Calls: []
+  OnHeal:
+    m_PersistentCalls:
+      m_Calls: []
+  OnDeath:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1927722898
 GameObject:
   m_ObjectHideFlags: 0
@@ -4868,7 +5141,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1927722902}
         m_TargetAssemblyTypeName: ItemHolder, Assembly-CSharp
-        m_MethodName: ItemEquip
+        m_MethodName: EquipItem
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4890,12 +5163,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24b516962dc65fa4d8c72cb3198cc900, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  entityIdInitializer: {fileID: 223513455}
   dropForce: 3
   item: {fileID: 0}
   dropper: {fileID: 0}
-  OnEquipped: {fileID: 11400000, guid: 0a9f6e5b0f6159a409486f1f55cf7914, type: 2}
-  OnDropped: {fileID: 11400000, guid: 8e6bdb2afc57b6c468695cce066608bd, type: 2}
+  OnEquipItem:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 223513441}
+        m_TargetAssemblyTypeName: HitDetection, Assembly-CSharp
+        m_MethodName: ReadyToAttack
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnDropItem:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1927722903
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4914,7 +5202,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1927722902}
         m_TargetAssemblyTypeName: ItemHolder, Assembly-CSharp
-        m_MethodName: ItemDropped
+        m_MethodName: DropItem
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4962,14 +5250,14 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3766844547119126924, guid: 64b182395c0b6744a920c74bce3ece13, type: 3}
   m_PrefabInstance: {fileID: 985888530}
   m_PrefabAsset: {fileID: 0}
---- !u!65 &2101341372
-BoxCollider:
+--- !u!136 &2101341375
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2101341369}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: be5e0ba688529494b9850ec2bf242452, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -4980,9 +5268,11 @@ BoxCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1.0989195, y: 0.49531457, z: 1.84}
-  m_Center: {x: 0.0009905228, y: -0.0035607386, z: 0.9}
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!1 &2121673552
 GameObject:
   m_ObjectHideFlags: 0
@@ -5108,3 +5398,4 @@ SceneRoots:
   - {fileID: 747876232}
   - {fileID: 1465229153}
   - {fileID: 2121673556}
+  - {fileID: 947558302}

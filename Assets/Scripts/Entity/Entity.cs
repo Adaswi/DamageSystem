@@ -1,20 +1,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Entity : EntitySystem
+public class Entity : MonoBehaviour
 {
-
-    private void OnEnable()
-    {
-        entityID.events.OnHit += Hit;
-        entityID.events.OnDeath += Death;
-    }
-
-    private void OnDisable()
-    {
-        entityID.events.OnHit -= Hit;
-        entityID.events.OnDeath -= Death;
-    }
 
     public virtual void Hit(int damage, List<float> effects)
     {

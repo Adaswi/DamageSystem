@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class JumpDetection : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class JumpDetection : MonoBehaviour
     [SerializeField] private GroundCollider gc;
 
     public bool isJumping;
+    public UnityEvent OnJump;
 
     private void Awake()
     {
@@ -26,6 +28,7 @@ public class JumpDetection : MonoBehaviour
             isJumping = true;
             rb.velocity = new Vector3(rb.velocity.x, 0, rb.velocity.z);
             rb.AddForce(transform.up * jumpPower, ForceMode.Impulse);
+            OnJump?.Invoke();
             Invoke(nameof(ExitJump), jumpCooldown);
         }
     }

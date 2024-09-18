@@ -1,8 +1,9 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
-public class GroundCollider : EntitySystem
+public class GroundCollider : MonoBehaviour
 {
     [SerializeField] private List<Collider> colliders = new List<Collider>();
     [SerializeField] private bool isGrounded = false;
@@ -18,12 +19,12 @@ public class GroundCollider : EntitySystem
             if (isGrounded != value)
             {
                 isGrounded = value;
-                OnGroundedChange?.Invoke();
+                OnGroundedChange?.Invoke(isGrounded);
             }
         }
     }
 
-    public Action OnGroundedChange;
+    public UnityEvent<bool> OnGroundedChange;
 
     private void OnTriggerEnter(Collider other)
     {

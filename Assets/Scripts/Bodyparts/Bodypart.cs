@@ -1,44 +1,37 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
-public class Bodypart : EntitySystem
+public class Bodypart : MonoBehaviour
 {
-    [SerializeField] private EntityIdInitializer bodypartIdInitializer;
-    [SerializeField] private EntityID bodypartID;
     [SerializeField] public BodypartData data;
 
-    protected override void Awake()
-    {
-        base.Awake();
-        if (bodypartIdInitializer == null)
-            bodypartIdInitializer = GetComponent<EntityIdInitializer>();
-        bodypartID = bodypartIdInitializer.EntityId;
-    }
+    public UnityEvent<int, List<float>> OnHit;
+    public UnityEvent<int, List<float>> OnHitWithMultiplier;
+    public UnityEvent OnDeath;
 
     public void Hit(int damage, List<float> effects)
     {       
-        OnHit();
+        InHit();
         var newEffects = new List<float>(effects);
         newEffects.Add(data.damageMultiplier);
 
         Debug.Log("Bodypart " + gameObject.name + " hit!");
 
-        entityID.events.OnHit?.Invoke(damage, newEffects);
-        entityID.events.OnHit0arg?.Invoke();
-        bodypartID.events.OnHit?.Invoke(damage, effects);
-        bodypartID.events.OnHit0arg?.Invoke();
+        OnHit?.Invoke(damage, effects);
+        OnHitWithMultiplier?.Invoke(damage, newEffects);
     }
 
     public void Death()
     {
-        OnDeath();
+        InDeath();
         data.damageMultiplier = data.afterDeathMultiplier;
 
         Debug.Log("Bodypart " + gameObject.name + " died");
 
-        bodypartID.events.OnDeath?.Invoke();
+        OnDeath?.Invoke();
     }
 
-    protected virtual void OnHit() { }
-    protected virtual void OnDeath() { }
+    protected virtual void InHit() { }
+    protected virtual void InDeath() { }
 }

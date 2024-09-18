@@ -1,11 +1,11 @@
 public class Head : Bodypart
 {
-    protected override void OnDeath()
+    protected override void InDeath()
     {
         
     }
 
-    protected override void OnHit()
+    protected override void InHit()
     {
         
     }

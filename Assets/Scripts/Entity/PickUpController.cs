@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PickUpController : MonoBehaviour
 {
@@ -7,13 +8,13 @@ public class PickUpController : MonoBehaviour
     [SerializeField] private Transform playerCam;
     private RaycastHit hit;
 
-    public GameEvent<GameObject> OnPickUp;
+    public UnityEvent<GameObject> OnPickUp;
 
     public void PickUp()
     {
         if(Physics.Raycast(new Ray(playerCam.transform.position, playerCam.transform.forward), out hit, pickUpRange, mask))
         {
-            OnPickUp.Raise(hit.collider.gameObject);
+            OnPickUp?.Invoke(hit.collider.gameObject);
         }
     }
 }

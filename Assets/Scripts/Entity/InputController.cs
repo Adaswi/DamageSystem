@@ -1,12 +1,13 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class InputController : MonoBehaviour
 {
-    public GameEvent OnInteraction;
-    public GameEvent OnDrop;
-    public GameEvent OnHit;
-    public GameEvent OnJump;
-    public GameEvent<MovementData> OnMove;
+    public UnityEvent OnInteraction;
+    public UnityEvent OnDrop;
+    public UnityEvent OnHit;
+    public UnityEvent OnJump;
+    public UnityEvent<MovementData> OnMove;
 
     private void Update()
     {
@@ -27,27 +28,27 @@ public class InputController : MonoBehaviour
 
     public void Interaction()
     {
-        OnInteraction?.Raise();
+        OnInteraction?.Invoke();
     }
 
     public void Hit()
     {
-        OnHit?.Raise();
+        OnHit?.Invoke();
     }
 
     public void Drop()
     {
-        OnDrop?.Raise();
+        OnDrop?.Invoke();
     }
 
     public void Jump()
     {
-        OnJump?.Raise();
+        OnJump?.Invoke();
     }
 
     public void Move(float horizontal, float vertical)
     {
         var data = new MovementData(horizontal, vertical);
-        OnMove?.Raise(data);
+        OnMove?.Invoke(data);
     }
 }

@@ -1,5 +1,5 @@
 ﻿public class Torso : Bodypart
 {
-    protected override void OnHit() { }
-    protected override void OnDeath() { }
+    protected override void InHit() { }
+    protected override void InDeath() { }
 }

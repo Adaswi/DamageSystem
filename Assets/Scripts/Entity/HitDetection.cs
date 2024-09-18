@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class HitDetection : MonoBehaviour
 {
@@ -10,7 +11,7 @@ public class HitDetection : MonoBehaviour
     private bool isReady;
     private bool isAttacking;
 
-    public GameEvent<HitData> OnAttack;
+    public UnityEvent OnAttack;
 
     private void Awake()
     {
@@ -47,7 +48,9 @@ public class HitDetection : MonoBehaviour
         {
             isAttacking = true;
             var bodypart = hit.transform.gameObject.GetComponent<Bodypart>();
-            bodypart.Hit(weapon.data.attack, weapon.data.effects);
+            if (bodypart != null)
+                bodypart.Hit(weapon.data.attack, weapon.data.effects);
+            OnAttack?.Invoke();
             Invoke(nameof(ExitAttack), weapon.data.speed);
         }
     }
