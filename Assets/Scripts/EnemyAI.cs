@@ -1,13 +1,30 @@
 using UnityEngine;
 using UnityEngine.Events;
-using static UnityEngine.GraphicsBuffer;
 
 public class EnemyAI : MonoBehaviour
 {
-    [SerializeField] private Transform player;
+    [SerializeField] private Transform player, head;
     [SerializeField] private float smooth;
+    [SerializeField] private Weapon weapon;
+    [SerializeField] private LayerMask bodypartMask, playerMask;
+    [SerializeField] private Rigidbody rb;
+    [SerializeField] private Collider col;
 
-    public UnityEvent<MovementData> OnChasePlayer;
+    private bool isDead;
+    private bool isAttacking;
+    private bool needsDirection = true;
+    private int randomDirection = 1;
+
+    public UnityEvent<MovementData> OnMovement;
+    public UnityEvent OnAttack;
+
+    private void Awake()
+    {
+        if (rb == null)
+            rb = GetComponent<Rigidbody>();
+        if (col == null)
+            col = GetComponent<Collider>();
+    }
 
     public void ChasePlayer()
     {
@@ -15,11 +32,73 @@ public class EnemyAI : MonoBehaviour
         rotation.x = 0;
         rotation.z = 0;
         transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * smooth);
-        OnChasePlayer.Invoke(new MovementData(0,1));
+        OnMovement.Invoke(new MovementData(0,1));
+    }
+
+    public void CirclePlayer()
+    {
+        var rotation = Quaternion.LookRotation(player.position - transform.position);
+        rotation.x = 0;
+        rotation.z = 0;
+        transform.rotation = rotation;
+        if (needsDirection)
+        {
+            needsDirection = false;
+            Invoke(nameof(GetRandomDirection), Random.Range(0.5f, 2));
+        }
+        OnMovement.Invoke(new MovementData(randomDirection, 0));
+    }
+
+    public void GetRandomDirection()
+    {
+        var values = new int[2] {-1, 1};
+        randomDirection = values[Random.Range(0, values.Length)];
+        needsDirection = true;
+    }
+
+    public void AttackPlayer()
+    {
+        isAttacking = true;
+        var bodyparts = Physics.OverlapSphere(transform.position, weapon.range.value, bodypartMask);
+        var index = Random.Range(0, bodyparts.Length);
+        var bodypart = bodyparts[index].GetComponent<Bodypart>();
+        if (bodypart != null)
+            bodypart.Hit(weapon.attack.value, weapon.effects.values);
+        OnAttack?.Invoke();
+        Invoke(nameof(AttackExit), weapon.speed.value);
+
+        Debug.Log("Attack player executed");
+    }
+
+    public void AttackExit()
+    {
+        isAttacking = false;
+    }
+
+    public void Death()
+    {
+        isDead = true;
+        rb.isKinematic = true;
+        col.isTrigger = true;
+        
     }
 
     private void Update()
     {
-        ChasePlayer();
+        if (!isDead)
+        {
+            if (Physics.Raycast(head.position, head.forward, weapon.range.value, playerMask) && !isAttacking)
+            {
+                AttackPlayer();
+            }
+            else if (Physics.Raycast(head.position, head.forward, weapon.range.value /1.5f, playerMask))
+            {
+                CirclePlayer();
+            }
+            else
+            {
+                ChasePlayer();
+            }
+        }
     }
 }

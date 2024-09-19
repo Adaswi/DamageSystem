@@ -5,8 +5,8 @@ using UnityEngine.Events;
 
 public class HealthSystem : MonoBehaviour
 {
+    [SerializeField] private IntData healthMax;
     [SerializeField] private int health;
-    [SerializeField] private int healthMax;
     [SerializeField] private List<float> internalEffects = new List<float>();
 
     public UnityEvent OnDealDamage;
@@ -26,9 +26,9 @@ public class HealthSystem : MonoBehaviour
             {
                 health = 0;
             }
-            else if (value > healthMax)
+            else if (value > healthMax.value)
             {
-                health = healthMax;
+                health = healthMax.value;
             }
             else
             {
@@ -107,7 +107,7 @@ public class HealthSystem : MonoBehaviour
 
     public void FullyHeal()
     {
-        Health = healthMax;
+        Health = healthMax.value;
         OnHeal?.Invoke();
     }
 

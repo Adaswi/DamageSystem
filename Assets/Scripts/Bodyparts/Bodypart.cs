@@ -4,7 +4,8 @@ using UnityEngine.Events;
 
 public class Bodypart : MonoBehaviour
 {
-    [SerializeField] public BodypartData data;
+    [SerializeField] private FloatData damageMultiplier;
+    [SerializeField] private FloatData afterDeathMultiplier;
 
     public UnityEvent<int, List<float>> OnHit;
     public UnityEvent<int, List<float>> OnHitWithMultiplier;
@@ -14,7 +15,7 @@ public class Bodypart : MonoBehaviour
     {       
         InHit();
         var newEffects = new List<float>(effects);
-        newEffects.Add(data.damageMultiplier);
+        newEffects.Add(damageMultiplier.value);
 
         Debug.Log("Bodypart " + gameObject.name + " hit!");
 
@@ -25,7 +26,7 @@ public class Bodypart : MonoBehaviour
     public void Death()
     {
         InDeath();
-        data.damageMultiplier = data.afterDeathMultiplier;
+        damageMultiplier.value = afterDeathMultiplier.value;
 
         Debug.Log("Bodypart " + gameObject.name + " died");
 

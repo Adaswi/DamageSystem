@@ -143,7 +143,7 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -163,7 +163,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0.000000017113054, y: 0.3953348, z: 0.038443837}
+  m_ConnectedAnchor: {x: 0.00000000873115, y: 0.3953348, z: 0.038443837}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 0, z: 1}
   m_TwistLimitSpring:
@@ -216,7 +216,7 @@ Rigidbody:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 264
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 1
@@ -236,7 +236,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 439efe0eb0664da40a769407564d4f8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  data: {fileID: 11400000, guid: 8429d671ed5c12b4e8cd7d7bba4a9fa3, type: 2}
+  damageMultiplier: {fileID: 11400000, guid: e15622c40bcb3034cb49112f4ce205fb, type: 2}
+  afterDeathMultiplier: {fileID: 11400000, guid: 8cbec410b8a40fd44ba72c9c46671fff, type: 2}
   OnHit:
     m_PersistentCalls:
       m_Calls:
@@ -282,8 +283,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6685057d4e36fc947ad64492273c5ace, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  healthMax: {fileID: 11400000, guid: eb7c3be9bbc16f941a6e5aa99c60c155, type: 2}
   health: 90
-  healthMax: 90
   internalEffects: []
   OnDealDamage:
     m_PersistentCalls:
@@ -350,7 +351,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 0, y: 0, z: 1}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0.09205294, y: -0.15948749, z: 0.0006077886}
+  m_ConnectedAnchor: {x: 0.0920529, y: -0.15948749, z: 0.0006078482}
   serializedVersion: 2
   m_SwingAxis: {x: 1, y: 0, z: 0}
   m_TwistLimitSpring:
@@ -397,9 +398,9 @@ CapsuleCollider:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 264
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -419,7 +420,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29f8afe5b0afc6b4bb42334b7c9a300f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  data: {fileID: 11400000, guid: d350d6af141bfc9408345a1c018311b0, type: 2}
+  damageMultiplier: {fileID: 0}
+  afterDeathMultiplier: {fileID: 0}
   OnHit:
     m_PersistentCalls:
       m_Calls:
@@ -465,8 +467,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6685057d4e36fc947ad64492273c5ace, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  healthMax: {fileID: 0}
   health: 50
-  healthMax: 50
   internalEffects: []
   OnDealDamage:
     m_PersistentCalls:
@@ -618,7 +620,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0.000000017883323, y: -0.15948747, z: -0.000000008381904}
+  m_ConnectedAnchor: {x: -2.0474289e-10, y: -0.15948747, z: 0.00000005122275}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 1, z: 0}
   m_TwistLimitSpring:
@@ -801,7 +803,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: -1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0.000000065192545, y: 0.29291973, z: 0.00000014901153}
+  m_ConnectedAnchor: {x: 0.000000078231054, y: 0.29291975, z: 0.00000020861614}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: -1, z: 0}
   m_TwistLimitSpring:
@@ -875,9 +877,9 @@ CapsuleCollider:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 264
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -897,7 +899,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b9c04608ff8fc646a45044acb41a186, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  data: {fileID: 11400000, guid: 63116d70ce6dc104d9bf933cd767dc33, type: 2}
+  damageMultiplier: {fileID: 11400000, guid: 9ecae785f5bf4de47bc33817f181b92a, type: 2}
+  afterDeathMultiplier: {fileID: 11400000, guid: 6475cf25fedb98b4ea06fcd2c0c4281b, type: 2}
   OnHit:
     m_PersistentCalls:
       m_Calls:
@@ -954,6 +957,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 215074204}
+  rigidbodies:
+  - {fileID: 1202803692}
+  - {fileID: 1854828784}
+  - {fileID: 176649997}
+  - {fileID: 386604505}
+  - {fileID: 3622145}
+  - {fileID: 1647168544}
+  - {fileID: 1092603437}
+  - {fileID: 160464380}
+  - {fileID: 1201115848}
+  - {fileID: 1196494076}
+  - {fileID: 1548179130}
+  - {fileID: 39609871}
 --- !u!114 &215074208
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -966,8 +982,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6685057d4e36fc947ad64492273c5ace, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  healthMax: {fileID: 11400000, guid: 5ce1262cc5ab4d141a763c629964752c, type: 2}
   health: 100
-  healthMax: 100
   internalEffects: []
   OnDealDamage:
     m_PersistentCalls:
@@ -993,6 +1009,30 @@ MonoBehaviour:
       - m_Target: {fileID: 215074206}
         m_TargetAssemblyTypeName: AnimatorController, Assembly-CSharp
         m_MethodName: Disable
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 215074217}
+        m_TargetAssemblyTypeName: EnemyAI, Assembly-CSharp
+        m_MethodName: Death
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 430327540}
+        m_TargetAssemblyTypeName: ItemHolder, Assembly-CSharp
+        m_MethodName: DropItem
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1052,7 +1092,7 @@ MonoBehaviour:
   playerOrientation: {fileID: 215074210}
   groundCheck: {fileID: 215074212}
   jumpDetection: {fileID: 215074214}
-  movementSpeed: 150
+  movementSpeed: 80
   onGroundDrag: 5
   inAirDrag: 0.1
 --- !u!114 &215074214
@@ -1115,7 +1155,7 @@ CapsuleCollider:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 72
+    m_Bits: 328
   m_LayerOverridePriority: 0
   m_IsTrigger: 1
   m_ProvidesContacts: 0
@@ -1138,14 +1178,51 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1682220424}
-  smooth: 5
-  OnChasePlayer:
+  head: {fileID: 215074210}
+  smooth: 1
+  weapon: {fileID: 1266314822}
+  bodypartMask:
+    serializedVersion: 2
+    m_Bits: 128
+  playerMask:
+    serializedVersion: 2
+    m_Bits: 128
+  rb: {fileID: 0}
+  col: {fileID: 2101341375}
+  OnMovement:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 215074213}
         m_TargetAssemblyTypeName: Movement, Assembly-CSharp
         m_MethodName: ReadDirection
         m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 215074206}
+        m_TargetAssemblyTypeName: AnimatorController, Assembly-CSharp
+        m_MethodName: PlayWalk
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnAttack:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 215074206}
+        m_TargetAssemblyTypeName: AnimatorController, Assembly-CSharp
+        m_MethodName: PlayAttack
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1279,7 +1356,7 @@ MonoBehaviour:
   playerCam: {fileID: 1482657015}
   mask:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 256
   OnAttack:
     m_PersistentCalls:
       m_Calls: []
@@ -1672,12 +1749,12 @@ CapsuleCollider:
   m_Material: {fileID: 13400000, guid: be5e0ba688529494b9850ec2bf242452, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 264
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -1697,7 +1774,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b9c04608ff8fc646a45044acb41a186, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  data: {fileID: 11400000, guid: 63116d70ce6dc104d9bf933cd767dc33, type: 2}
+  damageMultiplier: {fileID: 11400000, guid: 9ecae785f5bf4de47bc33817f181b92a, type: 2}
+  afterDeathMultiplier: {fileID: 11400000, guid: 6475cf25fedb98b4ea06fcd2c0c4281b, type: 2}
   OnHit:
     m_PersistentCalls:
       m_Calls:
@@ -1741,7 +1819,7 @@ GameObject:
   m_Component:
   - component: {fileID: 430327539}
   - component: {fileID: 430327540}
-  m_Layer: 3
+  m_Layer: 8
   m_Name: WeaponContainer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1756,13 +1834,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 430327538}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0.18023236, y: 0.03177978, z: -0.5498484, w: 0.8149682}
+  m_LocalPosition: {x: 0, y: 0.09, z: -0.04}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 693477913}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -15, y: 15, z: -70}
 --- !u!114 &430327540
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1806,31 +1884,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1127450730860520516, guid: b84d7ca3927758646a65731cc107aa76, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 0.40022492
       objectReference: {fileID: 0}
     - target: {fileID: 1127450730860520516, guid: b84d7ca3927758646a65731cc107aa76, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.8535533
       objectReference: {fileID: 0}
     - target: {fileID: 1127450730860520516, guid: b84d7ca3927758646a65731cc107aa76, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 0.09267759
       objectReference: {fileID: 0}
     - target: {fileID: 1127450730860520516, guid: b84d7ca3927758646a65731cc107aa76, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.47969306
       objectReference: {fileID: 0}
     - target: {fileID: 1127450730860520516, guid: b84d7ca3927758646a65731cc107aa76, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: 0.45084903
       objectReference: {fileID: 0}
     - target: {fileID: 1127450730860520516, guid: b84d7ca3927758646a65731cc107aa76, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: 0.5345487
       objectReference: {fileID: 0}
     - target: {fileID: 1127450730860520516, guid: b84d7ca3927758646a65731cc107aa76, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: 0.52998817
       objectReference: {fileID: 0}
     - target: {fileID: 1127450730860520516, guid: b84d7ca3927758646a65731cc107aa76, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1854,7 +1932,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2142021146967332986, guid: b84d7ca3927758646a65731cc107aa76, type: 3}
       propertyPath: m_IsTrigger
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1931,19 +2009,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5458737265024032779, guid: ea816f7cece47574da091aaf86ab56f4, type: 3}
   m_PrefabInstance: {fileID: 1465229153}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &703426465
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 703426464}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7d4e61dbd99598043ac4ddb06a0e8df4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  data: {fileID: 11400000, guid: eeb559a28dacf904e9d2404e4cc54314, type: 2}
 --- !u!54 &703426466
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1971,6 +2036,22 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 1
+--- !u!114 &703426471
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 703426464}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c443a90dc8547f241ba6a8fcdd54fd80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attack: {fileID: 11400000, guid: 2ac82c10b2c9cd6458c17438aa8a5f9f, type: 2}
+  speed: {fileID: 11400000, guid: 266d1d714297a164886c422178767e08, type: 2}
+  range: {fileID: 11400000, guid: 1a6406bcd2727eb42b3b30b4c14d881c, type: 2}
+  effects: {fileID: 11400000, guid: 5c0eddab28835734382287732fe309d4, type: 2}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -2455,79 +2536,79 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7398604227201146, guid: 64b182395c0b6744a920c74bce3ece13, type: 3}
       propertyPath: m_Layer
-      value: 3
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 397654218370607868, guid: 64b182395c0b6744a920c74bce3ece13, type: 3}
       propertyPath: m_Layer
-      value: 3
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 629561006819824117, guid: 64b182395c0b6744a920c74bce3ece13, type: 3}
       propertyPath: m_Layer
-      value: 3
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 706122545629998966, guid: 64b182395c0b6744a920c74bce3ece13, type: 3}
       propertyPath: m_Layer
-      value: 3
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 759395271922122385, guid: 64b182395c0b6744a920c74bce3ece13, type: 3}
       propertyPath: m_Layer
-      value: 3
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 826587345994015162, guid: 64b182395c0b6744a920c74bce3ece13, type: 3}
       propertyPath: m_Layer
-      value: 3
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 891867144570075564, guid: 64b182395c0b6744a920c74bce3ece13, type: 3}
       propertyPath: m_Layer
-      value: 3
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 970283525175738242, guid: 64b182395c0b6744a920c74bce3ece13, type: 3}
       propertyPath: m_Layer
-      value: 3
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 992880487497226702, guid: 64b182395c0b6744a920c74bce3ece13, type: 3}
       propertyPath: m_Layer
-      value: 3
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1064426921379517811, guid: 64b182395c0b6744a920c74bce3ece13, type: 3}
       propertyPath: m_Layer
-      value: 3
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1253427617582510881, guid: 64b182395c0b6744a920c74bce3ece13, type: 3}
       propertyPath: m_Layer
-      value: 3
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1281702079900463798, guid: 64b182395c0b6744a920c74bce3ece13, type: 3}
       propertyPath: m_Layer
-      value: 3
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1418770212324352613, guid: 64b182395c0b6744a920c74bce3ece13, type: 3}
       propertyPath: m_Layer
-      value: 3
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1431135592389986309, guid: 64b182395c0b6744a920c74bce3ece13, type: 3}
       propertyPath: m_Layer
-      value: 3
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1538177837376916548, guid: 64b182395c0b6744a920c74bce3ece13, type: 3}
       propertyPath: m_Layer
-      value: 3
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1973977943762939343, guid: 64b182395c0b6744a920c74bce3ece13, type: 3}
       propertyPath: m_Layer
-      value: 3
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 2157428637825705531, guid: 64b182395c0b6744a920c74bce3ece13, type: 3}
       propertyPath: m_Layer
-      value: 3
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 2470449844561294299, guid: 64b182395c0b6744a920c74bce3ece13, type: 3}
       propertyPath: m_Layer
-      value: 3
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 2535921506345469337, guid: 64b182395c0b6744a920c74bce3ece13, type: 3}
       propertyPath: m_Layer
-      value: 3
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 2929119099450096932, guid: 64b182395c0b6744a920c74bce3ece13, type: 3}
       propertyPath: m_Avatar
@@ -2541,41 +2622,53 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 043765f8a01c47a4c800f8e312d42e07, type: 2}
+    - target: {fileID: 2929119099450096932, guid: 64b182395c0b6744a920c74bce3ece13, type: 3}
+      propertyPath: m_UpdateMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2929119099450096932, guid: 64b182395c0b6744a920c74bce3ece13, type: 3}
+      propertyPath: m_WarningMessage
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2929119099450096932, guid: 64b182395c0b6744a920c74bce3ece13, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3174042386291779545, guid: 64b182395c0b6744a920c74bce3ece13, type: 3}
       propertyPath: m_Layer
-      value: 3
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 3256845699016232535, guid: 64b182395c0b6744a920c74bce3ece13, type: 3}
       propertyPath: m_Layer
-      value: 3
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 3315269943001373407, guid: 64b182395c0b6744a920c74bce3ece13, type: 3}
       propertyPath: m_Layer
-      value: 3
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 3429697308380564392, guid: 64b182395c0b6744a920c74bce3ece13, type: 3}
       propertyPath: m_Layer
-      value: 3
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 3459266978432506944, guid: 64b182395c0b6744a920c74bce3ece13, type: 3}
       propertyPath: m_Layer
-      value: 3
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 3634684363861940565, guid: 64b182395c0b6744a920c74bce3ece13, type: 3}
       propertyPath: m_Layer
-      value: 3
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 3748984787032144410, guid: 64b182395c0b6744a920c74bce3ece13, type: 3}
       propertyPath: m_Layer
-      value: 3
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 3766844547119126924, guid: 64b182395c0b6744a920c74bce3ece13, type: 3}
       propertyPath: m_Name
-      value: RioInside
+      value: RioBody
       objectReference: {fileID: 0}
     - target: {fileID: 3766844547119126924, guid: 64b182395c0b6744a920c74bce3ece13, type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3963614404851379811, guid: 64b182395c0b6744a920c74bce3ece13, type: 3}
       propertyPath: m_Enabled
@@ -2583,7 +2676,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3977682566442343928, guid: 64b182395c0b6744a920c74bce3ece13, type: 3}
       propertyPath: m_Layer
-      value: 3
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 3983322368406506902, guid: 64b182395c0b6744a920c74bce3ece13, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2603,27 +2696,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4176553025200046990, guid: 64b182395c0b6744a920c74bce3ece13, type: 3}
       propertyPath: m_Layer
-      value: 3
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4183203696685715673, guid: 64b182395c0b6744a920c74bce3ece13, type: 3}
       propertyPath: m_Layer
-      value: 3
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4451002366190929494, guid: 64b182395c0b6744a920c74bce3ece13, type: 3}
       propertyPath: m_Layer
-      value: 3
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4573108322664191480, guid: 64b182395c0b6744a920c74bce3ece13, type: 3}
       propertyPath: m_Layer
-      value: 3
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4619324448224887449, guid: 64b182395c0b6744a920c74bce3ece13, type: 3}
       propertyPath: m_Layer
-      value: 3
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4675193103820082537, guid: 64b182395c0b6744a920c74bce3ece13, type: 3}
       propertyPath: m_Layer
-      value: 3
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4705979457129259086, guid: 64b182395c0b6744a920c74bce3ece13, type: 3}
       propertyPath: m_Layer
@@ -2631,7 +2724,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4766753524117216085, guid: 64b182395c0b6744a920c74bce3ece13, type: 3}
       propertyPath: m_Layer
-      value: 3
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4926503525435288778, guid: 64b182395c0b6744a920c74bce3ece13, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2647,71 +2740,71 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5386964855662857588, guid: 64b182395c0b6744a920c74bce3ece13, type: 3}
       propertyPath: m_Layer
-      value: 3
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5546557303973673445, guid: 64b182395c0b6744a920c74bce3ece13, type: 3}
       propertyPath: m_Layer
-      value: 3
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5578753358700792370, guid: 64b182395c0b6744a920c74bce3ece13, type: 3}
       propertyPath: m_Layer
-      value: 3
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5595192162825651001, guid: 64b182395c0b6744a920c74bce3ece13, type: 3}
       propertyPath: m_Layer
-      value: 3
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5722013038679520101, guid: 64b182395c0b6744a920c74bce3ece13, type: 3}
       propertyPath: m_Layer
-      value: 3
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5774321702442076019, guid: 64b182395c0b6744a920c74bce3ece13, type: 3}
       propertyPath: m_Layer
-      value: 3
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6191939526456469188, guid: 64b182395c0b6744a920c74bce3ece13, type: 3}
       propertyPath: m_Layer
-      value: 3
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6289509544602478623, guid: 64b182395c0b6744a920c74bce3ece13, type: 3}
       propertyPath: m_Layer
-      value: 3
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6359397439238569029, guid: 64b182395c0b6744a920c74bce3ece13, type: 3}
       propertyPath: m_Layer
-      value: 3
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6418296502664614542, guid: 64b182395c0b6744a920c74bce3ece13, type: 3}
       propertyPath: m_Layer
-      value: 3
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 7202854524658543452, guid: 64b182395c0b6744a920c74bce3ece13, type: 3}
       propertyPath: m_Layer
-      value: 3
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 7203305376824851747, guid: 64b182395c0b6744a920c74bce3ece13, type: 3}
       propertyPath: m_Layer
-      value: 3
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 7203794336511012584, guid: 64b182395c0b6744a920c74bce3ece13, type: 3}
       propertyPath: m_Layer
-      value: 3
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 7275478243100925298, guid: 64b182395c0b6744a920c74bce3ece13, type: 3}
       propertyPath: m_Layer
-      value: 3
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 7541594523760758179, guid: 64b182395c0b6744a920c74bce3ece13, type: 3}
       propertyPath: m_Layer
-      value: 3
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 7712970035302233827, guid: 64b182395c0b6744a920c74bce3ece13, type: 3}
       propertyPath: m_Layer
-      value: 3
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 7847163388853732182, guid: 64b182395c0b6744a920c74bce3ece13, type: 3}
       propertyPath: m_Layer
-      value: 3
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 8073086772555192299, guid: 64b182395c0b6744a920c74bce3ece13, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2755,39 +2848,39 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8074667638880950200, guid: 64b182395c0b6744a920c74bce3ece13, type: 3}
       propertyPath: m_Layer
-      value: 3
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 8094044603845479391, guid: 64b182395c0b6744a920c74bce3ece13, type: 3}
       propertyPath: m_Layer
-      value: 3
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 8153463065253135036, guid: 64b182395c0b6744a920c74bce3ece13, type: 3}
       propertyPath: m_Layer
-      value: 3
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 8311903051050402357, guid: 64b182395c0b6744a920c74bce3ece13, type: 3}
       propertyPath: m_Layer
-      value: 3
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 8336572560855454823, guid: 64b182395c0b6744a920c74bce3ece13, type: 3}
       propertyPath: m_Layer
-      value: 3
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 8418128185431320972, guid: 64b182395c0b6744a920c74bce3ece13, type: 3}
       propertyPath: m_Layer
-      value: 3
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 8434589221339364836, guid: 64b182395c0b6744a920c74bce3ece13, type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8835930005342052818, guid: 64b182395c0b6744a920c74bce3ece13, type: 3}
       propertyPath: m_Layer
-      value: 3
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 8843284005921935632, guid: 64b182395c0b6744a920c74bce3ece13, type: 3}
       propertyPath: m_Layer
-      value: 3
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 9099099296081717086, guid: 64b182395c0b6744a920c74bce3ece13, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2795,7 +2888,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9178351893006462165, guid: 64b182395c0b6744a920c74bce3ece13, type: 3}
       propertyPath: m_Layer
-      value: 3
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2875,10 +2968,10 @@ PrefabInstance:
       addedObject: {fileID: 3622145}
     - targetCorrespondingSourceObject: {fileID: 5578753358700792370, guid: 64b182395c0b6744a920c74bce3ece13, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 3622144}
+      addedObject: {fileID: 3622143}
     - targetCorrespondingSourceObject: {fileID: 5578753358700792370, guid: 64b182395c0b6744a920c74bce3ece13, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 3622143}
+      addedObject: {fileID: 3622144}
     - targetCorrespondingSourceObject: {fileID: 5578753358700792370, guid: 64b182395c0b6744a920c74bce3ece13, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3622147}
@@ -3161,7 +3254,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 0, y: 0, z: 1}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0.0000000046566124, y: 0.34861282, z: -0.000000015832482}
+  m_ConnectedAnchor: {x: -0.000000050291412, y: 0.34861282, z: 0.000000011175869}
   serializedVersion: 2
   m_SwingAxis: {x: 1, y: 0, z: 0}
   m_TwistLimitSpring:
@@ -3235,9 +3328,9 @@ CapsuleCollider:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 264
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -3257,7 +3350,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29f8afe5b0afc6b4bb42334b7c9a300f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  data: {fileID: 11400000, guid: d350d6af141bfc9408345a1c018311b0, type: 2}
+  damageMultiplier: {fileID: 0}
+  afterDeathMultiplier: {fileID: 0}
   OnHit:
     m_PersistentCalls:
       m_Calls:
@@ -3330,7 +3424,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.0000000390009, y: 0.159488, z: -0.00000003445894}
+  m_ConnectedAnchor: {x: 1.13800525e-10, y: 0.159488, z: -0.00000003445894}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 0, z: 1}
   m_TwistLimitSpring:
@@ -3377,9 +3471,9 @@ BoxCollider:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 264
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -3397,7 +3491,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc1feab89f7171b499d12d52e584279e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  data: {fileID: 11400000, guid: 111489be1af81554681b5fe392ea2f24, type: 2}
+  damageMultiplier: {fileID: 11400000, guid: 142f87fca3a0b7e429b1911812b083f0, type: 2}
+  afterDeathMultiplier: {fileID: 11400000, guid: e0de23a69d7249e40a5d0308e5961466, type: 2}
   OnHit:
     m_PersistentCalls:
       m_Calls:
@@ -3443,8 +3538,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6685057d4e36fc947ad64492273c5ace, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  healthMax: {fileID: 11400000, guid: fe2c2420c8aef89469cfdf2baa95a937, type: 2}
   health: 90
-  healthMax: 90
   internalEffects: []
   OnDealDamage:
     m_PersistentCalls:
@@ -3485,9 +3580,9 @@ BoxCollider:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 264
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -3505,8 +3600,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6685057d4e36fc947ad64492273c5ace, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  healthMax: {fileID: 11400000, guid: 71048adc9e86ec64db3c8e6b67dd2f0e, type: 2}
   health: 60
-  healthMax: 60
   internalEffects: []
   OnDealDamage:
     m_PersistentCalls:
@@ -3541,7 +3636,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9364b2ebfe784fb428fffd07e040b686, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  data: {fileID: 11400000, guid: abad03728331d5c44a12c488b2b299d0, type: 2}
+  damageMultiplier: {fileID: 11400000, guid: 4707da4ac25560b41a036ae4a3694f69, type: 2}
+  afterDeathMultiplier: {fileID: 11400000, guid: 84770510720064c4ea1e8be15fbd1a36, type: 2}
   OnHit:
     m_PersistentCalls:
       m_Calls:
@@ -3614,7 +3710,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0.0000000065193673, y: -0.15948755, z: 0.00000006459211}
+  m_ConnectedAnchor: {x: 1.0791369e-13, y: -0.15948755, z: 0.00000006459216}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 1, z: 0}
   m_TwistLimitSpring:
@@ -3672,7 +3768,7 @@ Rigidbody:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 264
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 1
@@ -3692,7 +3788,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 0, y: -1, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.17410427, y: 0.24144024, z: -0.010188559}
+  m_ConnectedAnchor: {x: -0.17410429, y: 0.24144024, z: -0.010188559}
   serializedVersion: 2
   m_SwingAxis: {x: -1, y: 0, z: 0}
   m_TwistLimitSpring:
@@ -3741,7 +3837,7 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -3761,8 +3857,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6685057d4e36fc947ad64492273c5ace, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  healthMax: {fileID: 11400000, guid: b6be57098d26e7c429a739006a7fe1fd, type: 2}
   health: 50
-  healthMax: 50
   internalEffects: []
   OnDealDamage:
     m_PersistentCalls:
@@ -3785,7 +3881,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b9c04608ff8fc646a45044acb41a186, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  data: {fileID: 11400000, guid: 63116d70ce6dc104d9bf933cd767dc33, type: 2}
+  damageMultiplier: {fileID: 11400000, guid: 9ecae785f5bf4de47bc33817f181b92a, type: 2}
+  afterDeathMultiplier: {fileID: 11400000, guid: 6475cf25fedb98b4ea06fcd2c0c4281b, type: 2}
   OnHit:
     m_PersistentCalls:
       m_Calls:
@@ -3863,7 +3960,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d4e61dbd99598043ac4ddb06a0e8df4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  data: {fileID: 11400000, guid: 2099b1b9048d24b4fb920ee2a47c7fc5, type: 2}
+  attack: {fileID: 11400000, guid: f9c6fdc81921a9f43af712133e4d3705, type: 2}
+  speed: {fileID: 11400000, guid: 597ececc3096d0440b8b676199590279, type: 2}
+  range: {fileID: 11400000, guid: cd1cef4e792da3247a3aa74ecdea64c1, type: 2}
+  effects: {fileID: 11400000, guid: 5eff0533be8b4824ea55a3a2abca2487, type: 2}
 --- !u!4 &1266314826 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1127450730860520516, guid: b84d7ca3927758646a65731cc107aa76, type: 3}
@@ -4266,7 +4366,7 @@ PrefabInstance:
       addedObject: {fileID: 703426466}
     - targetCorrespondingSourceObject: {fileID: 5458737265024032779, guid: ea816f7cece47574da091aaf86ab56f4, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 703426465}
+      addedObject: {fileID: 703426471}
   m_SourcePrefab: {fileID: 100100000, guid: ea816f7cece47574da091aaf86ab56f4, type: 3}
 --- !u!1 &1482657013
 GameObject:
@@ -4525,7 +4625,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 0, y: 0, z: -1}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.09205295, y: -0.15948753, z: -0.00060781004}
+  m_ConnectedAnchor: {x: -0.09205289, y: -0.15948753, z: -0.00060775044}
   serializedVersion: 2
   m_SwingAxis: {x: -1, y: 0, z: 0}
   m_TwistLimitSpring:
@@ -4572,9 +4672,9 @@ CapsuleCollider:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 264
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -4594,8 +4694,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6685057d4e36fc947ad64492273c5ace, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  healthMax: {fileID: 0}
   health: 50
-  healthMax: 50
   internalEffects: []
   OnDealDamage:
     m_PersistentCalls:
@@ -4630,7 +4730,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29f8afe5b0afc6b4bb42334b7c9a300f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  data: {fileID: 11400000, guid: d350d6af141bfc9408345a1c018311b0, type: 2}
+  damageMultiplier: {fileID: 0}
+  afterDeathMultiplier: {fileID: 0}
   OnHit:
     m_PersistentCalls:
       m_Calls:
@@ -4681,7 +4782,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 0, y: 0, z: -1}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.0000000018626447, y: 0.34861258, z: -0.000000023283068}
+  m_ConnectedAnchor: {x: 0.000000025145704, y: 0.34861258, z: -0.000000011175873}
   serializedVersion: 2
   m_SwingAxis: {x: -1, y: 0, z: 0}
   m_TwistLimitSpring:
@@ -4755,9 +4856,9 @@ CapsuleCollider:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 264
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -4777,7 +4878,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29f8afe5b0afc6b4bb42334b7c9a300f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  data: {fileID: 11400000, guid: d350d6af141bfc9408345a1c018311b0, type: 2}
+  damageMultiplier: {fileID: 0}
+  afterDeathMultiplier: {fileID: 0}
   OnHit:
     m_PersistentCalls:
       m_Calls:
@@ -4823,6 +4925,8 @@ GameObject:
   - component: {fileID: 1682220423}
   - component: {fileID: 1682220422}
   - component: {fileID: 1682220421}
+  - component: {fileID: 1682220426}
+  - component: {fileID: 1682220425}
   m_Layer: 7
   m_Name: PlayerBody
   m_TagString: Untagged
@@ -4918,6 +5022,65 @@ Transform:
   m_Children: []
   m_Father: {fileID: 223513437}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1682220425
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1682220420}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6685057d4e36fc947ad64492273c5ace, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthMax: {fileID: 11400000, guid: 83653e647b2c1014c874018f103ae77a, type: 2}
+  health: 10000
+  internalEffects: []
+  OnDealDamage:
+    m_PersistentCalls:
+      m_Calls: []
+  OnHeal:
+    m_PersistentCalls:
+      m_Calls: []
+  OnDeath:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &1682220426
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1682220420}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfc9455ae068cff41bac0c0a0cbb2089, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageMultiplier: {fileID: 11400000, guid: 142f87fca3a0b7e429b1911812b083f0, type: 2}
+  afterDeathMultiplier: {fileID: 11400000, guid: e0de23a69d7249e40a5d0308e5961466, type: 2}
+  OnHit:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1682220425}
+        m_TargetAssemblyTypeName: HealthSystem, Assembly-CSharp
+        m_MethodName: DealDamage
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnHitWithMultiplier:
+    m_PersistentCalls:
+      m_Calls: []
+  OnDeath:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1854828782 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6418296502664614542, guid: 64b182395c0b6744a920c74bce3ece13, type: 3}
@@ -4962,7 +5125,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 0, y: -1, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0.17410432, y: 0.2414402, z: -0.010188719}
+  m_ConnectedAnchor: {x: 0.17410435, y: 0.2414402, z: -0.010188719}
   serializedVersion: 2
   m_SwingAxis: {x: 1, y: 0, z: 0}
   m_TwistLimitSpring:
@@ -5009,9 +5172,9 @@ CapsuleCollider:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 264
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -5031,7 +5194,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b9c04608ff8fc646a45044acb41a186, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  data: {fileID: 11400000, guid: 63116d70ce6dc104d9bf933cd767dc33, type: 2}
+  damageMultiplier: {fileID: 11400000, guid: 9ecae785f5bf4de47bc33817f181b92a, type: 2}
+  afterDeathMultiplier: {fileID: 11400000, guid: 6475cf25fedb98b4ea06fcd2c0c4281b, type: 2}
   OnHit:
     m_PersistentCalls:
       m_Calls:
@@ -5077,8 +5241,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6685057d4e36fc947ad64492273c5ace, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  healthMax: {fileID: 11400000, guid: b6be57098d26e7c429a739006a7fe1fd, type: 2}
   health: 50
-  healthMax: 50
   internalEffects: []
   OnDealDamage:
     m_PersistentCalls:
@@ -5237,7 +5401,7 @@ Transform:
   m_GameObject: {fileID: 2020382123}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.3672366, y: 1.5, z: 0.34008217}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -5263,7 +5427,7 @@ CapsuleCollider:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 72
+    m_Bits: 0
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
