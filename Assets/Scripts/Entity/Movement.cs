@@ -64,12 +64,12 @@ public class Movement : MonoBehaviour
     {
         if (groundCheck.IsGrounded)
         {
-            if (Physics.Raycast(transform.position + Vector3.down, Vector3.down, out slope, 0.5f))
+            if (Physics.Raycast(transform.position, Vector3.down, out slope, 0.5f))
                 Angle = Vector3.Angle(slope.normal, Vector3.up);
             else
                 Angle = 0;
 
-            if (Physics.Raycast(transform.position + Vector3.down, movementDirection, out slope2, 0.5f))
+            if (Physics.Raycast(transform.position, movementDirection, out slope2, 0.5f))
                 angle2 = Vector3.Angle(slope2.normal, Vector3.up);
             else
                 angle2 = 0;

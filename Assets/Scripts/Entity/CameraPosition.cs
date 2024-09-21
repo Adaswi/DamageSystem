@@ -17,7 +17,7 @@ public class CameraPosition : MonoBehaviour
     void Update()
     {
         Vector3 temp = playerPosition.position;
-        temp[1] += 0.5f; //move camera 0.5 above player position
+        temp[1] += 1.5f; //move camera 1.5 above player position
         transform.position = temp;
 
         transform.rotation = playerRotation.rotation;

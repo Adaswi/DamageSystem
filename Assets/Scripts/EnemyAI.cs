@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Events;
@@ -70,6 +69,8 @@ public class EnemyAI : MonoBehaviour
 
     public void AttackPlayer()
     {
+        if (weapon == null)
+            return;
         isAttacking = true;
         var objects = Physics.OverlapSphere(transform.position, weapon.range.value, bodypartMask);
         var bodyparts = new List<Bodypart>();
@@ -113,11 +114,11 @@ public class EnemyAI : MonoBehaviour
     {
         if (isDead)
             return;
-        if (weapon != null && Physics.Raycast(enemy.position, enemy.forward, weapon.range.value, playerMask) && !isAttacking)
+        if (weapon != null && Physics.CheckSphere(enemy.position, weapon.range.value, playerMask) && Physics.CheckBox(enemy.position+enemy.forward*weapon.range.value/2, new Vector3(weapon.range.value, weapon.range.value, weapon.range.value/2),enemy.rotation, playerMask ) && !isAttacking)
         {
             AttackPlayer();
         }
-        else if (Physics.Raycast(enemy.position, enemy.forward, weapon.range.value /1.5f, playerMask))
+        else if (Physics.CheckSphere(enemy.position, weapon.range.value/1.5f, playerMask) && Physics.CheckBox(enemy.position+enemy.forward*weapon.range.value/2, new Vector3(weapon.range.value, weapon.range.value, weapon.range.value/2),enemy.rotation, playerMask ))
         {
             CirclePlayer();
         }
