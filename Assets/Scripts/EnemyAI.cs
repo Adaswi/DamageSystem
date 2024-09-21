@@ -1,15 +1,19 @@
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.Events;
 
 public class EnemyAI : MonoBehaviour
 {
-    [SerializeField] private Transform player, head;
+    [SerializeField] private Transform player, enemy;
     [SerializeField] private float smooth;
-    [SerializeField] private Weapon weapon;
     [SerializeField] private LayerMask bodypartMask, playerMask;
     [SerializeField] private Rigidbody rb;
     [SerializeField] private Collider col;
+    [SerializeField] private NavMeshAgent navMeshAgent;
 
+    private Weapon weapon;
     private bool isDead;
     private bool isAttacking;
     private bool needsDirection = true;
@@ -28,11 +32,19 @@ public class EnemyAI : MonoBehaviour
 
     public void ChasePlayer()
     {
+        /*
         var rotation = Quaternion.LookRotation(player.position - transform.position);
         rotation.x = 0;
         rotation.z = 0;
         transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * smooth);
-        OnMovement.Invoke(new MovementData(0,1));
+        */
+        navMeshAgent.updatePosition = false;
+        navMeshAgent.nextPosition = enemy.position;
+        navMeshAgent.SetDestination(player.position);
+        if (navMeshAgent.pathEndPosition == navMeshAgent.destination)
+            OnMovement.Invoke(new MovementData(0,1));
+        else
+            OnMovement.Invoke(new MovementData(0, 0));
     }
 
     public void CirclePlayer()
@@ -59,15 +71,32 @@ public class EnemyAI : MonoBehaviour
     public void AttackPlayer()
     {
         isAttacking = true;
-        var bodyparts = Physics.OverlapSphere(transform.position, weapon.range.value, bodypartMask);
-        var index = Random.Range(0, bodyparts.Length);
-        var bodypart = bodyparts[index].GetComponent<Bodypart>();
-        if (bodypart != null)
-            bodypart.Hit(weapon.attack.value, weapon.effects.values);
+        var objects = Physics.OverlapSphere(transform.position, weapon.range.value, bodypartMask);
+        var bodyparts = new List<Bodypart>();
+        foreach (var obj in objects)
+        {
+            bodyparts.Add(obj.GetComponent<Bodypart>());
+        }
+        var index = Random.Range(0, bodyparts.Count-1);
+
+        if (bodyparts[index] != null)
+            bodyparts[index].Hit(weapon.attack.value, weapon.effects.values);
         OnAttack?.Invoke();
         Invoke(nameof(AttackExit), weapon.speed.value);
 
         Debug.Log("Attack player executed");
+    }
+
+    public void GetWeapon(GameObject item)
+    {
+        var weapon = item.GetComponent<Weapon>();
+        if (weapon != null)
+            this.weapon = weapon;
+    }
+
+    public void RemoveWeapon()
+    {
+        weapon = null;
     }
 
     public void AttackExit()
@@ -77,28 +106,24 @@ public class EnemyAI : MonoBehaviour
 
     public void Death()
     {
-        isDead = true;
-        rb.isKinematic = true;
-        col.isTrigger = true;
-        
+        isDead = true;        
     }
 
     private void Update()
     {
-        if (!isDead)
+        if (isDead)
+            return;
+        if (weapon != null && Physics.Raycast(enemy.position, enemy.forward, weapon.range.value, playerMask) && !isAttacking)
         {
-            if (Physics.Raycast(head.position, head.forward, weapon.range.value, playerMask) && !isAttacking)
-            {
-                AttackPlayer();
-            }
-            else if (Physics.Raycast(head.position, head.forward, weapon.range.value /1.5f, playerMask))
-            {
-                CirclePlayer();
-            }
-            else
-            {
-                ChasePlayer();
-            }
+            AttackPlayer();
+        }
+        else if (Physics.Raycast(enemy.position, enemy.forward, weapon.range.value /1.5f, playerMask))
+        {
+            CirclePlayer();
+        }
+        else
+        {
+            ChasePlayer();
         }
     }
 }

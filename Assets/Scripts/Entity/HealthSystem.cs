@@ -37,6 +37,11 @@ public class HealthSystem : MonoBehaviour
         }
     }
 
+    private void Awake()
+    {
+        FullyHeal();
+    }
+
     //Deal damage with external effects and internal effects applied
     public void DealDamage(int damage, List<float> externalEffects)
     {

@@ -58,6 +58,14 @@ public class ItemHolder : MonoBehaviour
         }
     }
 
+    public void UnequipItem()
+    {
+        item = null;
+        isKinematic = false;
+        isTrigger = false;
+        equipped = false;
+    }
+
     public void DropItem()
     {
         if (equipped)
@@ -79,7 +87,7 @@ public class ItemHolder : MonoBehaviour
             if (dropperRb != null && rb != null)
                 rb.velocity = dropperRb.velocity;
 
-            equipped = false;
+            UnequipItem();
 
             OnDropItem?.Invoke();
         }
