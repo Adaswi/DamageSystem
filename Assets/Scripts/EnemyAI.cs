@@ -76,12 +76,16 @@ public class EnemyAI : MonoBehaviour
         var bodyparts = new List<Bodypart>();
         foreach (var obj in objects)
         {
-            bodyparts.Add(obj.GetComponent<Bodypart>());
+            var bodypart = obj.GetComponent<Bodypart>();
+            if (bodypart != null)
+                bodyparts.Add(bodypart);
         }
-        var index = Random.Range(0, bodyparts.Count-1);
+        var index = Random.Range(0, bodyparts.Count);
 
-        if (bodyparts[index] != null)
-            bodyparts[index].Hit(weapon.attack.value, weapon.effects.values);
+        if (bodyparts[index] == null)
+            return;
+
+        bodyparts[index].Hit(weapon.attack.value, weapon.effects.values);
         OnAttack?.Invoke();
         Invoke(nameof(AttackExit), weapon.speed.value);
 

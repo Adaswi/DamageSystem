@@ -81,7 +81,7 @@ public class ItemHolder : MonoBehaviour
             if (rb != null)
             {
                 rb.isKinematic = isKinematic;
-                rb.AddForce(transform.forward * dropForce * rb.mass, ForceMode.Impulse);
+                rb.AddForce(dropper.transform.forward * dropForce * rb.mass, ForceMode.Impulse);
             }
 
             if (dropperRb != null && rb != null)
