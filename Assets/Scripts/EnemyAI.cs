@@ -6,17 +6,20 @@ using UnityEngine.Events;
 public class EnemyAI : MonoBehaviour
 {
     [SerializeField] private Transform player, enemy;
-    [SerializeField] private float smooth;
+    [SerializeField] private float detectionRange;
     [SerializeField] private LayerMask bodypartMask, playerMask;
     [SerializeField] private Rigidbody rb;
     [SerializeField] private Collider col;
     [SerializeField] private NavMeshAgent navMeshAgent;
+    [SerializeField] private Vector3[] patrolPoints;
 
     private Weapon weapon;
     private bool isDead;
     private bool isAttacking;
     private bool needsDirection = true;
     private int randomDirection = 1;
+    private int positionStage = 0;
+    private bool playerDetected;
 
     public UnityEvent<MovementData> OnMovement;
     public UnityEvent OnAttack;
@@ -27,6 +30,8 @@ public class EnemyAI : MonoBehaviour
             rb = GetComponent<Rigidbody>();
         if (col == null)
             col = GetComponent<Collider>();
+
+        navMeshAgent.updatePosition = false;
     }
 
     public void ChasePlayer()
@@ -37,7 +42,6 @@ public class EnemyAI : MonoBehaviour
         rotation.z = 0;
         transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * smooth);
         */
-        navMeshAgent.updatePosition = false;
         navMeshAgent.nextPosition = enemy.position;
         navMeshAgent.SetDestination(player.position);
         if (navMeshAgent.pathEndPosition == navMeshAgent.destination)
@@ -92,6 +96,20 @@ public class EnemyAI : MonoBehaviour
         Debug.Log("Attack player executed");
     }
 
+    public void Patrol(Vector3[] stages)
+    {
+        if (positionStage > stages.Length - 1)
+            positionStage = 0;
+        navMeshAgent.nextPosition = enemy.position;
+        navMeshAgent.SetDestination(stages[positionStage]);
+        if (navMeshAgent.pathEndPosition == navMeshAgent.destination)
+            OnMovement.Invoke(new MovementData(0, 1));
+        else
+            OnMovement.Invoke(new MovementData(0, 0));
+        if (navMeshAgent.remainingDistance < 0.1f)
+            positionStage++;
+    }
+
     public void GetWeapon(GameObject item)
     {
         var weapon = item.GetComponent<Weapon>();
@@ -118,17 +136,19 @@ public class EnemyAI : MonoBehaviour
     {
         if (isDead)
             return;
-        if (weapon != null && Physics.CheckSphere(enemy.position, weapon.range.value, playerMask) && Physics.CheckBox(enemy.position+enemy.forward*weapon.range.value/2, new Vector3(weapon.range.value, weapon.range.value, weapon.range.value/2),enemy.rotation, playerMask ) && !isAttacking)
-        {
+
+        if (Physics.CheckBox(enemy.position + enemy.forward * detectionRange / 1.75f, new Vector3(1f, 1f, detectionRange), Quaternion.identity, playerMask))
+            playerDetected = true;
+        if (Vector3.Distance(enemy.position, player.position) > detectionRange*1.5)
+            playerDetected = false;
+
+        if (!playerDetected)
+            Patrol(patrolPoints);
+        else if (weapon != null && !isAttacking && Physics.CheckBox(enemy.position + enemy.forward * weapon.range.value / 2, new Vector3(weapon.range.value, weapon.range.value, weapon.range.value / 2), enemy.rotation, playerMask) && Physics.CheckSphere(enemy.position, weapon.range.value, playerMask))
             AttackPlayer();
-        }
-        else if (Physics.CheckSphere(enemy.position, weapon.range.value/1.5f, playerMask) && Physics.CheckBox(enemy.position+enemy.forward*weapon.range.value/2, new Vector3(weapon.range.value, weapon.range.value, weapon.range.value/2),enemy.rotation, playerMask ))
-        {
+        else if (Physics.CheckSphere(enemy.position, weapon.range.value / 1.5f, playerMask) && Physics.CheckBox(enemy.position + enemy.forward * weapon.range.value / 2, new Vector3(weapon.range.value, weapon.range.value, weapon.range.value / 2), enemy.rotation, playerMask))
             CirclePlayer();
-        }
         else
-        {
             ChasePlayer();
-        }
     }
 }
