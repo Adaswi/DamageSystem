@@ -7,18 +7,24 @@ public class Movement : MonoBehaviour
     [SerializeField] private Rigidbody rb;
     [SerializeField] private Transform playerOrientation;
     [SerializeField] private GroundCollider groundCheck;
-    [SerializeField] private JumpDetection jumpDetection;
 
     [SerializeField] private float movementSpeed;
     [SerializeField] private float onGroundDrag = 5;
     [SerializeField] private float inAirDrag = 0.1f;
 
+    [SerializeField] private bool isJumping;
     private float angle;
     private float angle2;
     private RaycastHit slope;
     private RaycastHit slope2;
     private Vector3 projectedMovementDirection;
     private Vector3 movementDirection;
+
+    public bool IsJumping
+    {
+        get { return isJumping; }
+        set { isJumping = value; }
+    }
 
     public float Angle
     {
@@ -45,9 +51,6 @@ public class Movement : MonoBehaviour
 
         if (groundCheck == null)
             groundCheck = GetComponent<GroundCollider>();
-
-        if (jumpDetection == null)
-            jumpDetection = GetComponent<JumpDetection>();
     }
 
     private void OnEnable()
@@ -81,7 +84,7 @@ public class Movement : MonoBehaviour
 
             rb.drag = onGroundDrag;
             projectedMovementDirection = Vector3.ProjectOnPlane(movementDirection, slope.normal);
-            rb.AddForce(projectedMovementDirection.normalized * movementSpeed * (float)Math.Pow(Mathf.Clamp(angle2, 45, 90) - 44f, -0.8), ForceMode.Force); //This math equation smoothens player's speed drop in slope angles above 45
+            rb.AddForce((float)Math.Pow(Mathf.Clamp(angle2, 45, 90) - 44f, -0.8) * movementSpeed * projectedMovementDirection.normalized, ForceMode.Force); //This math equation smoothens player's speed drop in slope angles above 45
 
             Debug.Log("Is on ground");
         }
@@ -103,18 +106,18 @@ public class Movement : MonoBehaviour
     //Stops player from launching off slopes
     public void ResetUpwardVelocity()
     {
-        if (!groundCheck.IsGrounded && rb.velocity.y > 0 && !jumpDetection.isJumping)
+        if (!groundCheck.IsGrounded && rb.velocity.y > 0 && !IsJumping)
         {
             rb.velocity = new Vector3(rb.velocity.x, 0, rb.velocity.z);
 
-            Debug.Log("Changed ground state");
+            Debug.Log("Reset upward velocity");
         }
     }
 
     //Roughly preserves speed when player gets on new slope (doesn't work perfect because of collider shape)
     private void AngleChange()
     {
-        if (groundCheck.IsGrounded && !jumpDetection.isJumping)
+        if (groundCheck.IsGrounded && !IsJumping)
             rb.velocity = Vector3.ProjectOnPlane(rb.velocity, slope.normal);
     }
 

@@ -12,6 +12,7 @@ public class HealthSystem : MonoBehaviour
     public UnityEvent OnDealDamage;
     public UnityEvent OnHeal;
     public UnityEvent OnDeath;
+    public UnityEvent<int> OnHealthUpdate;
 
     public int Health
     {
@@ -34,6 +35,7 @@ public class HealthSystem : MonoBehaviour
             {
                 health = value;
             }
+            OnHealthUpdate?.Invoke(health);
         }
     }
 

@@ -11,6 +11,7 @@ public class JumpDetection : MonoBehaviour
 
     public bool isJumping;
     public UnityEvent OnJump;
+    public UnityEvent OnJumpExit;
 
     private void Awake()
     {
@@ -36,5 +37,6 @@ public class JumpDetection : MonoBehaviour
     private void ExitJump()
     {
         isJumping = false;
+        OnJumpExit?.Invoke();
     }
 }
