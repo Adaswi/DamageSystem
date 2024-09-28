@@ -9,6 +9,7 @@ public class HealthBar : MonoBehaviour
     private void Start()
     {
         SetMaxHealth(maxHealth.value);
+        SetHealth(maxHealth.value);
     }
 
     public void SetMaxHealth(int maxHealth)
