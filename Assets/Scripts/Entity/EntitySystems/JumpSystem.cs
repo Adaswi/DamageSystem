@@ -1,13 +1,13 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-public class JumpDetection : MonoBehaviour
+public class JumpSystem : MonoBehaviour
 {
     [SerializeField] private float jumpPower;
     [SerializeField] private float jumpCooldown;
 
     [SerializeField] private Rigidbody rb;
-    [SerializeField] private GroundCollider gc;
+    [SerializeField] private GroundColliderSystem gc;
 
     public bool isJumping;
     public UnityEvent OnJump;
@@ -19,7 +19,7 @@ public class JumpDetection : MonoBehaviour
             rb = GetComponent<Rigidbody>();
 
         if (gc == null)
-            gc = GetComponent<GroundCollider>();
+            gc = GetComponent<GroundColliderSystem>();
     }
 
     public void Jump()

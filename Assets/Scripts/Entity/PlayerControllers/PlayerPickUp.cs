@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-public class PickUpController : MonoBehaviour
+public class PlayerPickUpController : MonoBehaviour
 {
     [SerializeField] private float pickUpRange;
     [SerializeField] private LayerMask mask;

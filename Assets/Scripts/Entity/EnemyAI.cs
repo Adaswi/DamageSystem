@@ -22,7 +22,13 @@ public class EnemyAI : MonoBehaviour
     private bool playerDetected;
 
     public UnityEvent<MovementData> OnMovement;
-    public UnityEvent OnAttack;
+    public UnityEvent<Bodypart, Weapon> OnAttack;
+
+    public bool IsAttacking
+    {
+        get { return isAttacking; }
+        set { isAttacking = value; }
+    }
 
     private void Awake()
     {
@@ -36,12 +42,6 @@ public class EnemyAI : MonoBehaviour
 
     public void ChasePlayer()
     {
-        /*
-        var rotation = Quaternion.LookRotation(player.position - transform.position);
-        rotation.x = 0;
-        rotation.z = 0;
-        transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * smooth);
-        */
         navMeshAgent.nextPosition = enemy.position;
         navMeshAgent.SetDestination(player.position);
         if (navMeshAgent.pathEndPosition == navMeshAgent.destination)
@@ -64,7 +64,7 @@ public class EnemyAI : MonoBehaviour
         OnMovement.Invoke(new MovementData(randomDirection, 0));
     }
 
-    public void GetRandomDirection()
+    private void GetRandomDirection()
     {
         var values = new int[2] {-1, 1};
         randomDirection = values[Random.Range(0, values.Length)];
@@ -75,7 +75,6 @@ public class EnemyAI : MonoBehaviour
     {
         if (weapon == null)
             return;
-        isAttacking = true;
         var objects = Physics.OverlapSphere(transform.position, weapon.range.value, bodypartMask);
         var bodyparts = new List<Bodypart>();
         foreach (var obj in objects)
@@ -89,11 +88,7 @@ public class EnemyAI : MonoBehaviour
         if (bodyparts[index] == null)
             return;
 
-        bodyparts[index].Hit(weapon.attack.value, weapon.effects.values);
-        OnAttack?.Invoke();
-        Invoke(nameof(AttackExit), weapon.speed.value);
-
-        Debug.Log("Attack player executed");
+        OnAttack?.Invoke(bodyparts[index], weapon);
     }
 
     public void Patrol(Vector3[] stages)

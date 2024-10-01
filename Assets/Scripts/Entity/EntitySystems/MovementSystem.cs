@@ -6,7 +6,7 @@ public class Movement : MonoBehaviour
 
     [SerializeField] private Rigidbody rb;
     [SerializeField] private Transform playerOrientation;
-    [SerializeField] private GroundCollider groundCheck;
+    [SerializeField] private GroundColliderSystem groundCheck;
 
     [SerializeField] private float movementSpeed;
     [SerializeField] private float onGroundDrag = 5;
@@ -50,7 +50,7 @@ public class Movement : MonoBehaviour
             rb = GetComponent<Rigidbody>();
 
         if (groundCheck == null)
-            groundCheck = GetComponent<GroundCollider>();
+            groundCheck = GetComponent<GroundColliderSystem>();
     }
 
     private void OnEnable()

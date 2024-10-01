@@ -1,9 +1,8 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class GroundCollider : MonoBehaviour
+public class GroundColliderSystem : MonoBehaviour
 {
     [SerializeField] private List<Collider> colliders = new List<Collider>();
     [SerializeField] private bool isGrounded = false;

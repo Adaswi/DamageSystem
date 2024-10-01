@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-public class PlayerAttack : MonoBehaviour
+public class PlayerAttackController : MonoBehaviour
 {
     [SerializeField] private Camera playerCam;
     [SerializeField] private LayerMask mask;
@@ -11,47 +11,43 @@ public class PlayerAttack : MonoBehaviour
     private bool isReady;
     private bool isAttacking;
 
-    public UnityEvent OnAttack;
+    public UnityEvent<Bodypart, Weapon> OnAttack;
+    public UnityEvent OnAttackReady;
+    public UnityEvent OnAttackUnready;
 
-    private void Awake()
+    public bool IsAttacking
     {
-        isReady = false;
+        get { return isReady; }
+        set { isAttacking = value; }
     }
 
     //Ready to attack when weapon is equipped
     public void ReadyToAttack(GameObject item)
     {
         var weapon = item.GetComponent<Weapon>();
-        if (weapon != null)
-        {
-            this.weapon = weapon;
-            isReady = true;
-            Debug.Log("Weapon is ready to attack!");
-        }
+        if (weapon == null)
+            return;
+        
+        this.weapon = weapon;
+        isReady = true;
+        OnAttackReady?.Invoke();      
     }
 
     public void UnreadyToAttack()
     {
         this.weapon = null;
         isReady = false;
-        Debug.Log("Weapon isn't ready to attack");
-    }
-
-    private void ExitAttack()
-    {
-        isAttacking = false;
+        OnAttackUnready?.Invoke();
     }
 
     public void Attack()
     {
         if (isReady && !isAttacking && Physics.Raycast(new Ray(playerCam.transform.position, playerCam.transform.forward), out hit, weapon.range.value, mask)) //On hit when attack isn't being executed
         {
-            isAttacking = true;
             var bodypart = hit.transform.gameObject.GetComponent<Bodypart>();
-            if (bodypart != null)
-                bodypart.Hit(weapon.attack.value, weapon.effects.values);
-            OnAttack?.Invoke();
-            Invoke(nameof(ExitAttack), weapon.speed.value);
+            if (bodypart == null)
+                return;
+            OnAttack?.Invoke(bodypart, weapon);
         }
     }
 }

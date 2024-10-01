@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-public class ItemHolder : MonoBehaviour
+public class ItemHolderSystem : MonoBehaviour
 {
     [SerializeField] private float dropForce;
     [SerializeField] private GameObject item;
@@ -30,7 +30,7 @@ public class ItemHolder : MonoBehaviour
 
     public void EquipItem(GameObject item)
     {
-        if (!equipped && item.GetComponentInParent<ItemHolder>() == null)
+        if (!equipped && item.GetComponentInParent<ItemHolderSystem>() == null)
         {
             equipped = true;
 

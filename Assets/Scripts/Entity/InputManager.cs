@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-public class InputController : MonoBehaviour
+public class InputManager : MonoBehaviour
 {
     public UnityEvent OnInteraction;
     public UnityEvent OnDrop;
