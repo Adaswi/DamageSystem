@@ -14,7 +14,9 @@ public class ItemHolderSystem : MonoBehaviour
     private bool equipped = false;
 
     public UnityEvent<GameObject> OnEquipItem;
+    public UnityEvent<GameObject> OnForwardItem;
     public UnityEvent OnDropItem;
+    public UnityEvent OnUnequipItem;
 
     private void Awake()
     {
@@ -30,7 +32,7 @@ public class ItemHolderSystem : MonoBehaviour
 
     public void EquipItem(GameObject item)
     {
-        if (!equipped && item.GetComponentInParent<ItemHolderSystem>() == null)
+        if (!equipped)
         {
             equipped = true;
 
@@ -64,6 +66,8 @@ public class ItemHolderSystem : MonoBehaviour
         isKinematic = false;
         isTrigger = false;
         equipped = false;
+
+        OnUnequipItem?.Invoke();
     }
 
     public void DropItem()
@@ -90,6 +94,15 @@ public class ItemHolderSystem : MonoBehaviour
             UnequipItem();
 
             OnDropItem?.Invoke();
+        }
+    }
+
+    public void ForwardItem()
+    {
+        if (equipped)
+        {
+            OnForwardItem?.Invoke(item);
+            UnequipItem();
         }
     }
 }

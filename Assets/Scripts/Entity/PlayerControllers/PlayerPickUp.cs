@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.Events;
+using static UnityEditor.Progress;
 
 public class PlayerPickUpController : MonoBehaviour
 {
@@ -12,7 +13,7 @@ public class PlayerPickUpController : MonoBehaviour
 
     public void PickUp()
     {
-        if(Physics.Raycast(new Ray(playerCam.transform.position, playerCam.transform.forward), out hit, pickUpRange, mask))
+        if(Physics.Raycast(new Ray(playerCam.transform.position, playerCam.transform.forward), out hit, pickUpRange, mask) && hit.transform.gameObject.GetComponentInParent<ItemHolderSystem>() == null)
         {
             OnPickUp?.Invoke(hit.collider.gameObject);
         }

@@ -5,14 +5,15 @@ public class InputManager : MonoBehaviour
 {
     public UnityEvent OnInteraction;
     public UnityEvent OnDrop;
-    public UnityEvent OnHit;
+    public UnityEvent OnUse;
     public UnityEvent OnJump;
+    public UnityEvent OnInventory;
     public UnityEvent<MovementData> OnMove;
 
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.E))
-            Interaction();
+            Interact();
         
         if (Input.GetKeyDown(KeyCode.Q))
             Drop();
@@ -21,19 +22,22 @@ public class InputManager : MonoBehaviour
             Jump();
         
         if (Input.GetMouseButtonDown(0))
-            Hit();
+            Use();
+
+        if (Input.GetKeyDown(KeyCode.Tab))
+            Inventory();
 
         Move(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
     }
 
-    public void Interaction()
+    public void Interact()
     {
         OnInteraction?.Invoke();
     }
 
-    public void Hit()
+    public void Use()
     {
-        OnHit?.Invoke();
+        OnUse?.Invoke();
     }
 
     public void Drop()
@@ -44,6 +48,11 @@ public class InputManager : MonoBehaviour
     public void Jump()
     {
         OnJump?.Invoke();
+    }
+
+    public void Inventory()
+    {
+        OnInventory?.Invoke();
     }
 
     public void Move(float horizontal, float vertical)

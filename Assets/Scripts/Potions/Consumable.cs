@@ -1,8 +1,9 @@
+using System;
 using UnityEngine;
 
 public abstract class Consumable<T> : MonoBehaviour
 {
-    public T component;
+    [NonSerialized] public T component;
 
     public virtual void Consume()
     {

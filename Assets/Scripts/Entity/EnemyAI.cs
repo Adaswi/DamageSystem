@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Events;
@@ -85,7 +86,7 @@ public class EnemyAI : MonoBehaviour
         }
         var index = Random.Range(0, bodyparts.Count);
 
-        if (bodyparts[index] == null)
+        if (!bodyparts.Any() || bodyparts[index] == null)
             return;
 
         OnAttack?.Invoke(bodyparts[index], weapon);

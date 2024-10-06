@@ -9,6 +9,6 @@ public class Weapon : MonoBehaviour
 
     private void Awake()
     {
-        gameObject.layer = LayerMask.NameToLayer("Weapon");   
+        gameObject.layer = LayerMask.NameToLayer("Pickupable");   
     }
 }
