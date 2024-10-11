@@ -9,17 +9,10 @@ public class PlayerAttackController : MonoBehaviour
     private Weapon weapon;
     private RaycastHit hit;
     private bool isReady;
-    private bool isAttacking;
 
     public UnityEvent<Bodypart, Weapon> OnAttack;
     public UnityEvent OnAttackReady;
     public UnityEvent OnAttackUnready;
-
-    public bool IsAttacking
-    {
-        get { return isReady; }
-        set { isAttacking = value; }
-    }
 
     //Ready to attack when weapon is equipped
     public void ReadyToAttack(GameObject item)
@@ -42,9 +35,9 @@ public class PlayerAttackController : MonoBehaviour
 
     public void Attack()
     {
-        if (isReady && !isAttacking && Physics.Raycast(new Ray(playerCam.transform.position, playerCam.transform.forward), out hit, weapon.range.value, mask)) //On hit when attack isn't being executed
+        if (isReady && Physics.Raycast(new Ray(playerCam.transform.position, playerCam.transform.forward), out hit, weapon.range.value, mask)) //On hit when attack isn't being executed
         {
-            var bodypart = hit.transform.gameObject.GetComponent<Bodypart>();
+            var bodypart = hit.collider.GetComponent<Bodypart>();
             if (bodypart == null)
                 return;
             OnAttack?.Invoke(bodypart, weapon);

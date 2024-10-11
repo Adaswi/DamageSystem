@@ -7,6 +7,7 @@ public class Movement : MonoBehaviour
     [SerializeField] private Rigidbody rb;
     [SerializeField] private Transform playerOrientation;
     [SerializeField] private GroundColliderSystem groundCheck;
+    [SerializeField] private LayerMask environmentMask;
 
     [SerializeField] private float movementSpeed;
     [SerializeField] private float onGroundDrag = 5;
@@ -67,12 +68,12 @@ public class Movement : MonoBehaviour
     {
         if (groundCheck.IsGrounded)
         {
-            if (Physics.Raycast(transform.position, Vector3.down, out slope, 0.5f))
+            if (Physics.Raycast(transform.position, Vector3.down, out slope, 0.5f, environmentMask))
                 Angle = Vector3.Angle(slope.normal, Vector3.up);
             else
                 Angle = 0;
 
-            if (Physics.Raycast(transform.position, movementDirection, out slope2, 0.5f))
+            if (Physics.Raycast(transform.position, movementDirection, out slope2, 0.5f, environmentMask))
                 angle2 = Vector3.Angle(slope2.normal, Vector3.up);
             else
                 angle2 = 0;
