@@ -4,7 +4,7 @@ public class Binder : MonoBehaviour
 {
     [SerializeField] private Transform bodypart;
 
-    void FixedUpdate()
+    void Update()
     {
         transform.position = bodypart.position;
         transform.rotation = bodypart.rotation;

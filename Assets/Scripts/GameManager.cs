@@ -3,18 +3,16 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    private float tempTime;
-    public void TogglePause()
+    private float tempTime = 1;
+    public void Pause()
     {
-        if (Time.timeScale == 0)
-        {
-            Time.timeScale = tempTime;
-        }
-        else
-        {
-            tempTime = Time.timeScale;
-            Time.timeScale = 0;
-        }
+        tempTime = Time.timeScale;
+        Time.timeScale = 0;
+    }
+
+    public void UnPause()
+    {
+        Time.timeScale = tempTime;
     }
 
     public void ReloadScene()

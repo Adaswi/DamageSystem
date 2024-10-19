@@ -94,14 +94,28 @@ public class EnemyAI : MonoBehaviour
 
     public void Patrol(Vector3[] stages)
     {
+        if (stages.Length == 0)
+            return;
+
+        if (stages.Length == 1)
+        {
+            navMeshAgent.nextPosition = enemy.position;
+            navMeshAgent.SetDestination(stages[positionStage]);
+        }
+        if (stages.Length == 1 && navMeshAgent.remainingDistance < 0.1f)
+            return;
+
         if (positionStage > stages.Length - 1)
             positionStage = 0;
+
         navMeshAgent.nextPosition = enemy.position;
         navMeshAgent.SetDestination(stages[positionStage]);
+
         if (navMeshAgent.pathEndPosition == navMeshAgent.destination)
             OnMovement.Invoke(new MovementData(0, 1));
         else
             OnMovement.Invoke(new MovementData(0, 0));
+
         if (navMeshAgent.remainingDistance < 0.1f)
             positionStage++;
     }
@@ -133,8 +147,11 @@ public class EnemyAI : MonoBehaviour
         if (isDead)
             return;
 
-        if (Physics.CheckBox(enemy.position + enemy.forward * detectionRange / 1.75f, new Vector3(1f, 1f, detectionRange), Quaternion.identity, playerMask))
-            playerDetected = true;
+        RaycastHit raycastCheck;
+        if (Physics.CheckBox(enemy.position + enemy.forward * detectionRange / 1.75f, new Vector3(detectionRange / 2, detectionRange / 2, detectionRange), Quaternion.identity, playerMask) && Physics.Linecast(enemy.position, player.position, out raycastCheck))
+            if (1 << raycastCheck.transform.gameObject.layer == playerMask.value)
+                playerDetected = true;
+
         if (Vector3.Distance(enemy.position, player.position) > detectionRange*1.5)
             playerDetected = false;
 

@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-public class PlayerAttackController : MonoBehaviour
+public class PlayerAttack : MonoBehaviour
 {
     [SerializeField] private Camera playerCam;
     [SerializeField] private LayerMask mask;
