@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -12,15 +13,19 @@ public class EnemyAI : MonoBehaviour
     [SerializeField] private Rigidbody rb;
     [SerializeField] private Collider col;
     [SerializeField] private NavMeshAgent navMeshAgent;
-    [SerializeField] private Vector3[] patrolPoints;
+    [SerializeField] private Vector3[] patrolDestinations;
+    [SerializeField] private float[] patrolRoatations;
+    [SerializeField] private float[] patrolWaitTimes;
 
     private Weapon weapon;
     private bool isDead;
     private bool isAttacking;
     private bool needsDirection = true;
     private int randomDirection = 1;
-    private int positionStage = 0;
+    private int patrolStage = 0;
     private bool playerDetected;
+    private bool isDestinationSet;
+    private bool isWaiting;
 
     public UnityEvent<MovementData> OnMovement;
     public UnityEvent<Bodypart, Weapon> OnAttack;
@@ -39,6 +44,12 @@ public class EnemyAI : MonoBehaviour
             col = GetComponent<Collider>();
 
         navMeshAgent.updatePosition = false;
+
+        if (patrolRoatations.Length != patrolDestinations.Length)
+            Array.Resize(ref patrolRoatations, patrolDestinations.Length);
+
+        if (patrolWaitTimes.Length != patrolDestinations.Length)
+            Array.Resize(ref patrolWaitTimes, patrolDestinations.Length);
     }
 
     public void ChasePlayer()
@@ -56,11 +67,11 @@ public class EnemyAI : MonoBehaviour
         var rotation = Quaternion.LookRotation(player.position - transform.position);
         rotation.x = 0;
         rotation.z = 0;
-        transform.rotation = rotation;
+        rb.MoveRotation(rotation);
         if (needsDirection)
         {
             needsDirection = false;
-            Invoke(nameof(GetRandomDirection), Random.Range(0.5f, 2));
+            Invoke(nameof(GetRandomDirection), UnityEngine.Random.Range(0.5f, 2));
         }
         OnMovement.Invoke(new MovementData(randomDirection, 0));
     }
@@ -68,7 +79,7 @@ public class EnemyAI : MonoBehaviour
     private void GetRandomDirection()
     {
         var values = new int[2] {-1, 1};
-        randomDirection = values[Random.Range(0, values.Length)];
+        randomDirection = values[UnityEngine.Random.Range(0, values.Length)];
         needsDirection = true;
     }
 
@@ -84,7 +95,7 @@ public class EnemyAI : MonoBehaviour
             if (bodypart != null)
                 bodyparts.Add(bodypart);
         }
-        var index = Random.Range(0, bodyparts.Count);
+        var index = UnityEngine.Random.Range(0, bodyparts.Count);
 
         if (!bodyparts.Any() || bodyparts[index] == null)
             return;
@@ -92,32 +103,92 @@ public class EnemyAI : MonoBehaviour
         OnAttack?.Invoke(bodyparts[index], weapon);
     }
 
+    /*
     public void Patrol(Vector3[] stages)
     {
-        if (stages.Length == 0)
-            return;
-
-        if (stages.Length == 1)
-        {
-            navMeshAgent.nextPosition = enemy.position;
-            navMeshAgent.SetDestination(stages[positionStage]);
-        }
-        if (stages.Length == 1 && navMeshAgent.remainingDistance < 0.1f)
-            return;
-
-        if (positionStage > stages.Length - 1)
-            positionStage = 0;
-
         navMeshAgent.nextPosition = enemy.position;
-        navMeshAgent.SetDestination(stages[positionStage]);
 
-        if (navMeshAgent.pathEndPosition == navMeshAgent.destination)
-            OnMovement.Invoke(new MovementData(0, 1));
+        if (stages.Length > 1)
+            isDestinationSet = false;
+        else if (stages.Length == 1 && isDestinationSet)
+        {
+            navMeshAgent.SetDestination(stages[0]);
+            isDestinationSet = true;
+        }
+        else if (stages.Length == 0)
+        {
+            return;
+        }
+
+        if (patrolStage > stages.Length - 1)
+            patrolStage = 0;
+
+
+        if (!isDestinationSet)
+        {
+            navMeshAgent.SetDestination(stages[patrolStage]);
+            isDestinationSet = true;
+        }
+        else if (navMeshAgent.remainingDistance < 0.6f)
+        {
+            OnMovement?.Invoke(new MovementData(0, 0));
+            patrolStage++;
+        }
+        else if (navMeshAgent.pathEndPosition == navMeshAgent.destination)
+        {
+            OnMovement?.Invoke(new MovementData(0, 1));
+        }
         else
-            OnMovement.Invoke(new MovementData(0, 0));
+        {
+            OnMovement?.Invoke(new MovementData(0, 0));
+        }
+    }
+    */
 
-        if (navMeshAgent.remainingDistance < 0.1f)
-            positionStage++;
+    public void Patrol(Vector3[] destinations, float[] rotations, float[] waitTimes)
+    {
+        navMeshAgent.nextPosition = enemy.position;
+        Debug.Log(gameObject.name + " patrol stage is " + patrolStage);
+
+        if (destinations.Length == 0)
+        {
+            OnMovement?.Invoke(new MovementData(0, 0));
+            return;
+        }
+
+        if (patrolStage >= destinations.Length)
+            patrolStage = 0;
+
+        if (!isDestinationSet)
+        {
+            Debug.Log(gameObject.name + " destination set.");
+            navMeshAgent.SetDestination(destinations[patrolStage]);
+            isDestinationSet = true;
+        }
+
+        if (navMeshAgent.remainingDistance < 0.5f || navMeshAgent.pathEndPosition != navMeshAgent.destination)
+        {
+            Debug.Log(gameObject.name + " is at the destination or can't reach the destination.");
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(transform.rotation.x, rotations[patrolStage], transform.rotation.z), 5);
+            OnMovement?.Invoke(new MovementData(0, 0));
+            if (!isWaiting)
+            {
+                isWaiting = true;
+                Invoke(nameof(IncrementPatrolStage), waitTimes[patrolStage]);
+            }
+        }
+        else
+        {
+            Debug.Log(gameObject.name + " is walking.");
+            OnMovement?.Invoke(new MovementData(0, 1));
+        }
+    }
+
+    private void IncrementPatrolStage()
+    {
+        isDestinationSet = false;
+        patrolStage++;
+        isWaiting = false;
     }
 
     public void GetWeapon(GameObject item)
@@ -156,7 +227,7 @@ public class EnemyAI : MonoBehaviour
             playerDetected = false;
 
         if (!playerDetected)
-            Patrol(patrolPoints);
+            Patrol(patrolDestinations, patrolRoatations, patrolWaitTimes);
         else if (weapon != null && !isAttacking && Physics.CheckBox(enemy.position + enemy.forward * weapon.range.value / 2, new Vector3(weapon.range.value, weapon.range.value, weapon.range.value / 2), enemy.rotation, playerMask) && Physics.CheckSphere(enemy.position, weapon.range.value, playerMask))
             AttackPlayer();
         else if (Physics.CheckSphere(enemy.position, weapon.range.value / 1.5f, playerMask) && Physics.CheckBox(enemy.position + enemy.forward * weapon.range.value / 2, new Vector3(weapon.range.value, weapon.range.value, weapon.range.value / 2), enemy.rotation, playerMask))

@@ -9,10 +9,11 @@ public class HealthSystem : MonoBehaviour
     [SerializeField] private int health;
     [SerializeField] private List<float> internalEffects = new List<float>();
 
-    public UnityEvent OnDealDamage;
-    public UnityEvent OnHeal;
-    public UnityEvent OnDeath;
+    public UnityEvent<int> OnDealDamage;
+    public UnityEvent<int> OnHeal;
     public UnityEvent<int> OnHealthUpdate;
+    public UnityEvent OnDeath;
+    public UnityEvent OnHealthy;
 
     public int Health
     {
@@ -27,7 +28,12 @@ public class HealthSystem : MonoBehaviour
             {
                 health = 0;
             }
-            else if (value > healthMax.value)
+            else if (value >= healthMax.value && health != healthMax.value)
+            {
+                health = healthMax.value;
+                OnHealthy?.Invoke();
+            }
+            else if (value >= healthMax.value)
             {
                 health = healthMax.value;
             }
@@ -53,7 +59,7 @@ public class HealthSystem : MonoBehaviour
             damage = (int)Math.Round(damage * effect);
         }
         Health -= damage;
-        OnDealDamage?.Invoke();
+        OnDealDamage?.Invoke(damage);
     }
 
     //Deal damage with extrenal effect and internal effects applied
@@ -65,7 +71,7 @@ public class HealthSystem : MonoBehaviour
         }
         damage = Convert.ToInt32(damage * externalEffect);
         Health -= damage;
-        OnDealDamage?.Invoke();
+        OnDealDamage?.Invoke(damage);
     }
 
     //Deal damage with internal effects applied
@@ -76,7 +82,7 @@ public class HealthSystem : MonoBehaviour
             damage = Convert.ToInt32(damage*effect);
         }
         Health -= damage;
-        OnDealDamage?.Invoke();
+        OnDealDamage?.Invoke(damage);
     }
 
     //Deal damage with external effects applied and internal effects ignored
@@ -87,7 +93,7 @@ public class HealthSystem : MonoBehaviour
             damage = Convert.ToInt32(damage * effect);
         }
         Health -= damage;
-        OnDealDamage?.Invoke();
+        OnDealDamage?.Invoke(damage);
     }
 
     //Deal damage with external effect applied and internal effects ignored
@@ -95,27 +101,36 @@ public class HealthSystem : MonoBehaviour
     {
         damage = Convert.ToInt32(damage * externalEffect);
         Health -= damage;
-        OnDealDamage?.Invoke();
+        OnDealDamage?.Invoke(damage);
     }
 
     //Deal damage with effects ignored
     public void DealRawDamage(int damage)
     {
         Health -= damage;
-        OnDealDamage?.Invoke();
+        OnDealDamage?.Invoke(damage);
     }
 
     //Restores given amount of health
     public void Heal(int heal)
     {
         Health += heal;
-        OnHeal?.Invoke();
+        OnHeal?.Invoke(heal);
+    }
+
+    //Restores the percentage of max health
+    public void HealByPercentage(float heal)
+    {
+        heal = Mathf.Clamp(heal, 0, 100);
+        var healValue = Convert.ToInt32(healthMax.value * heal);
+        Health += healValue;
+        OnHeal?.Invoke(healValue);
     }
 
     public void FullyHeal()
     {
         Health = healthMax.value;
-        OnHeal?.Invoke();
+        OnHeal?.Invoke(healthMax.value);
     }
 
     //Adds an effect
@@ -140,6 +155,6 @@ public class HealthSystem : MonoBehaviour
     public void Kill()
     {
         Health = 0;
-        OnDealDamage?.Invoke();
+        OnDealDamage?.Invoke(healthMax.value);
     }
 }
