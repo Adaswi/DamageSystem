@@ -52,6 +52,13 @@ public class EnemyAI : MonoBehaviour
             Array.Resize(ref patrolWaitTimes, patrolDestinations.Length);
     }
 
+    public void SetWeapon(GameObject item)
+    {
+        var component = item.GetComponent<Weapon>();
+        if (weapon == null && component)
+            weapon = component;
+    }
+
     public void ChasePlayer()
     {
         navMeshAgent.nextPosition = enemy.position;
@@ -87,7 +94,7 @@ public class EnemyAI : MonoBehaviour
     {
         if (weapon == null)
             return;
-        var objects = Physics.OverlapSphere(transform.position, weapon.range.value, bodypartMask);
+        var objects = Physics.OverlapSphere(transform.position, weapon.Range, bodypartMask);
         var bodyparts = new List<Bodypart>();
         foreach (var obj in objects)
         {
@@ -228,9 +235,9 @@ public class EnemyAI : MonoBehaviour
 
         if (!playerDetected)
             Patrol(patrolDestinations, patrolRoatations, patrolWaitTimes);
-        else if (weapon != null && !isAttacking && Physics.CheckBox(enemy.position + enemy.forward * weapon.range.value / 2, new Vector3(weapon.range.value, weapon.range.value, weapon.range.value / 2), enemy.rotation, playerMask) && Physics.CheckSphere(enemy.position, weapon.range.value, playerMask))
+        else if (weapon != null && !isAttacking && Physics.CheckBox(enemy.position + enemy.forward * weapon.Range / 2, new Vector3(weapon.Range, weapon.Range, weapon.Range / 2), enemy.rotation, playerMask) && Physics.CheckSphere(enemy.position, weapon.Range, playerMask))
             AttackPlayer();
-        else if (Physics.CheckSphere(enemy.position, weapon.range.value / 1.5f, playerMask) && Physics.CheckBox(enemy.position + enemy.forward * weapon.range.value / 2, new Vector3(weapon.range.value, weapon.range.value, weapon.range.value / 2), enemy.rotation, playerMask))
+        else if (Physics.CheckSphere(enemy.position, weapon.Range / 1.5f, playerMask) && Physics.CheckBox(enemy.position + enemy.forward * weapon.Range / 2, new Vector3(weapon.Range, weapon.Range, weapon.Range / 2), enemy.rotation, playerMask))
             CirclePlayer();
         else
             ChasePlayer();

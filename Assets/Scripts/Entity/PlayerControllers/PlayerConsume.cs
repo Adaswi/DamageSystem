@@ -9,6 +9,7 @@ public class PlayerConsume<Potion, Component> : MonoBehaviour
     private bool isReady;
 
     public UnityEvent OnConsume;
+    public UnityEvent<float> OnConsumeTimed;
 
     public void ReadyToConsume(GameObject item)
     {
@@ -34,8 +35,15 @@ public class PlayerConsume<Potion, Component> : MonoBehaviour
             instance.RemoveEffect();
         instance = consumable as TimedConsumable<Component>;
         if (instance != null)
+        {
             instance.OnRemoveEffect += RemoveInstance;
-        consumable.Consume();
+            instance.Consume();
+            OnConsumeTimed?.Invoke(instance.Duration);
+
+        }
+        else
+            consumable.Consume();
+
         UnreadyToConsume();
         OnConsume?.Invoke();
     }

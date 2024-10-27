@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class Bodypart : MonoBehaviour
+public class Bodypart : MonoBehaviour, IBodypart
 {
     [SerializeField] private FloatData damageMultiplier;
     [SerializeField] private FloatData afterDeathMultiplier;

@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -10,9 +11,10 @@ public class PlayerAttack : MonoBehaviour
     private RaycastHit hit;
     private bool isReady;
 
-    public UnityEvent<Bodypart, Weapon> OnAttack;
-    public UnityEvent OnAttackReady;
-    public UnityEvent OnAttackUnready;
+    public UnityEvent<IBodypart, Weapon> OnPlayerAttack;
+    public UnityEvent<Weapon> OnPlayerMiss;
+    public UnityEvent OnPlayerAttackReady;
+    public UnityEvent OnPlayerAttackUnready;
 
     //Ready to attack when weapon is equipped
     public void ReadyToAttack(GameObject item)
@@ -23,24 +25,36 @@ public class PlayerAttack : MonoBehaviour
         
         this.weapon = weapon;
         isReady = true;
-        OnAttackReady?.Invoke();      
+        OnPlayerAttackReady?.Invoke();      
     }
 
     public void UnreadyToAttack()
     {
         this.weapon = null;
         isReady = false;
-        OnAttackUnready?.Invoke();
+        OnPlayerAttackUnready?.Invoke();
     }
 
     public void Attack()
     {
-        if (isReady && Physics.Raycast(new Ray(playerCam.transform.position, playerCam.transform.forward), out hit, weapon.range.value, mask)) //On hit when attack isn't being executed
+        Debug.Log(isReady);
+        if (!isReady)
+            return;
+
+        Debug.Log(weapon.Range);
+
+        if (Physics.Raycast(new Ray(playerCam.transform.position, playerCam.transform.forward), out hit, weapon.Range, mask)) //On hit when attack isn't being executed
         {
             var bodypart = hit.collider.GetComponent<Bodypart>();
             if (bodypart == null)
                 return;
-            OnAttack?.Invoke(bodypart, weapon);
+            Debug.Log("hit");
+            OnPlayerAttack?.Invoke(bodypart, weapon);
+        }
+        else
+        {
+            Debug.Log("miss");
+            OnPlayerMiss?.Invoke(weapon);
         }
     }
 }

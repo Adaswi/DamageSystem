@@ -4,6 +4,10 @@ using UnityEngine;
 public abstract class TimedConsumable<T> : Consumable<T>
 {
     [SerializeField] protected FloatData duration;
+    public float Duration
+    {
+        get { return duration.value; }
+    }
 
     public Action OnRemoveEffect;
 
