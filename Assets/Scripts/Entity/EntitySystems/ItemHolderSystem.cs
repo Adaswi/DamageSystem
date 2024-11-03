@@ -6,6 +6,7 @@ public class ItemHolderSystem : MonoBehaviour
     [SerializeField] private float dropForce;
     [SerializeField] private GameObject item;
     [SerializeField] private GameObject dropper;
+    [SerializeField] private GameObject itemContainer;
 
     private Rigidbody rb;
     private Collider col;
@@ -72,29 +73,34 @@ public class ItemHolderSystem : MonoBehaviour
 
     public void DropItem()
     {
-        if (equipped)
-        {
+        if (!equipped)
+            return;
+
+        if (itemContainer == null)
             item.transform.SetParent(null);
-            item.transform.position = dropper.transform.position;
+        else
+            item.transform.SetParent(itemContainer.transform);
 
-            var dropperRb = dropper.GetComponent<Rigidbody>();
+        item.transform.position = dropper.transform.position;
+        item.transform.rotation = Quaternion.identity;
 
-            if (col != null)
-                col.isTrigger = isTrigger;
+        var dropperRb = dropper.GetComponent<Rigidbody>();
 
-            if (rb != null)
-            {
-                rb.isKinematic = isKinematic;
-                rb.AddForce(dropper.transform.forward * dropForce * rb.mass, ForceMode.Impulse);
-            }
+        if (col != null)
+            col.isTrigger = isTrigger;
+
+        if (rb != null)
+        {
+            rb.isKinematic = isKinematic;
+            rb.AddForce(dropper.transform.forward * dropForce * rb.mass, ForceMode.Impulse);
+        }
 
             if (dropperRb != null && rb != null)
                 rb.velocity = dropperRb.velocity;
 
-            UnequipItem();
+        UnequipItem();
 
-            OnDropItem?.Invoke();
-        }
+        OnDropItem?.Invoke();
     }
 
     public void ForwardItem()

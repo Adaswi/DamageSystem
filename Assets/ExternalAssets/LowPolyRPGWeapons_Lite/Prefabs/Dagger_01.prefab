@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5819117937006363102}
   - component: {fileID: -8773250094853316796}
   - component: {fileID: 4322515234007625367}
-  - component: {fileID: -6671377245211503584}
+  - component: {fileID: 7966936420927878391}
   m_Layer: 0
   m_Name: Dagger_01
   m_TagString: Untagged
@@ -135,7 +135,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 1
---- !u!114 &-6671377245211503584
+--- !u!114 &7966936420927878391
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
