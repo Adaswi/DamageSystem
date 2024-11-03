@@ -1336,6 +1336,7 @@ GameObject:
   - component: {fileID: 1314258013910351538}
   - component: {fileID: 4882658950672005780}
   - component: {fileID: 4727728287697098491}
+  - component: {fileID: 9172993860372843729}
   m_Layer: 3
   m_Name: Enemy
   m_TagString: Untagged
@@ -1492,6 +1493,9 @@ MonoBehaviour:
   OnHeal:
     m_PersistentCalls:
       m_Calls: []
+  OnHealthUpdate:
+    m_PersistentCalls:
+      m_Calls: []
   OnDeath:
     m_PersistentCalls:
       m_Calls:
@@ -1567,7 +1571,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  OnHealthUpdate:
+  OnHealthy:
     m_PersistentCalls:
       m_Calls: []
 --- !u!114 &2291848187882519907
@@ -1678,6 +1682,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnMiss:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &4882658950672005780
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1701,7 +1708,7 @@ MonoBehaviour:
     m_Bits: 128
   rb: {fileID: 4131799121602821577}
   col: {fileID: 5308362748371321205}
-  navMeshAgent: {fileID: 4727728287697098491}
+  agent: {fileID: 9172993860372843729}
   patrolDestinations: []
   patrolRoatations: []
   patrolWaitTimes: []
@@ -1769,6 +1776,55 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 1
   m_ObstacleAvoidanceType: 2
+--- !u!114 &9172993860372843729
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2278906762141813568}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7847b1bef8fcd6a42bfc06ea325e75ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  agent: {fileID: 4727728287697098491}
+  rb: {fileID: 4131799121602821577}
+  destinationReach: 0.5
+  rotationalSpeed: 135
+  OnAgentMovement:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2291848187882519907}
+        m_TargetAssemblyTypeName: Movement, Assembly-CSharp
+        m_MethodName: ReadDirection
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 8772041784671338763}
+        m_TargetAssemblyTypeName: AnimatorController, Assembly-CSharp
+        m_MethodName: PlayWalk
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OndDestinationSet:
+    m_PersistentCalls:
+      m_Calls: []
+  OndDestinationReached:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &2355900176368074906
 GameObject:
   m_ObjectHideFlags: 0
@@ -2140,10 +2196,13 @@ MonoBehaviour:
   OnHeal:
     m_PersistentCalls:
       m_Calls: []
+  OnHealthUpdate:
+    m_PersistentCalls:
+      m_Calls: []
   OnDeath:
     m_PersistentCalls:
       m_Calls: []
-  OnHealthUpdate:
+  OnHealthy:
     m_PersistentCalls:
       m_Calls: []
 --- !u!114 &1594892084537065822
@@ -2919,10 +2978,13 @@ MonoBehaviour:
   OnHeal:
     m_PersistentCalls:
       m_Calls: []
+  OnHealthUpdate:
+    m_PersistentCalls:
+      m_Calls: []
   OnDeath:
     m_PersistentCalls:
       m_Calls: []
-  OnHealthUpdate:
+  OnHealthy:
     m_PersistentCalls:
       m_Calls: []
 --- !u!114 &5344213945096123094
@@ -3196,10 +3258,13 @@ MonoBehaviour:
   OnHeal:
     m_PersistentCalls:
       m_Calls: []
+  OnHealthUpdate:
+    m_PersistentCalls:
+      m_Calls: []
   OnDeath:
     m_PersistentCalls:
       m_Calls: []
-  OnHealthUpdate:
+  OnHealthy:
     m_PersistentCalls:
       m_Calls: []
 --- !u!114 &2151590810191902274
@@ -4125,6 +4190,9 @@ MonoBehaviour:
   OnHeal:
     m_PersistentCalls:
       m_Calls: []
+  OnHealthUpdate:
+    m_PersistentCalls:
+      m_Calls: []
   OnDeath:
     m_PersistentCalls:
       m_Calls:
@@ -4140,7 +4208,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  OnHealthUpdate:
+  OnHealthy:
     m_PersistentCalls:
       m_Calls: []
 --- !u!114 &5527976510212155542
@@ -4430,10 +4498,13 @@ MonoBehaviour:
   OnHeal:
     m_PersistentCalls:
       m_Calls: []
+  OnHealthUpdate:
+    m_PersistentCalls:
+      m_Calls: []
   OnDeath:
     m_PersistentCalls:
       m_Calls: []
-  OnHealthUpdate:
+  OnHealthy:
     m_PersistentCalls:
       m_Calls: []
 --- !u!114 &2469130591439346316
@@ -4797,10 +4868,13 @@ MonoBehaviour:
   OnHeal:
     m_PersistentCalls:
       m_Calls: []
+  OnHealthUpdate:
+    m_PersistentCalls:
+      m_Calls: []
   OnDeath:
     m_PersistentCalls:
       m_Calls: []
-  OnHealthUpdate:
+  OnHealthy:
     m_PersistentCalls:
       m_Calls: []
 --- !u!114 &7492557698565012959
@@ -5271,6 +5345,9 @@ MonoBehaviour:
   OnHeal:
     m_PersistentCalls:
       m_Calls: []
+  OnHealthUpdate:
+    m_PersistentCalls:
+      m_Calls: []
   OnDeath:
     m_PersistentCalls:
       m_Calls:
@@ -5286,7 +5363,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  OnHealthUpdate:
+  OnHealthy:
     m_PersistentCalls:
       m_Calls: []
 --- !u!114 &1869560472369947829
