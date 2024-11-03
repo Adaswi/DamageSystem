@@ -3,7 +3,11 @@ guid: ddc42622337871a488dec0294225805d
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - attack: {instanceID: 0}
+  - speed: {instanceID: 0}
+  - range: {instanceID: 0}
+  - effects: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
