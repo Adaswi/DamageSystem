@@ -1054,6 +1054,7 @@ MonoBehaviour:
   dropForce: 0
   item: {fileID: 0}
   dropper: {fileID: 6772229968785426559}
+  itemContainer: {fileID: 0}
   OnEquipItem:
     m_PersistentCalls:
       m_Calls:
@@ -3266,7 +3267,19 @@ MonoBehaviour:
       m_Calls: []
   OnHealthy:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2278906762141813568}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2151590810191902274
 MonoBehaviour:
   m_ObjectHideFlags: 0

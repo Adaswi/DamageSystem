@@ -3,7 +3,7 @@ using UnityEngine.Events;
 
 public class PlayerConsume<Potion, Component> : MonoBehaviour
 {
-    [SerializeField] private Component component;
+    [SerializeField] public Component Comp {  get; set; }
     private Consumable<Component> consumable;
     private TimedConsumable<Component> instance;
     private bool isReady;
@@ -16,7 +16,7 @@ public class PlayerConsume<Potion, Component> : MonoBehaviour
         consumable = item.GetComponent<Potion>() as Consumable<Component>;
         if (consumable != null)
         {
-            consumable.component = component;
+            consumable.component = this.Comp;
             isReady = true;
         }
     }
