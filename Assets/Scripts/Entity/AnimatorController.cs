@@ -40,10 +40,23 @@ public class AnimatorController : MonoBehaviour
         animator.SetFloat("IsWalkingHorizontal", data.horizontal);
     }
 
-    public void PlayAttack()
+    public void PlayAttack(Weapon weapon)
     {
-        animator.SetTrigger("IsAttacking");
+        animator.SetFloat("AttackSpeed", animator.speed/weapon.Speed);
+        if(weapon.IsPiercing)
+            animator.SetTrigger("IsPierceAttacking");
+        else
+            animator.SetTrigger("IsSwingAttacking");
     }
+
+    public void PlayAttack(IBodypart bodypart, Weapon weapon)
+    {
+        if (weapon.IsPiercing)
+            animator.SetTrigger("IsPierceAttacking");
+        else
+            animator.SetTrigger("IsSwingAttacking");
+    }
+
 
     public void Disable()
     {

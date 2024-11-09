@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.AI;
 using UnityEngine.Events;
 
 public class EnemyAI : MonoBehaviour
@@ -50,7 +49,7 @@ public class EnemyAI : MonoBehaviour
             Array.Resize(ref patrolWaitTimes, patrolDestinations.Length);
     }
 
-    public void SetWeapon(GameObject item)
+    public void SetWeapon(Item item)
     {
         var component = item.GetComponent<Weapon>();
         if (weapon == null && component)
@@ -184,7 +183,7 @@ public class EnemyAI : MonoBehaviour
         isWaiting = false;
     }
 
-    public void GetWeapon(GameObject item)
+    public void GetWeapon(Item item)
     {
         var weapon = item.GetComponent<Weapon>();
         if (weapon != null)

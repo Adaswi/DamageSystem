@@ -9,11 +9,12 @@ public class Movement : MonoBehaviour
     [SerializeField] private GroundColliderSystem groundCheck;
     [SerializeField] private LayerMask environmentMask;
 
-    [SerializeField] private float movementSpeed;
+    [SerializeField] private float startMovementSpeed;
     [SerializeField] private float onGroundDrag = 5;
     [SerializeField] private float inAirDrag = 0.1f;
 
-    [SerializeField] private bool isJumping;
+    private bool isJumping;
+    private float currentMovementSpeed;
     private float angle;
     private float angle2;
     private RaycastHit slope;
@@ -21,6 +22,18 @@ public class Movement : MonoBehaviour
     private Vector3 projectedMovementDirection;
     private Vector3 movementDirection;
 
+    private float CurrentMovementSpeed {
+        get => currentMovementSpeed;
+        set
+        {
+            if (value >= startMovementSpeed)
+                currentMovementSpeed = startMovementSpeed;
+            else if (value < 0)
+                currentMovementSpeed = 0;
+            else
+                currentMovementSpeed = value;
+        }
+    }
     public bool IsJumping
     {
         get { return isJumping; }
@@ -52,6 +65,8 @@ public class Movement : MonoBehaviour
 
         if (groundCheck == null)
             groundCheck = GetComponent<GroundColliderSystem>();
+
+        currentMovementSpeed = startMovementSpeed;
     }
 
     private void OnEnable()
@@ -85,7 +100,7 @@ public class Movement : MonoBehaviour
 
             rb.drag = onGroundDrag;
             projectedMovementDirection = Vector3.ProjectOnPlane(movementDirection, slope.normal);
-            rb.AddForce((float)Math.Pow(Mathf.Clamp(angle2, 45, 90) - 44f, -0.8) * movementSpeed * projectedMovementDirection.normalized, ForceMode.Force); //This math equation smoothens player's speed drop in slope angles above 45
+            rb.AddForce((float)Math.Pow(Mathf.Clamp(angle2, 45, 90) - 44f, -0.8) * currentMovementSpeed * projectedMovementDirection.normalized, ForceMode.Force); //This math equation smoothens player's speed drop in slope angles above 45
 
             Debug.Log("Is on ground");
         }
@@ -124,6 +139,11 @@ public class Movement : MonoBehaviour
 
     public void Impair()
     {
-        movementSpeed /= 2;
+        currentMovementSpeed /= 2;
+    }
+
+    public void UnImpair()
+    {
+        CurrentMovementSpeed *= 2;
     }
 }

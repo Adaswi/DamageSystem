@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public abstract class Consumable<T> : MonoBehaviour
+public abstract class Consumable<T> : Item
 {
     [NonSerialized] public T component;
 

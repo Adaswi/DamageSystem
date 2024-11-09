@@ -21,6 +21,12 @@ public class RendererController : MonoBehaviour
         meshRenderer.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.ShadowsOnly;
     }
 
+    public void RenderNoShadows()
+    {
+        tempCastingMode = meshRenderer.shadowCastingMode;
+        meshRenderer.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
+    }
+
     public void RestoreCastingMode()
     {
         meshRenderer.shadowCastingMode = tempCastingMode;

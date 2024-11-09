@@ -4,7 +4,7 @@ using UnityEngine.Events;
 public class ItemHolderSystem : MonoBehaviour
 {
     [SerializeField] private float dropForce;
-    [SerializeField] private GameObject item;
+    [SerializeField] private Item item;
     [SerializeField] private GameObject dropper;
     [SerializeField] private GameObject itemContainer;
 
@@ -14,8 +14,9 @@ public class ItemHolderSystem : MonoBehaviour
     private bool isTrigger;
     private bool equipped = false;
 
-    public UnityEvent<GameObject> OnEquipItem;
-    public UnityEvent<GameObject> OnForwardItem;
+    public UnityEvent<Item> OnEquipItem;
+    public UnityEvent<Item> OnForwardItem;
+    public UnityEvent<Item> OnCopyToPOV;
     public UnityEvent OnDropItem;
     public UnityEvent OnUnequipItem;
 
@@ -31,7 +32,7 @@ public class ItemHolderSystem : MonoBehaviour
             EquipItem(item);
     }
 
-    public void EquipItem(GameObject item)
+    public void EquipItem(Item item)
     {
         if (!equipped)
         {
@@ -105,10 +106,25 @@ public class ItemHolderSystem : MonoBehaviour
 
     public void ForwardItem()
     {
-        if (equipped)
+        if (equipped && item.IsStorable)
         {
             OnForwardItem?.Invoke(item);
             UnequipItem();
         }
+    }
+
+    public void CopyItemToPOV()
+    {
+        if (equipped)
+        {
+            var newItem = Instantiate(item.gameObject);
+            OnCopyToPOV?.Invoke(newItem.GetComponent<Item>());
+        }
+    }
+
+    public void DeleteItem()
+    {
+        Destroy(item.gameObject);
+        UnequipItem();
     }
 }

@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4b4efa5bb5094049966563cf768bb85, type: 3}
   m_Name: DaggerSpeed
   m_EditorClassIdentifier: 
-  value: 0.5
+  value: 0.3

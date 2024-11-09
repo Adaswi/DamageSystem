@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Weapon : MonoBehaviour
+public class Weapon : Item
 {
     [SerializeField] private IntData attack;
     public int Attack
@@ -23,6 +23,8 @@ public class Weapon : MonoBehaviour
     {
         get => effects.values;
     }
+
+    public bool IsPiercing;
 
     private void Awake()
     {

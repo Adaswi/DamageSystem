@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -17,7 +16,7 @@ public class PlayerAttack : MonoBehaviour
     public UnityEvent OnPlayerAttackUnready;
 
     //Ready to attack when weapon is equipped
-    public void ReadyToAttack(GameObject item)
+    public void ReadyToAttack(Item item)
     {
         var weapon = item.GetComponent<Weapon>();
         if (weapon == null)
@@ -48,12 +47,10 @@ public class PlayerAttack : MonoBehaviour
             var bodypart = hit.collider.GetComponent<Bodypart>();
             if (bodypart == null)
                 return;
-            Debug.Log("hit");
             OnPlayerAttack?.Invoke(bodypart, weapon);
         }
         else
         {
-            Debug.Log("miss");
             OnPlayerMiss?.Invoke(weapon);
         }
     }

@@ -147,6 +147,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c443a90dc8547f241ba6a8fcdd54fd80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IsPickUpable: 1
+  IsStorable: 0
   attack: {fileID: 11400000, guid: 2ac82c10b2c9cd6458c17438aa8a5f9f, type: 2}
   speed: {fileID: 11400000, guid: 266d1d714297a164886c422178767e08, type: 2}
   range: {fileID: 11400000, guid: 1a6406bcd2727eb42b3b30b4c14d881c, type: 2}

@@ -3,20 +3,22 @@ using UnityEngine.Events;
 
 public class PlayerConsume<Potion, Component> : MonoBehaviour
 {
-    [SerializeField] public Component Comp {  get; set; }
+    [SerializeField] private Component component;
     private Consumable<Component> consumable;
     private TimedConsumable<Component> instance;
     private bool isReady;
 
+    public Component Comp { get { return component; } set { component = value; } }
     public UnityEvent OnConsume;
     public UnityEvent<float> OnConsumeTimed;
+    public UnityEvent OnRemoveInstance;
 
-    public void ReadyToConsume(GameObject item)
+    public void ReadyToConsume(Item item)
     {
         consumable = item.GetComponent<Potion>() as Consumable<Component>;
         if (consumable != null)
         {
-            consumable.component = this.Comp;
+            consumable.component = this.component;
             isReady = true;
         }
     }
@@ -51,5 +53,6 @@ public class PlayerConsume<Potion, Component> : MonoBehaviour
     private void RemoveInstance()
     {
         instance = null;
+        OnRemoveInstance?.Invoke();
     }
 }

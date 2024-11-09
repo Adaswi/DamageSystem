@@ -8,13 +8,16 @@ public class PlayerPickUpController : MonoBehaviour
     [SerializeField] private Transform playerCam;
     private RaycastHit hit;
 
-    public UnityEvent<GameObject> OnPickUp;
+    public UnityEvent<Item> OnPickUp;
 
     public void PickUp()
     {
         if(Physics.Raycast(new Ray(playerCam.transform.position, playerCam.transform.forward), out hit, pickUpRange, mask) && hit.transform.gameObject.GetComponentInParent<ItemHolderSystem>() == null)
         {
-            OnPickUp?.Invoke(hit.collider.gameObject);
+            var item = hit.transform.GetComponent<Item>();
+            if (!item || !item.IsPickUpable)
+                return;
+            OnPickUp?.Invoke(item);
         }
     }
 }
