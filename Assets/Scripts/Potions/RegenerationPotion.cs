@@ -1,17 +1,16 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class RegenerationPotion : TimedConsumable<HealthSystem>
 {
     [SerializeField] private IntData healAmount;
-    private int tickHealth;
+    private float tickLenght;
+    public int VariantID;
 
     public override void Consume()
     {
-        tickHealth = healAmount.value / (int)(duration.value * 10);
-        component.Heal(tickHealth);
-        InvokeRepeating(nameof(Heal), 0.1f, 0.1f);     
+        tickLenght = duration.value / (float) healAmount.value;
+        component.Heal(1);
+        InvokeRepeating(nameof(Heal), tickLenght, tickLenght);     
         base.Consume();
     }
 
@@ -23,6 +22,6 @@ public class RegenerationPotion : TimedConsumable<HealthSystem>
 
     private void Heal()
     {
-        component.Heal(tickHealth);
+        component.Heal(1);
     }
 }

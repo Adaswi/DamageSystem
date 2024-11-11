@@ -51,12 +51,19 @@ public class AnimatorController : MonoBehaviour
 
     public void PlayAttack(IBodypart bodypart, Weapon weapon)
     {
+        animator.SetFloat("AttackSpeed", animator.speed / weapon.Speed);
         if (weapon.IsPiercing)
             animator.SetTrigger("IsPierceAttacking");
         else
             animator.SetTrigger("IsSwingAttacking");
     }
 
+    public void ResetAttackTrigger()
+    {
+        Debug.Log("ResetAttackTrigger");
+        animator.ResetTrigger("IsPierceAttacking");
+        animator.ResetTrigger("IsSwingAttacking");
+    }
 
     public void Disable()
     {

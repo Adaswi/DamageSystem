@@ -3,10 +3,10 @@ using UnityEngine.Events;
 
 public class PlayerConsume<Potion, Component> : MonoBehaviour
 {
-    [SerializeField] private Component component;
-    private Consumable<Component> consumable;
-    private TimedConsumable<Component> instance;
-    private bool isReady;
+    [SerializeField] protected Component component;
+    protected Consumable<Component> consumable;
+    protected TimedConsumable<Component> instance;
+    protected bool isReady;
 
     public Component Comp { get { return component; } set { component = value; } }
     public UnityEvent OnConsume;

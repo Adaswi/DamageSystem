@@ -8,9 +8,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3031937000596170785, guid: 56be73ff2baecfe478981b750c864435, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 47f1f5cc80282214da01407872a66df4, type: 3}
     - target: {fileID: 6436026560237910391, guid: 56be73ff2baecfe478981b750c864435, type: 3}
       propertyPath: ID
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6436026560237910391, guid: 56be73ff2baecfe478981b750c864435, type: 3}
+      propertyPath: VariantID
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6436026560237910391, guid: 56be73ff2baecfe478981b750c864435, type: 3}
       propertyPath: healAmount

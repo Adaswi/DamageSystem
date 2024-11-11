@@ -19,26 +19,30 @@ PrefabInstance:
     - target: {fileID: 6571874683886299537, guid: b79dcdb85cad4834c80b8053c1612f69, type: 3}
       propertyPath: duration
       value: 
-      objectReference: {fileID: 11400000, guid: 1d3ebad01b3c9ae498c8813f27f59d80, type: 2}
+      objectReference: {fileID: 11400000, guid: 42716a0daa6e81a4b9d4a768abd81221, type: 2}
+    - target: {fileID: 6571874683886299537, guid: b79dcdb85cad4834c80b8053c1612f69, type: 3}
+      propertyPath: VariantID
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 6571874683886299537, guid: b79dcdb85cad4834c80b8053c1612f69, type: 3}
       propertyPath: defenseMultiplier
       value: 
-      objectReference: {fileID: 11400000, guid: 392e4dbc1558a8c4ca3a1cc3e5f428aa, type: 2}
+      objectReference: {fileID: 11400000, guid: 823e09c761468c440b1f6e1c21020891, type: 2}
     - target: {fileID: 7223608459034352732, guid: b79dcdb85cad4834c80b8053c1612f69, type: 3}
       propertyPath: m_Name
       value: BigDefensePotion(Long)
       objectReference: {fileID: 0}
     - target: {fileID: 8031247666879891174, guid: b79dcdb85cad4834c80b8053c1612f69, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.5
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8031247666879891174, guid: b79dcdb85cad4834c80b8053c1612f69, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8031247666879891174, guid: b79dcdb85cad4834c80b8053c1612f69, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.5
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8031247666879891174, guid: b79dcdb85cad4834c80b8053c1612f69, type: 3}
       propertyPath: m_LocalPosition.x

@@ -81,7 +81,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33307a23ecd50d94ead4505d44bdc4d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsPickUpable: 1
+  IsPickUpable: 0
   IsStorable: 1
   healAmount: {fileID: 0}
   VariantID: 0

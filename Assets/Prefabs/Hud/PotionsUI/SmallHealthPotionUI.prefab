@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 671575202162155302, guid: 7e3aa255094927649a2722688d8ee658, type: 3}
       propertyPath: m_Name
-      value: SmallHealthPotionUI Variant
+      value: SmallHealthPotionUI
       objectReference: {fileID: 0}
     - target: {fileID: 898611847507075878, guid: 7e3aa255094927649a2722688d8ee658, type: 3}
       propertyPath: m_Pivot.x
@@ -93,9 +93,17 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4537404534600165504, guid: 7e3aa255094927649a2722688d8ee658, type: 3}
+      propertyPath: VariantID
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4537404534600165504, guid: 7e3aa255094927649a2722688d8ee658, type: 3}
       propertyPath: healAmount
       value: 
       objectReference: {fileID: 11400000, guid: aedcfacbc5311b3458627327b9ed8ec1, type: 2}
+    - target: {fileID: 5601035168971667926, guid: 7e3aa255094927649a2722688d8ee658, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: a988fc16e35eb994db74228b4d9118b0, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

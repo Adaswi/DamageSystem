@@ -86,7 +86,7 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: aedcfacbc5311b3458627327b9ed8ec1, type: 2}
     - target: {fileID: 4507704942411022357, guid: af567b43525b2b74f91e06efa7e43f18, type: 3}
       propertyPath: IsPickUpable
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

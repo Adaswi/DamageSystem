@@ -124,7 +124,10 @@ public class ItemHolderSystem : MonoBehaviour
 
     public void DeleteItem()
     {
-        Destroy(item.gameObject);
-        UnequipItem();
+        if (equipped)
+        {
+            Destroy(item.gameObject);
+            UnequipItem();
+        }
     }
 }

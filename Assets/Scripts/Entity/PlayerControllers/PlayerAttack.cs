@@ -36,11 +36,9 @@ public class PlayerAttack : MonoBehaviour
 
     public void Attack()
     {
-        Debug.Log(isReady);
         if (!isReady)
             return;
 
-        Debug.Log(weapon.Range);
 
         if (Physics.Raycast(new Ray(playerCam.transform.position, playerCam.transform.forward), out hit, weapon.Range, mask)) //On hit when attack isn't being executed
         {

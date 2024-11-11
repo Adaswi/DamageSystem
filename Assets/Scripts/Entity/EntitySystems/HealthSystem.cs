@@ -28,14 +28,14 @@ public class HealthSystem : MonoBehaviour
             {
                 health = 0;
             }
-            else if (value >= healthMax.value && health != healthMax.value)
+            else if (value >= HealthMax && health != HealthMax)
             {
-                health = healthMax.value;
+                health = HealthMax;
                 OnHealthy?.Invoke();
             }
-            else if (value >= healthMax.value)
+            else if (value >= HealthMax)
             {
-                health = healthMax.value;
+                health = HealthMax;
             }
             else
             {
@@ -43,6 +43,11 @@ public class HealthSystem : MonoBehaviour
             }
             OnHealthUpdate?.Invoke(health);
         }
+    }
+    public int HealthMax
+    {
+        get => healthMax.value;
+        private set { healthMax.value = value; }
     }
 
     private void Awake()
@@ -53,8 +58,9 @@ public class HealthSystem : MonoBehaviour
     //Deal damage with external effects and internal effects applied
     public void DealDamage(int damage, List<float> externalEffects)
     {
-        externalEffects.AddRange(internalEffects);
-        foreach (float effect in externalEffects)
+        var newExternalEffects = new List<float>(externalEffects);
+        newExternalEffects.AddRange(internalEffects);
+        foreach (float effect in newExternalEffects)
         {
             damage = (int)Math.Round(damage * effect);
         }
@@ -115,22 +121,22 @@ public class HealthSystem : MonoBehaviour
     public void Heal(int heal)
     {
         Health += heal;
-        OnHeal?.Invoke(heal);
+        OnHeal?.Invoke(heal);   
     }
 
     //Restores the percentage of max health
     public void HealByPercentage(float heal)
     {
         heal = Mathf.Clamp(heal, 0, 100);
-        var healValue = Convert.ToInt32(healthMax.value * heal);
+        var healValue = Convert.ToInt32(HealthMax * heal);
         Health += healValue;
         OnHeal?.Invoke(healValue);
     }
 
     public void FullyHeal()
     {
-        Health = healthMax.value;
-        OnHeal?.Invoke(healthMax.value);
+        Health = HealthMax;
+        OnHeal?.Invoke(HealthMax);
     }
 
     //Adds an effect
@@ -155,6 +161,6 @@ public class HealthSystem : MonoBehaviour
     public void Kill()
     {
         Health = 0;
-        OnDealDamage?.Invoke(healthMax.value);
+        OnDealDamage?.Invoke(HealthMax);
     }
 }

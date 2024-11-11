@@ -63,6 +63,7 @@ public class EnemyAI : MonoBehaviour
 
     public void CirclePlayer()
     {
+        agent.ReachDestination();
         var rotation = Quaternion.LookRotation(player.position - transform.position);
         rotation.x = 0;
         rotation.z = 0;
@@ -86,7 +87,7 @@ public class EnemyAI : MonoBehaviour
     {
         if (weapon == null)
             return;
-        var objects = Physics.OverlapSphere(transform.position, weapon.Range, bodypartMask);
+        var objects = Physics.OverlapSphere(enemy.transform.position, weapon.Range, bodypartMask);
         var bodyparts = new List<Bodypart>();
         foreach (var obj in objects)
         {
@@ -101,48 +102,6 @@ public class EnemyAI : MonoBehaviour
 
         OnAttack?.Invoke(bodyparts[index], weapon);
     }
-
-    /*
-    public void Patrol(Vector3[] stages)
-    {
-        navMeshAgent.nextPosition = enemy.position;
-
-        if (stages.Length > 1)
-            isDestinationSet = false;
-        else if (stages.Length == 1 && isDestinationSet)
-        {
-            navMeshAgent.SetDestination(stages[0]);
-            isDestinationSet = true;
-        }
-        else if (stages.Length == 0)
-        {
-            return;
-        }
-
-        if (patrolStage > stages.Length - 1)
-            patrolStage = 0;
-
-
-        if (!isDestinationSet)
-        {
-            navMeshAgent.SetDestination(stages[patrolStage]);
-            isDestinationSet = true;
-        }
-        else if (navMeshAgent.remainingDistance < 0.6f)
-        {
-            OnMovement?.Invoke(new MovementData(0, 0));
-            patrolStage++;
-        }
-        else if (navMeshAgent.pathEndPosition == navMeshAgent.destination)
-        {
-            OnMovement?.Invoke(new MovementData(0, 1));
-        }
-        else
-        {
-            OnMovement?.Invoke(new MovementData(0, 0));
-        }
-    }
-    */
 
     public void Patrol(Vector3[] destinations, float[] rotations, float[] waitTimes)
     {
@@ -220,9 +179,9 @@ public class EnemyAI : MonoBehaviour
 
         if (!playerDetected)
             Patrol(patrolDestinations, patrolRoatations, patrolWaitTimes);
-        else if (weapon != null && !isAttacking && Physics.CheckBox(enemy.position + enemy.forward * weapon.Range / 2, new Vector3(weapon.Range, weapon.Range, weapon.Range / 2), enemy.rotation, playerMask) && Physics.CheckSphere(enemy.position, weapon.Range, playerMask))
+        else if (weapon && !isAttacking && Physics.CheckBox(enemy.position + enemy.forward * weapon.Range / 2, new Vector3(weapon.Range, weapon.Range, weapon.Range / 2), enemy.rotation, playerMask) && Physics.CheckSphere(enemy.position, weapon.Range, playerMask))
             AttackPlayer();
-        else if (Physics.CheckSphere(enemy.position, weapon.Range / 1.5f, playerMask) && Physics.CheckBox(enemy.position + enemy.forward * weapon.Range / 2, new Vector3(weapon.Range, weapon.Range, weapon.Range / 2), enemy.rotation, playerMask))
+        else if (Physics.CheckSphere(enemy.position, weapon.Range*0.75f, playerMask) && Physics.CheckBox(enemy.position + enemy.forward * weapon.Range / 2, new Vector3(weapon.Range, weapon.Range, weapon.Range / 2), enemy.rotation, playerMask))
             CirclePlayer();
         else
             ChasePlayer();

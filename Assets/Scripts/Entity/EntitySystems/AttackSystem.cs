@@ -6,9 +6,9 @@ public class AttackSystem : MonoBehaviour
     private bool isAttacking;
 
     public UnityEvent OnAttackEnter;
-    public UnityEvent OnAttack;
+    public UnityEvent<Weapon> OnAttack;
     public UnityEvent OnAttackExit;
-    public UnityEvent OnMiss;
+    public UnityEvent<Weapon> OnMiss;
 
     private void Enter()
     {
@@ -21,7 +21,7 @@ public class AttackSystem : MonoBehaviour
             return;
         Enter();
         bodypart.Hit(weapon.Attack, weapon.Effects);
-        OnAttack?.Invoke();
+        OnAttack?.Invoke(weapon);
         Invoke(nameof(Exit), weapon.Speed);
     }
 
@@ -30,7 +30,7 @@ public class AttackSystem : MonoBehaviour
         if (isAttacking)
             return;
         Enter();
-        OnMiss?.Invoke();
+        OnMiss?.Invoke(weapon);
         Invoke(nameof(Exit), weapon.Speed);
     }
 

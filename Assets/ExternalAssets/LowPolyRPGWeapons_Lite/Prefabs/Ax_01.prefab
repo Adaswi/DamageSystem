@@ -93,7 +93,7 @@ MeshCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8203073568141072114}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: fbbb0b3c77f4b584aa4be142f87cceef, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -153,3 +153,4 @@ MonoBehaviour:
   speed: {fileID: 11400000, guid: 5e053c96d342c0342b47193b75e9730b, type: 2}
   range: {fileID: 11400000, guid: de31c9a1aa3a1064684a2bda4cbb1343, type: 2}
   effects: {fileID: 11400000, guid: 12c5723fcdfbb2d4eb79979a7d664629, type: 2}
+  IsPiercing: 0

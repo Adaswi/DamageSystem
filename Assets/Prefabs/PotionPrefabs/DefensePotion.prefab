@@ -81,7 +81,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 902846015b9937745afc074f59e7ddb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsPickUpable: 1
+  IsPickUpable: 0
   IsStorable: 1
   duration: {fileID: 0}
   defenseMultiplier: {fileID: 0}

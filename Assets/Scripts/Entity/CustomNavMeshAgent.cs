@@ -44,7 +44,7 @@ public class CustomNavMeshAgent : MonoBehaviour
         OndDestinationSet?.Invoke(destination);
     }
 
-    private void ReachDestination()
+    public void ReachDestination()
     {
         IsDestinationSet = false;
         OnAgentMovement?.Invoke(new MovementData(0, 0));

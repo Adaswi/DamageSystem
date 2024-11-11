@@ -18,7 +18,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 943164139930128816, guid: 488b0a1715f0c834e9865a325b591fa6, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.9
+      value: 0.75
       objectReference: {fileID: 0}
     - target: {fileID: 943164139930128816, guid: 488b0a1715f0c834e9865a325b591fa6, type: 3}
       propertyPath: m_LocalScale.z
@@ -77,6 +77,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 1d3ebad01b3c9ae498c8813f27f59d80, type: 2}
     - target: {fileID: 4348200711453494067, guid: 488b0a1715f0c834e9865a325b591fa6, type: 3}
+      propertyPath: VariantID
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4348200711453494067, guid: 488b0a1715f0c834e9865a325b591fa6, type: 3}
+      propertyPath: variantID
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4348200711453494067, guid: 488b0a1715f0c834e9865a325b591fa6, type: 3}
       propertyPath: IsStorable
       value: 1
       objectReference: {fileID: 0}
@@ -86,7 +94,7 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: aedcfacbc5311b3458627327b9ed8ec1, type: 2}
     - target: {fileID: 4348200711453494067, guid: 488b0a1715f0c834e9865a325b591fa6, type: 3}
       propertyPath: IsPickUpable
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

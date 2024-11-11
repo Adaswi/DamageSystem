@@ -6,6 +6,7 @@ public class InputManager : MonoBehaviour
     public UnityEvent OnInteraction;
     public UnityEvent OnDrop;
     public UnityEvent OnUse;
+    public UnityEvent OnStore;
     public UnityEvent OnJump;
     public UnityEvent OnInventory;
     public UnityEvent<MovementData> OnMove;
@@ -17,6 +18,9 @@ public class InputManager : MonoBehaviour
         
         if (Input.GetKeyDown(KeyCode.Q))
             Drop();
+
+        if (Input.GetKeyDown(KeyCode.R))
+            Store();
         
         if (Input.GetKeyDown(KeyCode.Space))
             Jump();
@@ -38,6 +42,11 @@ public class InputManager : MonoBehaviour
     public void Use()
     {
         OnUse?.Invoke();
+    }
+
+    public void Store()
+    {
+        OnStore?.Invoke();
     }
 
     public void Drop()

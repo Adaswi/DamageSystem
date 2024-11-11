@@ -3,7 +3,7 @@ using UnityEngine;
 public class DefensePotion : TimedConsumable<HealthSystem>
 {
     [SerializeField] private FloatData defenseMultiplier;
-
+    public int VariantID;
     public override void Consume()
     {
         component.AddEffect(defenseMultiplier.value);

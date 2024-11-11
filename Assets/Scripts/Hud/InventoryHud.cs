@@ -10,7 +10,6 @@ public class InventoryHud : MonoBehaviour
 
     public UnityEvent OnInventoryOpen;
     public UnityEvent OnInventoryClose;
-    public UnityEvent<int, Item> OnStoreItem;
     public void ToggleInventory()
     {
         gameObject.SetActive(!gameObject.activeSelf);
@@ -36,24 +35,5 @@ public class InventoryHud : MonoBehaviour
             itemFrames[i] = Instantiate(slotPrefab);
             itemFrames[i].transform.SetParent(containerObject.transform, false);
         }
-    }
-
-    public void StoreItem(Item item)
-    {
-        var i = 0;
-        Debug.Log(item);
-        foreach (GameObject frame in itemFrames)
-        {
-            if (frame.transform.childCount > 0)
-            {
-                i++;
-            }
-            else
-            {
-                OnStoreItem?.Invoke(i, item);
-                Destroy(item.gameObject);
-                break;
-            }
-        }
-    }
+    }   
 }
