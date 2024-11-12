@@ -43,7 +43,7 @@ public class AnimatorController : MonoBehaviour
     public void PlayAttack(Weapon weapon)
     {
         animator.SetFloat("AttackSpeed", animator.speed/weapon.Speed);
-        if(weapon.IsPiercing)
+        if(weapon as Spear)
             animator.SetTrigger("IsPierceAttacking");
         else
             animator.SetTrigger("IsSwingAttacking");
@@ -52,7 +52,7 @@ public class AnimatorController : MonoBehaviour
     public void PlayAttack(IBodypart bodypart, Weapon weapon)
     {
         animator.SetFloat("AttackSpeed", animator.speed / weapon.Speed);
-        if (weapon.IsPiercing)
+        if (weapon as Spear)
             animator.SetTrigger("IsPierceAttacking");
         else
             animator.SetTrigger("IsSwingAttacking");

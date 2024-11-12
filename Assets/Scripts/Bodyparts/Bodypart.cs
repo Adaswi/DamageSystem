@@ -6,33 +6,38 @@ public class Bodypart : MonoBehaviour, IBodypart
 {
     [SerializeField] private FloatData damageMultiplier;
     [SerializeField] private FloatData afterDeathMultiplier;
+    private float currentMultiplier;
 
     public UnityEvent<int, List<float>> OnHit;
     public UnityEvent<int, List<float>> OnHitWithMultiplier;
     public UnityEvent OnDeath;
+    public UnityEvent OnRevive;
 
-    public void Hit(int damage, List<float> effects)
+    private void Awake()
+    {
+        currentMultiplier = damageMultiplier.value;
+    }
+
+    public virtual void Hit(int damage, List<float> effects)
     {       
-        InHit();
         var newEffects = new List<float>(effects);
-        newEffects.Add(damageMultiplier.value);
-
-        Debug.Log("Bodypart " + gameObject.name + " hit!");
+        newEffects.Add(currentMultiplier);
 
         OnHit?.Invoke(damage, effects);
         OnHitWithMultiplier?.Invoke(damage, newEffects);
     }
 
-    public void Death()
+    public virtual void Revive()
     {
-        InDeath();
-        damageMultiplier.value = afterDeathMultiplier.value;
+        currentMultiplier = damageMultiplier.value;
 
-        Debug.Log("Bodypart " + gameObject.name + " died");
+        OnRevive?.Invoke();
+    }
+
+    public virtual void Death()
+    {
+        currentMultiplier = afterDeathMultiplier.value;
 
         OnDeath?.Invoke();
     }
-
-    protected virtual void InHit() { }
-    protected virtual void InDeath() { }
 }

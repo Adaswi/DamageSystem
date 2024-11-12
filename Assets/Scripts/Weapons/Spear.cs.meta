@@ -4,10 +4,10 @@ MonoImporter:
   externalObjects: {}
   serializedVersion: 2
   defaultReferences:
-  - attack: {fileID: 11400000, guid: ad8200bfaa38e704a811ac0a8cc44fd2, type: 2}
-  - speed: {fileID: 11400000, guid: 8fcacbd5eb55260439982a4f0dfba080, type: 2}
-  - range: {fileID: 11400000, guid: b2790f80b431b5346b7dd389d9ae16c6, type: 2}
-  - effects: {fileID: 11400000, guid: f9148eaa76376424bb26999cbd7c15c6, type: 2}
+  - defaultAttack: {fileID: 11400000, guid: ad8200bfaa38e704a811ac0a8cc44fd2, type: 2}
+  - defaultSpeed: {fileID: 11400000, guid: 8fcacbd5eb55260439982a4f0dfba080, type: 2}
+  - defaultRange: {fileID: 11400000, guid: b2790f80b431b5346b7dd389d9ae16c6, type: 2}
+  - defaultEffects: {fileID: 11400000, guid: f9148eaa76376424bb26999cbd7c15c6, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

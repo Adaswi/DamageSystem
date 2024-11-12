@@ -5,8 +5,8 @@ public class PlayerView : MonoBehaviour
     public float sensitivityX;
     public float sensitivityY;
 
-    public float rotationX;
-    public float rotationY;
+    private float rotationX;
+    private float rotationY;
 
     public Transform playerOrientation;
 

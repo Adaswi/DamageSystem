@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6542218581709590649}
   - component: {fileID: -788082973652633316}
   - component: {fileID: -6930859958240004477}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Ax_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -149,8 +149,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsPickUpable: 1
   IsStorable: 0
-  attack: {fileID: 11400000, guid: f331c7febe1ac254ba6273c92f8bfeda, type: 2}
-  speed: {fileID: 11400000, guid: 5e053c96d342c0342b47193b75e9730b, type: 2}
-  range: {fileID: 11400000, guid: de31c9a1aa3a1064684a2bda4cbb1343, type: 2}
-  effects: {fileID: 11400000, guid: 12c5723fcdfbb2d4eb79979a7d664629, type: 2}
-  IsPiercing: 0
+  defaultAttack: {fileID: 11400000, guid: f331c7febe1ac254ba6273c92f8bfeda, type: 2}
+  defaultSpeed: {fileID: 11400000, guid: 5e053c96d342c0342b47193b75e9730b, type: 2}
+  defaultRange: {fileID: 11400000, guid: de31c9a1aa3a1064684a2bda4cbb1343, type: 2}
+  defaultEffects: {fileID: 11400000, guid: 12c5723fcdfbb2d4eb79979a7d664629, type: 2}

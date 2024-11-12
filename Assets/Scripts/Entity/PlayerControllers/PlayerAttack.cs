@@ -42,7 +42,7 @@ public class PlayerAttack : MonoBehaviour
 
         if (Physics.Raycast(new Ray(playerCam.transform.position, playerCam.transform.forward), out hit, weapon.Range, mask)) //On hit when attack isn't being executed
         {
-            var bodypart = hit.collider.GetComponent<Bodypart>();
+            var bodypart = hit.collider.GetComponent<IBodypart>();
             if (bodypart == null)
                 return;
             OnPlayerAttack?.Invoke(bodypart, weapon);

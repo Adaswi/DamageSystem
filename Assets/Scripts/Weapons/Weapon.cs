@@ -3,31 +3,40 @@ using UnityEngine;
 
 public class Weapon : Item
 {
-    [SerializeField] private IntData attack;
+    [SerializeField] private IntData defaultAttack;
+    private int currentAttack;
     public int Attack
     {
-        get { return attack.value; }
+        get { return currentAttack; }
+        set { currentAttack = value; }
     }
-    [SerializeField] private FloatData speed;
+    [SerializeField] private FloatData defaultSpeed;
+    private float currentSpeed;
     public float Speed
     {
-        get { return speed.value; }
+        get { return currentSpeed; }
+        set { currentSpeed = value; }
     }
-    [SerializeField] private FloatData range;
+    [SerializeField] private FloatData defaultRange;
+    private float currentRange;
     public float Range
     {
-        get { return range.value; }
+        get { return currentRange; }
+        set { currentRange = value; }
     }
-    [SerializeField] private ListFloatData effects;
+    [SerializeField] private ListFloatData defaultEffects;
+    private List<float> currentEffects;
     public List<float> Effects
     {
-        get { return effects.values; }
+        get { return currentEffects; }
+        set { currentEffects = value; }
     }
-
-    public bool IsPiercing;
 
     private void Awake()
     {
-        gameObject.layer = LayerMask.NameToLayer("Pickupable");   
+        Attack = defaultAttack.value;
+        Speed = defaultSpeed.value;
+        Range = defaultRange.value;
+        Effects = defaultEffects.values;
     }
 }

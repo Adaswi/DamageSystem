@@ -1,0 +1,531 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Binder" Collapsed="true">
+    <Position X="24.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Binder.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Arm">
+    <Position X="4" Y="12.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAEgAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Bodyparts\Arm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Bodypart">
+    <Position X="8.5" Y="8.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAIAAIEgAAAAAABhAAAAAAAAIAA=</HashCode>
+      <FileName>Assets\Scripts\Bodyparts\Bodypart.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Head">
+    <Position X="6.25" Y="12.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAEgAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Bodyparts\Head.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Leg">
+    <Position X="8.5" Y="12.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAEgAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Bodyparts\Leg.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Pelvis">
+    <Position X="10.75" Y="12.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAEgAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Bodyparts\Pelvis.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Torso">
+    <Position X="13" Y="12.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAEgAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Bodyparts\Torso.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AnimatorController" Collapsed="true">
+    <Position X="19" Y="1.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAAAAAABAAAAAAAAAAAAACAAAIAIAIAgAAAACEA=</HashCode>
+      <FileName>Assets\Scripts\Entity\AnimatorController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CameraPosition" Collapsed="true">
+    <Position X="28" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAggAA=</HashCode>
+      <FileName>Assets\Scripts\Entity\CameraPosition.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CustomNavMeshAgent" Collapsed="true">
+    <Position X="29.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEQAAAAAACAAAQAEAAAAAAAEAAAAQCBAAEABAAAAQEA=</HashCode>
+      <FileName>Assets\Scripts\Entity\CustomNavMeshAgent.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DebugUI" Collapsed="true">
+    <Position X="31.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAABAAAEAACAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Entity\DebugUI.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EnemyAI" Collapsed="true">
+    <Position X="29.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABYFAAQAAAgJAQCMACACAwAoCDCAAGAhAAgAQAAACGI=</HashCode>
+      <FileName>Assets\Scripts\Entity\EnemyAI.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AttackSystem">
+    <Position X="11.5" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IASAAAAAAIAAAACIAAAAAAAAAIAEAAAAIAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Entity\EntitySystems\AttackSystem.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GroundColliderSystem" Collapsed="true">
+    <Position X="22.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAgAAAAAAAAAAAAAAAAAAAAIAIQAAAGAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Entity\EntitySystems\GroundColliderSystem.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HealthSystem">
+    <Position X="29.5" Y="10" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>QAAACAQAAEAAQYCAAAAAiIAABQAAAAIAAAAgAAAAJEg=</HashCode>
+      <FileName>Assets\Scripts\Entity\EntitySystems\HealthSystem.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ItemHolderSystem" Collapsed="true">
+    <Position X="26.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>JAAAEAAAESApAAAEARQAAQAAAAEAAAAEACAAAgAUAEA=</HashCode>
+      <FileName>Assets\Scripts\Entity\EntitySystems\ItemHolderSystem.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JumpSystem" Collapsed="true">
+    <Position X="28" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEgMAAgAAAAAEAAAAEAAAAAAAAAAAAAAAAIAAAGA=</HashCode>
+      <FileName>Assets\Scripts\Entity\EntitySystems\JumpSystem.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Movement" Collapsed="true">
+    <Position X="31.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAAgAEogIAAAAEAAIAAQggBAICAAAKAEACRQBACEA=</HashCode>
+      <FileName>Assets\Scripts\Entity\EntitySystems\MovementSystem.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InputManager" Collapsed="true">
+    <Position X="31.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAgAAAAoAQAAAAAAAAAAAAIAAEAQIAAAAQAwAAACA=</HashCode>
+      <FileName>Assets\Scripts\Entity\InputManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PlayerAttack">
+    <Position X="18.75" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAEAAQBAAgAAAAIAAAIACIAIAAAAAAAAAIAAgAA=</HashCode>
+      <FileName>Assets\Scripts\Entity\PlayerControllers\PlayerAttack.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PlayerConsume&lt;Potion, Component&gt;" Collapsed="true">
+    <Position X="18" Y="12.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAQIAAAAAAAAIAAAAAABCABIAAAAAAMEAAAAQAA=</HashCode>
+      <FileName>Assets\Scripts\Entity\PlayerControllers\PlayerConsume.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PlayerConsumeDefensePotion" Collapsed="true">
+    <Position X="15.75" Y="14" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Entity\PlayerControllers\PlayerConsumeDefensePotion.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PlayerConsumeHealthPotion" Collapsed="true">
+    <Position X="18" Y="14" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Entity\PlayerControllers\PlayerConsumeHealthPotion.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PlayerConsumeRegenerationPotion" Collapsed="true">
+    <Position X="20.25" Y="14" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Entity\PlayerControllers\PlayerConsumeRegenerationPotion.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PlayerPickUpController" Collapsed="true">
+    <Position X="22.75" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAQAAAgAAAAAAEAAAAAAAAAIAAAAAAAAAhAA=</HashCode>
+      <FileName>Assets\Scripts\Entity\PlayerControllers\PlayerPickUp.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PlayerView" Collapsed="true">
+    <Position X="24.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAEACAAAAAAAACAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Entity\PlayerControllers\PlayerView.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RendererController" Collapsed="true">
+    <Position X="31.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAICAQAAACAAAAAAAgAAAAAAAAAAAAEA=</HashCode>
+      <FileName>Assets\Scripts\Entity\RendererController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameManager" Collapsed="true">
+    <Position X="21" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAACAAAAABAgEAAAAAAAAAAAAAAAAAAAAEAAA=</HashCode>
+      <FileName>Assets\Scripts\GameManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BodypartUI" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="26.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIAAAAACAAACAAAAAAEgAAAAAAAAAQAAFAAEA=</HashCode>
+      <FileName>Assets\Scripts\Hud\BodypartUI.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="DefensePotionUI" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="22.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAEAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Hud\DefensePotionUI.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="DefensePotionUIFactory" Collapsed="true">
+    <Position X="4" Y="15.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAIAAAAAAACAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Hud\DefensePotionUIFactory.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DefensePotionUIFactoryChooser" Collapsed="true">
+    <Position X="24.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAABAAAAAAABAIABAAAAAAAAAQEAAgAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Hud\DefensePotionUIFactoryChooser.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DragAndDrop" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="26.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAAQIABAAAABAEAAAAAAAACAAAAEAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Hud\DragAndDrop.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="DropArea" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="28" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAQAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Hud\DropArea.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="DefenseEffectFactory" Collapsed="true">
+    <Position X="6" Y="18.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Hud\Effects\DefenseEffectFactory.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DefenseEffectHud" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="21" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAwAAAAAAAAAARAAAAAAAAAAAAACAAAAUAAAAAAAAEA=</HashCode>
+      <FileName>Assets\Scripts\Hud\Effects\DefenseEffectHud.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="EffectHudFactory">
+    <Position X="5" Y="16.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Hud\Effects\EffectHudFactory.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RegenerationEffectHudFactory" Collapsed="true">
+    <Position X="3.75" Y="18.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Hud\Effects\RegenerationEffectFactory.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RegenerationEffectHud" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="26.25" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAwAAAAAAAAAARAAAAAAAAAAAAACAAAAUAAAAAAAAEA=</HashCode>
+      <FileName>Assets\Scripts\Hud\Effects\RegenerationEffectHud.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="HealthBar" Collapsed="true">
+    <Position X="24.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIACAAAAIAAAAAAAAAAAAAAAAAAAAEAgAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Hud\HealthBar.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HealthPotionUI" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="26.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAEAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Hud\HealthPotionUI.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="HealthPotionUIFactory" Collapsed="true">
+    <Position X="8.5" Y="15.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Hud\HealthPotionUIFactory.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HealthPotionUIFactoryChooser" Collapsed="true">
+    <Position X="28" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAABAAAAAAABAAAAAAAgAABAAAAAAAgAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Hud\HealthPotionUIFactoryChooser.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InventoryHud" Collapsed="true">
+    <Position X="24.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAgAAAAAAAAAAQAQAAAgAAEAAAgAAAAAAAAAAAAEA=</HashCode>
+      <FileName>Assets\Scripts\Hud\InventoryHud.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ItemUIFactory" Collapsed="true">
+    <Position X="6.25" Y="14.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Hud\ItemUIFactory.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RegenerationPotionUI" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="28" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAEAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Hud\RegenerationPotionUI.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="RegenerationPotionUIFactory" Collapsed="true">
+    <Position X="6.25" Y="15.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAADAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Hud\RegenerationPotionUIFactory.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RegenerationPotionUIFactoryChooser" Collapsed="true">
+    <Position X="29.75" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAABAAAAAAABAIABAAAAAAAAAQEAAgAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Hud\RegenerationPotionUIFactoryChooser.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ScreenUI" Collapsed="true">
+    <Position X="22.75" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAABAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Hud\ScreenUI.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Inventory" Collapsed="true">
+    <Position X="22.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAkAAAAAgAAAAQAQAAAAAAAAgAEAAAACAAAABAAEA=</HashCode>
+      <FileName>Assets\Scripts\Inventory.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Item">
+    <Position X="9.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAAAAAAIAIAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Item.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SetTerrainObstacles" Collapsed="true">
+    <Position X="24.5" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAIAAAACAAAAAAQAAAAAEAAAAAAAAAAABAAABAAAA=</HashCode>
+      <FileName>Assets\Scripts\NavMeshTreesBake.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Consumable&lt;T&gt;" Collapsed="true">
+    <Position X="15.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA=</HashCode>
+      <FileName>Assets\Scripts\Potions\Consumable.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DefensePotion" Collapsed="true">
+    <Position X="15.5" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIAAAABIAAAAAAAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Potions\DefensePotion.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HealthPotion" Collapsed="true">
+    <Position X="13.25" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIAAAABAAAAAAAAAAAAAAAAAAAAAAAAAQAAAA=</HashCode>
+      <FileName>Assets\Scripts\Potions\HealthPotion.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HealthPotionFactory" Collapsed="true">
+    <Position X="8.75" Y="18.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACACAA=</HashCode>
+      <FileName>Assets\Scripts\Potions\HealthPotionFactory.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PotionFactory" Collapsed="true">
+    <Position X="8.75" Y="17" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAKAA=</HashCode>
+      <FileName>Assets\Scripts\Potions\PotionFactory.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RegenerationPotion" Collapsed="true">
+    <Position X="17.5" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIAAAABICAAAAAAAAAAAAAAAAAAAAAAAwAAAA=</HashCode>
+      <FileName>Assets\Scripts\Potions\RegenerationPotion.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TimedConsumable&lt;T&gt;" Collapsed="true">
+    <Position X="16.5" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIIAAACAIAAAAAAAAAAAAAAAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>Assets\Scripts\Potions\TimedConsumable.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Screenshotter" Collapsed="true">
+    <Position X="21" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABAAAACAAAAAAAAQAAAAAAAAAAAEAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Screenshotter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FloatData" Collapsed="true">
+    <Position X="31.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\ScriptableObjects\FloatData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IntData" Collapsed="true">
+    <Position X="21" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\ScriptableObjects\IntData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ListFloatData" Collapsed="true">
+    <Position X="29.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\ScriptableObjects\ListFloatData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Axe" Collapsed="true">
+    <Position X="2" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Weapons\Axe.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Dagger" Collapsed="true">
+    <Position X="4.25" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Weapons\Dagger.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Hammer" Collapsed="true">
+    <Position X="6.5" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Weapons\Hammer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Spear" Collapsed="true">
+    <Position X="8.75" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Weapons\Spear.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Sword" Collapsed="true">
+    <Position X="11" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Weapons\Sword.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Weapon">
+    <Position X="6.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIACAACAAAAAQAAAAFAIAAAQCAAAAAAAAAAEA=</HashCode>
+      <FileName>Assets\Scripts\Weapons\Weapon.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WinCondition" Collapsed="true">
+    <Position X="26.25" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAgAAABAAAAAQAAAAIAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>Assets\Scripts\WinCondition.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Struct Name="MovementData" Collapsed="true">
+    <Position X="21" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\MovementData.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Interface Name="IBodypart">
+    <Position X="21" Y="11" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAgAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Bodyparts\IBodypart.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="IEffectHud" Collapsed="true">
+    <Position X="22.75" Y="11" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAEAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Hud\Effects\IEffectHud.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="IItemUI" Collapsed="true">
+    <Position X="24.5" Y="11" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAEAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Hud\IItemUI.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
