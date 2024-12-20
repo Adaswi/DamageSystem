@@ -127,12 +127,13 @@ public class HealthSystem : MonoBehaviour
     //Restores the percentage of max health
     public void HealByPercentage(float heal)
     {
-        heal = Mathf.Clamp(heal, 0, 100);
+        heal = Mathf.Clamp(heal, 0, 1);
         var healValue = Convert.ToInt32(HealthMax * heal);
         Health += healValue;
         OnHeal?.Invoke(healValue);
     }
 
+    //Fully restores health
     public void FullyHeal()
     {
         Health = HealthMax;
