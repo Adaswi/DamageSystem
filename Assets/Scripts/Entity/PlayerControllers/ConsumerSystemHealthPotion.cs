@@ -1,4 +1,4 @@
-public class PlayerConsumeHealthPotion : PlayerConsume<HealthPotion ,HealthSystem>
+public class ConsumerSystemHealthPotion : ConsumerSystem<HealthPotion ,HealthSystem>
 {
     new public void ReadyToConsume(Item item)
     {

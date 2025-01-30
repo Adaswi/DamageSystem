@@ -10,8 +10,8 @@ public class Bodypart : MonoBehaviour, IBodypart
 
     public UnityEvent<int, List<float>> OnHit;
     public UnityEvent<int, List<float>> OnHitWithMultiplier;
-    public UnityEvent OnDeath;
-    public UnityEvent OnRevive;
+    public UnityEvent OnApplyAfterDeathMultiplier;
+    public UnityEvent OnApplyStandardMultiplier;
 
     private void Awake()
     {
@@ -27,17 +27,17 @@ public class Bodypart : MonoBehaviour, IBodypart
         OnHitWithMultiplier?.Invoke(damage, newEffects);
     }
 
-    public virtual void Revive()
+    public virtual void ApplyStandardMultiplier()
     {
         currentMultiplier = damageMultiplier.value;
 
-        OnRevive?.Invoke();
+        OnApplyStandardMultiplier?.Invoke();
     }
 
-    public virtual void Death()
+    public virtual void ApplyAfterDeathMultiplier()
     {
         currentMultiplier = afterDeathMultiplier.value;
 
-        OnDeath?.Invoke();
+        OnApplyAfterDeathMultiplier?.Invoke();
     }
 }

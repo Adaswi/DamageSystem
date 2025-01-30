@@ -4,5 +4,6 @@ public interface IBodypart
 {
     public void Hit(int damage, List<float> effects);
 
-    public void Death();
+    public void ApplyAfterDeathMultiplier();
+    public void ApplyStandardMultiplier();
 }

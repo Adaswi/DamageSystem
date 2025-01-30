@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-public class PlayerConsume<Potion, Component> : MonoBehaviour
+public class ConsumerSystem<Potion, Component> : MonoBehaviour
 {
     [SerializeField] protected Component component;
     protected Consumable<Component> consumable;
