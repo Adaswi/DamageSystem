@@ -4463,7 +4463,7 @@ PrefabInstance:
     - target: {fileID: 1624106423774554787, guid: 81e85e814b11fbf42ae6a7a11ec3bcd9, type: 3}
       propertyPath: OnDeath.m_PersistentCalls.m_Calls.Array.data[6].m_Target
       value: 
-      objectReference: {fileID: 1540303600}
+      objectReference: {fileID: 1540303596}
     - target: {fileID: 1624106423774554787, guid: 81e85e814b11fbf42ae6a7a11ec3bcd9, type: 3}
       propertyPath: OnDeath.m_PersistentCalls.m_Calls.Array.data[6].m_CallState
       value: 2
@@ -4474,7 +4474,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1624106423774554787, guid: 81e85e814b11fbf42ae6a7a11ec3bcd9, type: 3}
       propertyPath: OnDeath.m_PersistentCalls.m_Calls.Array.data[6].m_TargetAssemblyTypeName
-      value: WinCondition, Assembly-CSharp
+      value: GameManager, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 1624106423774554787, guid: 81e85e814b11fbf42ae6a7a11ec3bcd9, type: 3}
       propertyPath: OnDeath.m_PersistentCalls.m_Calls.Array.data[6].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -9943,7 +9943,7 @@ PrefabInstance:
     - target: {fileID: 1624106423774554787, guid: 81e85e814b11fbf42ae6a7a11ec3bcd9, type: 3}
       propertyPath: OnDeath.m_PersistentCalls.m_Calls.Array.data[6].m_Target
       value: 
-      objectReference: {fileID: 1540303600}
+      objectReference: {fileID: 1540303596}
     - target: {fileID: 1624106423774554787, guid: 81e85e814b11fbf42ae6a7a11ec3bcd9, type: 3}
       propertyPath: OnDeath.m_PersistentCalls.m_Calls.Array.data[6].m_CallState
       value: 2
@@ -9954,7 +9954,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1624106423774554787, guid: 81e85e814b11fbf42ae6a7a11ec3bcd9, type: 3}
       propertyPath: OnDeath.m_PersistentCalls.m_Calls.Array.data[6].m_TargetAssemblyTypeName
-      value: WinCondition, Assembly-CSharp
+      value: GameManager, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 1624106423774554787, guid: 81e85e814b11fbf42ae6a7a11ec3bcd9, type: 3}
       propertyPath: OnDeath.m_PersistentCalls.m_Calls.Array.data[6].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -22621,7 +22621,6 @@ GameObject:
   - component: {fileID: 1540303596}
   - component: {fileID: 1540303598}
   - component: {fileID: 1540303599}
-  - component: {fileID: 1540303600}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -22659,12 +22658,40 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fa6c6b541241ea40b97d0019465fb0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MaxCount: 4
   OnGameStart:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1705333419}
         m_TargetAssemblyTypeName: InventoryHud, Assembly-CSharp
         m_MethodName: ToggleInventory
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnWinConditionMet:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 141203321}
+        m_TargetAssemblyTypeName: ScreenUI, Assembly-CSharp
+        m_MethodName: ShowScreen
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1540303596}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: Pause
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -22872,47 +22899,6 @@ MonoBehaviour:
   OnMove:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &1540303600
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1540303594}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 103273c9b3b454448b20f978230f9931, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  count: 0
-  maxCount: 4
-  OnWinConditionMet:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 141203321}
-        m_TargetAssemblyTypeName: GameOverUI, Assembly-CSharp
-        m_MethodName: ShowScreen
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1540303596}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: Pause
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!1001 &1544420433
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -24017,7 +24003,7 @@ PrefabInstance:
     - target: {fileID: 1624106423774554787, guid: 81e85e814b11fbf42ae6a7a11ec3bcd9, type: 3}
       propertyPath: OnDeath.m_PersistentCalls.m_Calls.Array.data[6].m_Target
       value: 
-      objectReference: {fileID: 1540303600}
+      objectReference: {fileID: 1540303596}
     - target: {fileID: 1624106423774554787, guid: 81e85e814b11fbf42ae6a7a11ec3bcd9, type: 3}
       propertyPath: OnDeath.m_PersistentCalls.m_Calls.Array.data[6].m_CallState
       value: 2
@@ -24028,7 +24014,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1624106423774554787, guid: 81e85e814b11fbf42ae6a7a11ec3bcd9, type: 3}
       propertyPath: OnDeath.m_PersistentCalls.m_Calls.Array.data[6].m_TargetAssemblyTypeName
-      value: WinCondition, Assembly-CSharp
+      value: GameManager, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 1624106423774554787, guid: 81e85e814b11fbf42ae6a7a11ec3bcd9, type: 3}
       propertyPath: OnDeath.m_PersistentCalls.m_Calls.Array.data[6].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -32423,7 +32409,7 @@ PrefabInstance:
     - target: {fileID: 1624106423774554787, guid: 81e85e814b11fbf42ae6a7a11ec3bcd9, type: 3}
       propertyPath: OnDeath.m_PersistentCalls.m_Calls.Array.data[6].m_Target
       value: 
-      objectReference: {fileID: 1540303600}
+      objectReference: {fileID: 1540303596}
     - target: {fileID: 1624106423774554787, guid: 81e85e814b11fbf42ae6a7a11ec3bcd9, type: 3}
       propertyPath: OnDeath.m_PersistentCalls.m_Calls.Array.data[6].m_CallState
       value: 2
@@ -32434,7 +32420,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1624106423774554787, guid: 81e85e814b11fbf42ae6a7a11ec3bcd9, type: 3}
       propertyPath: OnDeath.m_PersistentCalls.m_Calls.Array.data[6].m_TargetAssemblyTypeName
-      value: WinCondition, Assembly-CSharp
+      value: GameManager, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 1624106423774554787, guid: 81e85e814b11fbf42ae6a7a11ec3bcd9, type: 3}
       propertyPath: OnDeath.m_PersistentCalls.m_Calls.Array.data[6].m_Arguments.m_ObjectArgumentAssemblyTypeName
