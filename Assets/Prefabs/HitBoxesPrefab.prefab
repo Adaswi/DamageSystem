@@ -41,7 +41,7 @@ CapsuleCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1028407325366367980}
-  m_Material: {fileID: 13400000, guid: be5e0ba688529494b9850ec2bf242452, type: 2}
+  m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -88,8 +88,23 @@ MonoBehaviour:
         m_CallState: 2
   OnHitWithMultiplier:
     m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4420848925029214772}
+        m_TargetAssemblyTypeName: HealthSystem, Assembly-CSharp
+        m_MethodName: DealDamage
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnApplyAfterDeathMultiplier:
+    m_PersistentCalls:
       m_Calls: []
-  OnDeath:
+  OnApplyStandardMultiplier:
     m_PersistentCalls:
       m_Calls: []
 --- !u!114 &8617903580650895953
@@ -191,8 +206,23 @@ MonoBehaviour:
         m_CallState: 2
   OnHitWithMultiplier:
     m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4420848925029214772}
+        m_TargetAssemblyTypeName: HealthSystem, Assembly-CSharp
+        m_MethodName: DealDamage
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnApplyAfterDeathMultiplier:
+    m_PersistentCalls:
       m_Calls: []
-  OnDeath:
+  OnApplyStandardMultiplier:
     m_PersistentCalls:
       m_Calls: []
 --- !u!114 &4875507825004393984
@@ -294,8 +324,23 @@ MonoBehaviour:
         m_CallState: 2
   OnHitWithMultiplier:
     m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4420848925029214772}
+        m_TargetAssemblyTypeName: HealthSystem, Assembly-CSharp
+        m_MethodName: DealDamage
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnApplyAfterDeathMultiplier:
+    m_PersistentCalls:
       m_Calls: []
-  OnDeath:
+  OnApplyStandardMultiplier:
     m_PersistentCalls:
       m_Calls: []
 --- !u!114 &3302727696079654322
@@ -397,8 +442,23 @@ MonoBehaviour:
         m_CallState: 2
   OnHitWithMultiplier:
     m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4420848925029214772}
+        m_TargetAssemblyTypeName: HealthSystem, Assembly-CSharp
+        m_MethodName: DealDamage
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnApplyAfterDeathMultiplier:
+    m_PersistentCalls:
       m_Calls: []
-  OnDeath:
+  OnApplyStandardMultiplier:
     m_PersistentCalls:
       m_Calls: []
 --- !u!114 &1094319251634497565
@@ -456,7 +516,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4542993657450431969}
-  m_Material: {fileID: 13400000, guid: be5e0ba688529494b9850ec2bf242452, type: 2}
+  m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -501,8 +561,23 @@ MonoBehaviour:
         m_CallState: 2
   OnHitWithMultiplier:
     m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4420848925029214772}
+        m_TargetAssemblyTypeName: HealthSystem, Assembly-CSharp
+        m_MethodName: DealDamage
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnApplyAfterDeathMultiplier:
+    m_PersistentCalls:
       m_Calls: []
-  OnDeath:
+  OnApplyStandardMultiplier:
     m_PersistentCalls:
       m_Calls: []
 --- !u!114 &7849146333346236570
@@ -525,17 +600,11 @@ MonoBehaviour:
       m_Calls: []
   OnHeal:
     m_PersistentCalls:
-      m_Calls: []
-  OnDeath:
-    m_PersistentCalls:
-      m_Calls: []
-  OnHealthUpdate:
-    m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: BodypartUI, Assembly-CSharp
-        m_MethodName: ColorChange
-        m_Mode: 0
+      - m_Target: {fileID: 8950784477531604861}
+        m_TargetAssemblyTypeName: Bodypart, Assembly-CSharp
+        m_MethodName: ApplyStandardMultiplier
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -544,6 +613,27 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnHealthUpdate:
+    m_PersistentCalls:
+      m_Calls: []
+  OnDeath:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8950784477531604861}
+        m_TargetAssemblyTypeName: Bodypart, Assembly-CSharp
+        m_MethodName: ApplyAfterDeathMultiplier
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnHealthy:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &3262525722394843873
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -598,7 +688,7 @@ CapsuleCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4647005347454137842}
-  m_Material: {fileID: 13400000, guid: be5e0ba688529494b9850ec2bf242452, type: 2}
+  m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -645,8 +735,23 @@ MonoBehaviour:
         m_CallState: 2
   OnHitWithMultiplier:
     m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4420848925029214772}
+        m_TargetAssemblyTypeName: HealthSystem, Assembly-CSharp
+        m_MethodName: DealDamage
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnApplyAfterDeathMultiplier:
+    m_PersistentCalls:
       m_Calls: []
-  OnDeath:
+  OnApplyStandardMultiplier:
     m_PersistentCalls:
       m_Calls: []
 --- !u!114 &19195166503733156
@@ -704,7 +809,7 @@ CapsuleCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6016819432093928302}
-  m_Material: {fileID: 13400000, guid: be5e0ba688529494b9850ec2bf242452, type: 2}
+  m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -751,8 +856,23 @@ MonoBehaviour:
         m_CallState: 2
   OnHitWithMultiplier:
     m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4420848925029214772}
+        m_TargetAssemblyTypeName: HealthSystem, Assembly-CSharp
+        m_MethodName: DealDamage
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnApplyAfterDeathMultiplier:
+    m_PersistentCalls:
       m_Calls: []
-  OnDeath:
+  OnApplyStandardMultiplier:
     m_PersistentCalls:
       m_Calls: []
 --- !u!114 &3065815522799948693
@@ -775,13 +895,34 @@ MonoBehaviour:
       m_Calls: []
   OnHeal:
     m_PersistentCalls:
-      m_Calls: []
-  OnDeath:
-    m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Movement, Assembly-CSharp
-        m_MethodName: Impair
+      - m_Target: {fileID: 4494269082917004111}
+        m_TargetAssemblyTypeName: Bodypart, Assembly-CSharp
+        m_MethodName: ApplyStandardMultiplier
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 964829952469024392}
+        m_TargetAssemblyTypeName: Bodypart, Assembly-CSharp
+        m_MethodName: ApplyStandardMultiplier
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 3857804327085848232}
+        m_TargetAssemblyTypeName: Bodypart, Assembly-CSharp
+        m_MethodName: ApplyStandardMultiplier
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -793,11 +934,14 @@ MonoBehaviour:
         m_CallState: 2
   OnHealthUpdate:
     m_PersistentCalls:
+      m_Calls: []
+  OnDeath:
+    m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: BodypartUI, Assembly-CSharp
-        m_MethodName: ColorChange
-        m_Mode: 0
+      - m_Target: {fileID: 4494269082917004111}
+        m_TargetAssemblyTypeName: Bodypart, Assembly-CSharp
+        m_MethodName: ApplyAfterDeathMultiplier
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -806,10 +950,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: BodypartUI, Assembly-CSharp
-        m_MethodName: ColorChange
-        m_Mode: 0
+      - m_Target: {fileID: 964829952469024392}
+        m_TargetAssemblyTypeName: Bodypart, Assembly-CSharp
+        m_MethodName: ApplyAfterDeathMultiplier
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -818,10 +962,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: BodypartUI, Assembly-CSharp
-        m_MethodName: ColorChange
-        m_Mode: 0
+      - m_Target: {fileID: 3857804327085848232}
+        m_TargetAssemblyTypeName: Bodypart, Assembly-CSharp
+        m_MethodName: ApplyAfterDeathMultiplier
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -830,6 +974,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnHealthy:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &3965292017341125152
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -852,6 +999,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7935463648382328387}
+  - component: {fileID: 4420848925029214772}
   m_Layer: 0
   m_Name: HitBoxesPrefab
   m_TagString: Untagged
@@ -889,6 +1037,36 @@ Transform:
   - {fileID: 5499843651531387394}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4420848925029214772
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6348917835940824493}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6685057d4e36fc947ad64492273c5ace, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthMax: {fileID: 11400000, guid: 83653e647b2c1014c874018f103ae77a, type: 2}
+  health: 0
+  internalEffects: []
+  OnDealDamage:
+    m_PersistentCalls:
+      m_Calls: []
+  OnHeal:
+    m_PersistentCalls:
+      m_Calls: []
+  OnHealthUpdate:
+    m_PersistentCalls:
+      m_Calls: []
+  OnDeath:
+    m_PersistentCalls:
+      m_Calls: []
+  OnHealthy:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &6450919858540361712
 GameObject:
   m_ObjectHideFlags: 0
@@ -930,7 +1108,7 @@ CapsuleCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6450919858540361712}
-  m_Material: {fileID: 13400000, guid: be5e0ba688529494b9850ec2bf242452, type: 2}
+  m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -977,8 +1155,23 @@ MonoBehaviour:
         m_CallState: 2
   OnHitWithMultiplier:
     m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4420848925029214772}
+        m_TargetAssemblyTypeName: HealthSystem, Assembly-CSharp
+        m_MethodName: DealDamage
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnApplyAfterDeathMultiplier:
+    m_PersistentCalls:
       m_Calls: []
-  OnDeath:
+  OnApplyStandardMultiplier:
     m_PersistentCalls:
       m_Calls: []
 --- !u!114 &5960280888167244093
@@ -1036,7 +1229,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6689391069750647258}
-  m_Material: {fileID: 13400000, guid: be5e0ba688529494b9850ec2bf242452, type: 2}
+  m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -1081,8 +1274,23 @@ MonoBehaviour:
         m_CallState: 2
   OnHitWithMultiplier:
     m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4420848925029214772}
+        m_TargetAssemblyTypeName: HealthSystem, Assembly-CSharp
+        m_MethodName: DealDamage
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnApplyAfterDeathMultiplier:
+    m_PersistentCalls:
       m_Calls: []
-  OnDeath:
+  OnApplyStandardMultiplier:
     m_PersistentCalls:
       m_Calls: []
 --- !u!114 &7143458711244055717
@@ -1105,17 +1313,11 @@ MonoBehaviour:
       m_Calls: []
   OnHeal:
     m_PersistentCalls:
-      m_Calls: []
-  OnDeath:
-    m_PersistentCalls:
-      m_Calls: []
-  OnHealthUpdate:
-    m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: BodypartUI, Assembly-CSharp
-        m_MethodName: ColorChange
-        m_Mode: 0
+      - m_Target: {fileID: 7580400170232925939}
+        m_TargetAssemblyTypeName: Bodypart, Assembly-CSharp
+        m_MethodName: ApplyStandardMultiplier
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1124,6 +1326,27 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnHealthUpdate:
+    m_PersistentCalls:
+      m_Calls: []
+  OnDeath:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7580400170232925939}
+        m_TargetAssemblyTypeName: Bodypart, Assembly-CSharp
+        m_MethodName: ApplyAfterDeathMultiplier
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnHealthy:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &6448381889195663395
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1223,8 +1446,23 @@ MonoBehaviour:
         m_CallState: 2
   OnHitWithMultiplier:
     m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4420848925029214772}
+        m_TargetAssemblyTypeName: HealthSystem, Assembly-CSharp
+        m_MethodName: DealDamage
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnApplyAfterDeathMultiplier:
+    m_PersistentCalls:
       m_Calls: []
-  OnDeath:
+  OnApplyStandardMultiplier:
     m_PersistentCalls:
       m_Calls: []
 --- !u!114 &3955750113931204979
@@ -1282,7 +1520,7 @@ CapsuleCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6978485882123094112}
-  m_Material: {fileID: 13400000, guid: be5e0ba688529494b9850ec2bf242452, type: 2}
+  m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -1329,8 +1567,23 @@ MonoBehaviour:
         m_CallState: 2
   OnHitWithMultiplier:
     m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4420848925029214772}
+        m_TargetAssemblyTypeName: HealthSystem, Assembly-CSharp
+        m_MethodName: DealDamage
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnApplyAfterDeathMultiplier:
+    m_PersistentCalls:
       m_Calls: []
-  OnDeath:
+  OnApplyStandardMultiplier:
     m_PersistentCalls:
       m_Calls: []
 --- !u!114 &7319638889869268605
@@ -1353,17 +1606,53 @@ MonoBehaviour:
       m_Calls: []
   OnHeal:
     m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6568928274600872687}
+        m_TargetAssemblyTypeName: Bodypart, Assembly-CSharp
+        m_MethodName: ApplyStandardMultiplier
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 3670235107610531595}
+        m_TargetAssemblyTypeName: Bodypart, Assembly-CSharp
+        m_MethodName: ApplyStandardMultiplier
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 7390880050080308319}
+        m_TargetAssemblyTypeName: Bodypart, Assembly-CSharp
+        m_MethodName: ApplyStandardMultiplier
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnHealthUpdate:
+    m_PersistentCalls:
       m_Calls: []
   OnDeath:
     m_PersistentCalls:
-      m_Calls: []
-  OnHealthUpdate:
-    m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: BodypartUI, Assembly-CSharp
-        m_MethodName: ColorChange
-        m_Mode: 0
+      - m_Target: {fileID: 6568928274600872687}
+        m_TargetAssemblyTypeName: Bodypart, Assembly-CSharp
+        m_MethodName: ApplyAfterDeathMultiplier
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1372,10 +1661,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: BodypartUI, Assembly-CSharp
-        m_MethodName: ColorChange
-        m_Mode: 0
+      - m_Target: {fileID: 3670235107610531595}
+        m_TargetAssemblyTypeName: Bodypart, Assembly-CSharp
+        m_MethodName: ApplyAfterDeathMultiplier
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1384,10 +1673,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: BodypartUI, Assembly-CSharp
-        m_MethodName: ColorChange
-        m_Mode: 0
+      - m_Target: {fileID: 7390880050080308319}
+        m_TargetAssemblyTypeName: Bodypart, Assembly-CSharp
+        m_MethodName: ApplyAfterDeathMultiplier
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1396,6 +1685,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnHealthy:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &2152685882066246785
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1451,7 +1743,7 @@ CapsuleCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7146163783040266174}
-  m_Material: {fileID: 13400000, guid: be5e0ba688529494b9850ec2bf242452, type: 2}
+  m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -1498,8 +1790,23 @@ MonoBehaviour:
         m_CallState: 2
   OnHitWithMultiplier:
     m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4420848925029214772}
+        m_TargetAssemblyTypeName: HealthSystem, Assembly-CSharp
+        m_MethodName: DealDamage
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnApplyAfterDeathMultiplier:
+    m_PersistentCalls:
       m_Calls: []
-  OnDeath:
+  OnApplyStandardMultiplier:
     m_PersistentCalls:
       m_Calls: []
 --- !u!114 &843587866839857319
@@ -1522,17 +1829,53 @@ MonoBehaviour:
       m_Calls: []
   OnHeal:
     m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7364339116741115360}
+        m_TargetAssemblyTypeName: Bodypart, Assembly-CSharp
+        m_MethodName: ApplyStandardMultiplier
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2577389332871974999}
+        m_TargetAssemblyTypeName: Bodypart, Assembly-CSharp
+        m_MethodName: ApplyStandardMultiplier
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1095708817161475867}
+        m_TargetAssemblyTypeName: Bodypart, Assembly-CSharp
+        m_MethodName: ApplyStandardMultiplier
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnHealthUpdate:
+    m_PersistentCalls:
       m_Calls: []
   OnDeath:
     m_PersistentCalls:
-      m_Calls: []
-  OnHealthUpdate:
-    m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: BodypartUI, Assembly-CSharp
-        m_MethodName: ColorChange
-        m_Mode: 0
+      - m_Target: {fileID: 7364339116741115360}
+        m_TargetAssemblyTypeName: Bodypart, Assembly-CSharp
+        m_MethodName: ApplyAfterDeathMultiplier
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1541,10 +1884,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: BodypartUI, Assembly-CSharp
-        m_MethodName: ColorChange
-        m_Mode: 0
+      - m_Target: {fileID: 2577389332871974999}
+        m_TargetAssemblyTypeName: Bodypart, Assembly-CSharp
+        m_MethodName: ApplyAfterDeathMultiplier
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1553,10 +1896,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: BodypartUI, Assembly-CSharp
-        m_MethodName: ColorChange
-        m_Mode: 0
+      - m_Target: {fileID: 1095708817161475867}
+        m_TargetAssemblyTypeName: Bodypart, Assembly-CSharp
+        m_MethodName: ApplyAfterDeathMultiplier
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1565,6 +1908,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnHealthy:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &9116609003301286043
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1619,7 +1965,7 @@ CapsuleCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7273208784617939055}
-  m_Material: {fileID: 13400000, guid: be5e0ba688529494b9850ec2bf242452, type: 2}
+  m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -1666,8 +2012,23 @@ MonoBehaviour:
         m_CallState: 2
   OnHitWithMultiplier:
     m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4420848925029214772}
+        m_TargetAssemblyTypeName: HealthSystem, Assembly-CSharp
+        m_MethodName: DealDamage
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnApplyAfterDeathMultiplier:
+    m_PersistentCalls:
       m_Calls: []
-  OnDeath:
+  OnApplyStandardMultiplier:
     m_PersistentCalls:
       m_Calls: []
 --- !u!114 &2471445116652209293
@@ -1725,7 +2086,7 @@ CapsuleCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8148057173374075304}
-  m_Material: {fileID: 13400000, guid: be5e0ba688529494b9850ec2bf242452, type: 2}
+  m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -1772,8 +2133,23 @@ MonoBehaviour:
         m_CallState: 2
   OnHitWithMultiplier:
     m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4420848925029214772}
+        m_TargetAssemblyTypeName: HealthSystem, Assembly-CSharp
+        m_MethodName: DealDamage
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnApplyAfterDeathMultiplier:
+    m_PersistentCalls:
       m_Calls: []
-  OnDeath:
+  OnApplyStandardMultiplier:
     m_PersistentCalls:
       m_Calls: []
 --- !u!114 &7407106469418033288
@@ -1796,13 +2172,34 @@ MonoBehaviour:
       m_Calls: []
   OnHeal:
     m_PersistentCalls:
-      m_Calls: []
-  OnDeath:
-    m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Movement, Assembly-CSharp
-        m_MethodName: Impair
+      - m_Target: {fileID: 5167958609164562704}
+        m_TargetAssemblyTypeName: Bodypart, Assembly-CSharp
+        m_MethodName: ApplyStandardMultiplier
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 4594878979578539274}
+        m_TargetAssemblyTypeName: Bodypart, Assembly-CSharp
+        m_MethodName: ApplyStandardMultiplier
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 3512693673273891711}
+        m_TargetAssemblyTypeName: Bodypart, Assembly-CSharp
+        m_MethodName: ApplyStandardMultiplier
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1814,11 +2211,14 @@ MonoBehaviour:
         m_CallState: 2
   OnHealthUpdate:
     m_PersistentCalls:
+      m_Calls: []
+  OnDeath:
+    m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: BodypartUI, Assembly-CSharp
-        m_MethodName: ColorChange
-        m_Mode: 0
+      - m_Target: {fileID: 5167958609164562704}
+        m_TargetAssemblyTypeName: Bodypart, Assembly-CSharp
+        m_MethodName: ApplyAfterDeathMultiplier
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1827,10 +2227,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: BodypartUI, Assembly-CSharp
-        m_MethodName: ColorChange
-        m_Mode: 0
+      - m_Target: {fileID: 4594878979578539274}
+        m_TargetAssemblyTypeName: Bodypart, Assembly-CSharp
+        m_MethodName: ApplyAfterDeathMultiplier
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1839,10 +2239,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: BodypartUI, Assembly-CSharp
-        m_MethodName: ColorChange
-        m_Mode: 0
+      - m_Target: {fileID: 3512693673273891711}
+        m_TargetAssemblyTypeName: Bodypart, Assembly-CSharp
+        m_MethodName: ApplyAfterDeathMultiplier
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1851,6 +2251,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnHealthy:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &7359723580432065599
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1906,7 +2309,7 @@ CapsuleCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8529661191553833634}
-  m_Material: {fileID: 13400000, guid: be5e0ba688529494b9850ec2bf242452, type: 2}
+  m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -1953,8 +2356,23 @@ MonoBehaviour:
         m_CallState: 2
   OnHitWithMultiplier:
     m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4420848925029214772}
+        m_TargetAssemblyTypeName: HealthSystem, Assembly-CSharp
+        m_MethodName: DealDamage
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnApplyAfterDeathMultiplier:
+    m_PersistentCalls:
       m_Calls: []
-  OnDeath:
+  OnApplyStandardMultiplier:
     m_PersistentCalls:
       m_Calls: []
 --- !u!114 &6565405823975887390
@@ -1977,17 +2395,11 @@ MonoBehaviour:
       m_Calls: []
   OnHeal:
     m_PersistentCalls:
-      m_Calls: []
-  OnDeath:
-    m_PersistentCalls:
-      m_Calls: []
-  OnHealthUpdate:
-    m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: BodypartUI, Assembly-CSharp
-        m_MethodName: ColorChange
-        m_Mode: 0
+      - m_Target: {fileID: 3009919004063516359}
+        m_TargetAssemblyTypeName: Bodypart, Assembly-CSharp
+        m_MethodName: ApplyStandardMultiplier
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1996,6 +2408,27 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnHealthUpdate:
+    m_PersistentCalls:
+      m_Calls: []
+  OnDeath:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3009919004063516359}
+        m_TargetAssemblyTypeName: Bodypart, Assembly-CSharp
+        m_MethodName: ApplyAfterDeathMultiplier
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnHealthy:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &6526206310687771364
 MonoBehaviour:
   m_ObjectHideFlags: 0
