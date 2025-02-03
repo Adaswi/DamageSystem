@@ -130,7 +130,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  OnDeath:
+  OnApplyAfterDeathMultiplier:
+    m_PersistentCalls:
+      m_Calls: []
+  OnApplyStandardMultiplier:
     m_PersistentCalls:
       m_Calls: []
 --- !u!114 &5448094000434984621
@@ -403,7 +406,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 0, y: -1, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0.1741028, y: 0.24144033, z: -0.010188353}
+  m_ConnectedAnchor: {x: 0.1741028, y: 0.2414402, z: -0.010188361}
   serializedVersion: 2
   m_SwingAxis: {x: 1, y: 0, z: 0}
   m_TwistLimitSpring:
@@ -535,7 +538,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 0, y: 0, z: -1}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.00000221841, y: 0.34861237, z: -0.00000085495424}
+  m_ConnectedAnchor: {x: -0.0000022202726, y: 0.34861243, z: -0.0000008568169}
   serializedVersion: 2
   m_SwingAxis: {x: -1, y: 0, z: 0}
   m_TwistLimitSpring:
@@ -973,7 +976,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 5.3824323e-10, y: -0.15948735, z: -0.0000000614673}
+  m_ConnectedAnchor: {x: 5.81899e-10, y: -0.15948747, z: -0.000000067986555}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 0, z: 0}
   m_TwistLimitSpring:
@@ -1070,6 +1073,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1894237964355968207}
+        m_TargetAssemblyTypeName: AttackSystem, Assembly-CSharp
+        m_MethodName: ReadyToAttack
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnForwardItem:
     m_PersistentCalls:
       m_Calls: []
@@ -1082,6 +1097,18 @@ MonoBehaviour:
       - m_Target: {fileID: 4882658950672005780}
         m_TargetAssemblyTypeName: EnemyAI, Assembly-CSharp
         m_MethodName: RemoveWeapon
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1894237964355968207}
+        m_TargetAssemblyTypeName: AttackSystem, Assembly-CSharp
+        m_MethodName: UnreadyToAttack
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1287,7 +1314,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 0, y: -1, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.1741028, y: 0.24144033, z: -0.010188316}
+  m_ConnectedAnchor: {x: -0.1741028, y: 0.2414402, z: -0.010188323}
   serializedVersion: 2
   m_SwingAxis: {x: -1, y: 0, z: 0}
   m_TwistLimitSpring:
@@ -1337,7 +1364,7 @@ GameObject:
   - component: {fileID: 1624106423774554787}
   - component: {fileID: 2291848187882519907}
   - component: {fileID: 7272537782929639064}
-  - component: {fileID: 1314258013910351538}
+  - component: {fileID: 1894237964355968207}
   - component: {fileID: 4882658950672005780}
   - component: {fileID: 4727728287697098491}
   - component: {fileID: 9172993860372843729}
@@ -1628,7 +1655,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &1314258013910351538
+--- !u!114 &1894237964355968207
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1637,7 +1664,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2278906762141813568}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d7526f0bfbcc8be4ba2f1f036e8eb24d, type: 3}
+  m_Script: {fileID: 11500000, guid: cdd7d9ca2816f8e49ae6eb838b22eb54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   OnAttackEnter:
@@ -1657,7 +1684,19 @@ MonoBehaviour:
         m_CallState: 2
   OnAttack:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8772041784671338763}
+        m_TargetAssemblyTypeName: AnimatorController, Assembly-CSharp
+        m_MethodName: PlayAttack
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnAttackExit:
     m_PersistentCalls:
       m_Calls:
@@ -1675,7 +1714,29 @@ MonoBehaviour:
         m_CallState: 2
   OnMiss:
     m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8772041784671338763}
+        m_TargetAssemblyTypeName: AnimatorController, Assembly-CSharp
+        m_MethodName: PlayAttack
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnAttackReady:
+    m_PersistentCalls:
       m_Calls: []
+  OnAttackUnready:
+    m_PersistentCalls:
+      m_Calls: []
+  enemyView: {fileID: 910193655088079383}
+  mask:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!114 &4882658950672005780
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1730,25 +1791,13 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  OnAttack:
+  OnAttackPlayer:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1314258013910351538}
-        m_TargetAssemblyTypeName: Attacker, Assembly-CSharp
-        m_MethodName: Attack
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 8772041784671338763}
-        m_TargetAssemblyTypeName: AnimatorController, Assembly-CSharp
-        m_MethodName: PlayAttack
-        m_Mode: 0
+      - m_Target: {fileID: 1894237964355968207}
+        m_TargetAssemblyTypeName: EnemyAttackSystem, Assembly-CSharp
+        m_MethodName: DetermineBodypart
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1927,7 +1976,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  OnDeath:
+  OnApplyAfterDeathMultiplier:
+    m_PersistentCalls:
+      m_Calls: []
+  OnApplyStandardMultiplier:
     m_PersistentCalls:
       m_Calls: []
 --- !u!114 &7095342670975197355
@@ -2041,7 +2093,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: -1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0.0000016409895, y: 0.29292274, z: 0.0000034272653}
+  m_ConnectedAnchor: {x: 0.00000021047879, y: 0.29291776, z: -0.0000021755684}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: -1, z: 0}
   m_TwistLimitSpring:
@@ -2175,7 +2227,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  OnDeath:
+  OnApplyAfterDeathMultiplier:
+    m_PersistentCalls:
+      m_Calls: []
+  OnApplyStandardMultiplier:
     m_PersistentCalls:
       m_Calls: []
 --- !u!114 &5614943214480730517
@@ -2348,7 +2403,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0.000000008702046, y: 0.39533487, z: 0.038444914}
+  m_ConnectedAnchor: {x: 0.00000000873115, y: 0.39533475, z: 0.038444906}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 0, z: 1}
   m_TwistLimitSpring:
@@ -2582,7 +2637,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  OnDeath:
+  OnApplyAfterDeathMultiplier:
+    m_PersistentCalls:
+      m_Calls: []
+  OnApplyStandardMultiplier:
     m_PersistentCalls:
       m_Calls: []
 --- !u!114 &7773266459395334575
@@ -2792,7 +2850,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 0, y: 0, z: -1}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.09205426, y: -0.15948735, z: -0.0006078678}
+  m_ConnectedAnchor: {x: -0.09205426, y: -0.15948753, z: -0.000607878}
   serializedVersion: 2
   m_SwingAxis: {x: -1, y: 0, z: 0}
   m_TwistLimitSpring:
@@ -2957,7 +3015,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  OnDeath:
+  OnApplyAfterDeathMultiplier:
+    m_PersistentCalls:
+      m_Calls: []
+  OnApplyStandardMultiplier:
     m_PersistentCalls:
       m_Calls: []
 --- !u!114 &9189194322861365589
@@ -3101,7 +3162,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 0, y: 0, z: 1}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0.0000021019948, y: 0.34861252, z: -0.0000006835907}
+  m_ConnectedAnchor: {x: 0.0000021075828, y: 0.3486127, z: -0.0000006910413}
   serializedVersion: 2
   m_SwingAxis: {x: 1, y: 0, z: 0}
   m_TwistLimitSpring:
@@ -3237,7 +3298,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  OnDeath:
+  OnApplyAfterDeathMultiplier:
+    m_PersistentCalls:
+      m_Calls: []
+  OnApplyStandardMultiplier:
     m_PersistentCalls:
       m_Calls: []
 --- !u!114 &6447191991847102173
@@ -3621,7 +3685,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  OnDeath:
+  OnApplyAfterDeathMultiplier:
+    m_PersistentCalls:
+      m_Calls: []
+  OnApplyStandardMultiplier:
     m_PersistentCalls:
       m_Calls: []
 --- !u!114 &7501555601311312575
@@ -3832,7 +3899,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  OnDeath:
+  OnApplyAfterDeathMultiplier:
+    m_PersistentCalls:
+      m_Calls: []
+  OnApplyStandardMultiplier:
     m_PersistentCalls:
       m_Calls: []
 --- !u!114 &2740942243632645815
@@ -3978,7 +4048,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 0, y: 0, z: 1}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0.092056274, y: 0.00000035762784, z: 0.0000005684279}
+  m_ConnectedAnchor: {x: 0.092056274, y: 0.00000023841852, z: 0.0000005684278}
   serializedVersion: 2
   m_SwingAxis: {x: 1, y: 0, z: 0}
   m_TwistLimitSpring:
@@ -4181,7 +4251,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  OnDeath:
+  OnApplyAfterDeathMultiplier:
+    m_PersistentCalls:
+      m_Calls: []
+  OnApplyStandardMultiplier:
     m_PersistentCalls:
       m_Calls: []
 --- !u!114 &6038594986227997241
@@ -4340,7 +4413,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  OnDeath:
+  OnApplyAfterDeathMultiplier:
+    m_PersistentCalls:
+      m_Calls: []
+  OnApplyStandardMultiplier:
     m_PersistentCalls:
       m_Calls: []
 --- !u!114 &1839590053845168210
@@ -4489,7 +4565,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  OnDeath:
+  OnApplyAfterDeathMultiplier:
+    m_PersistentCalls:
+      m_Calls: []
+  OnApplyStandardMultiplier:
     m_PersistentCalls:
       m_Calls: []
 --- !u!114 &3437625442847219540
@@ -4692,7 +4771,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.0000000062193948, y: 0.15948808, z: 0.00000092480343}
+  m_ConnectedAnchor: {x: -0.000000006175739, y: 0.15948796, z: 0.0000009182842}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 0, z: 1}
   m_TwistLimitSpring:
@@ -4859,7 +4938,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  OnDeath:
+  OnApplyAfterDeathMultiplier:
+    m_PersistentCalls:
+      m_Calls: []
+  OnApplyStandardMultiplier:
     m_PersistentCalls:
       m_Calls: []
 --- !u!114 &8297125875153864011
@@ -5031,7 +5113,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 1.9184657e-13, y: -0.15948746, z: 0.00000042822248}
+  m_ConnectedAnchor: {x: 1.905143e-13, y: -0.15948758, z: 0.00000042168125}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 1, z: 0}
   m_TwistLimitSpring:
@@ -5221,7 +5303,7 @@ CapsuleCollider:
   m_Material: {fileID: 13400000, guid: be5e0ba688529494b9850ec2bf242452, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 4294967295
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -5336,7 +5418,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  OnDeath:
+  OnApplyAfterDeathMultiplier:
+    m_PersistentCalls:
+      m_Calls: []
+  OnApplyStandardMultiplier:
     m_PersistentCalls:
       m_Calls: []
 --- !u!114 &7182947441166945
@@ -5526,7 +5611,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  OnDeath:
+  OnApplyAfterDeathMultiplier:
+    m_PersistentCalls:
+      m_Calls: []
+  OnApplyStandardMultiplier:
     m_PersistentCalls:
       m_Calls: []
 --- !u!114 &650253717358430488
@@ -5640,7 +5728,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.0000016633412, y: 0.29292285, z: 0.0000034421669}
+  m_ConnectedAnchor: {x: -0.00000022537994, y: 0.29291785, z: -0.0000021457663}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: -1, z: 0}
   m_TwistLimitSpring:
@@ -5869,7 +5957,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  OnDeath:
+  OnApplyAfterDeathMultiplier:
+    m_PersistentCalls:
+      m_Calls: []
+  OnApplyStandardMultiplier:
     m_PersistentCalls:
       m_Calls: []
 --- !u!114 &1781286756899347820

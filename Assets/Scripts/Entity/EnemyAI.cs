@@ -18,22 +18,24 @@ public class EnemyAI : MonoBehaviour
 
     private Weapon weapon;
     private bool isDead;
-    private bool isAttacking;
     private bool needsDirection = true;
     private int randomDirection = 1;
     private int patrolStage = 0;
     private bool playerDetected;
     private bool setAnotherDestination;
     private bool isWaiting;
-
-    public UnityEvent<MovementData> OnMovement;
-    public UnityEvent<Bodypart, Weapon> OnAttack;
+    private bool isAttacking;
 
     public bool IsAttacking
     {
         get { return isAttacking; }
         set { isAttacking = value; }
     }
+
+
+    public UnityEvent<MovementData> OnMovement;
+    public UnityEvent OnAttackPlayer;
+
 
     private void Awake()
     {
@@ -85,22 +87,7 @@ public class EnemyAI : MonoBehaviour
 
     public void AttackPlayer()
     {
-        if (weapon == null)
-            return;
-        var objects = Physics.OverlapSphere(enemy.transform.position, weapon.Range, bodypartMask);
-        var bodyparts = new List<Bodypart>();
-        foreach (var obj in objects)
-        {
-            var bodypart = obj.GetComponent<Bodypart>();
-            if (bodypart != null)
-                bodyparts.Add(bodypart);
-        }
-        var index = UnityEngine.Random.Range(0, bodyparts.Count);
-
-        if (!bodyparts.Any() || bodyparts[index] == null)
-            return;
-
-        OnAttack?.Invoke(bodyparts[index], weapon);
+        OnAttackPlayer?.Invoke();
     }
 
     public void Patrol(Vector3[] destinations, float[] rotations, float[] waitTimes)
@@ -154,11 +141,6 @@ public class EnemyAI : MonoBehaviour
         weapon = null;
     }
 
-    public void AttackExit()
-    {
-        isAttacking = false;
-    }
-
     public void Death()
     {
         isDead = true;        
@@ -179,7 +161,7 @@ public class EnemyAI : MonoBehaviour
 
         if (!playerDetected)
             Patrol(patrolDestinations, patrolRoatations, patrolWaitTimes);
-        else if (weapon && !isAttacking && Physics.CheckBox(enemy.position + enemy.forward * weapon.Range / 2, new Vector3(weapon.Range, weapon.Range, weapon.Range / 2), enemy.rotation, playerMask) && Physics.CheckSphere(enemy.position, weapon.Range, playerMask))
+        else if (!isAttacking && Physics.CheckBox(enemy.position + enemy.forward * weapon.Range / 2, new Vector3(weapon.Range, weapon.Range, weapon.Range / 2), enemy.rotation, playerMask) && Physics.CheckSphere(enemy.position, weapon.Range, playerMask))
             AttackPlayer();
         else if (Physics.CheckSphere(enemy.position, weapon.Range*0.75f, playerMask) && Physics.CheckBox(enemy.position + enemy.forward * weapon.Range / 2, new Vector3(weapon.Range, weapon.Range, weapon.Range / 2), enemy.rotation, playerMask))
             CirclePlayer();

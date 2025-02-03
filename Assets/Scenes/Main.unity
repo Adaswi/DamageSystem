@@ -22747,8 +22747,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1692633593}
-        m_TargetAssemblyTypeName: PlayerAttackController, Assembly-CSharp
-        m_MethodName: Attack
+        m_TargetAssemblyTypeName: PlayerAttackSystem, Assembly-CSharp
+        m_MethodName: DetermineBodypart
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -26725,9 +26725,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7940719953895527930, guid: 6a3c3c37133b6ae4d9590995c8166d88, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1692633593}
-    - targetCorrespondingSourceObject: {fileID: 7940719953895527930, guid: 6a3c3c37133b6ae4d9590995c8166d88, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1692633594}
     - targetCorrespondingSourceObject: {fileID: 8722707484499129528, guid: 6a3c3c37133b6ae4d9590995c8166d88, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2121165423}
@@ -27017,65 +27014,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5a24d8e387911b4086e372d999f2596, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerCam: {fileID: 1482657015}
-  mask:
-    serializedVersion: 2
-    m_Bits: 256
-  OnPlayerAttack:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1692633594}
-        m_TargetAssemblyTypeName: AttackSystem, Assembly-CSharp
-        m_MethodName: Attack
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  OnPlayerMiss:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1692633594}
-        m_TargetAssemblyTypeName: AttackSystem, Assembly-CSharp
-        m_MethodName: Miss
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  OnPlayerAttackReady:
-    m_PersistentCalls:
-      m_Calls: []
-  OnPlayerAttackUnready:
-    m_PersistentCalls:
-      m_Calls: []
---- !u!114 &1692633594
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1692633582}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d7526f0bfbcc8be4ba2f1f036e8eb24d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
   OnAttackEnter:
     m_PersistentCalls:
       m_Calls: []
   OnAttack:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2100829119}
+      - m_Target: {fileID: 2121165423}
         m_TargetAssemblyTypeName: AnimatorController, Assembly-CSharp
         m_MethodName: PlayAttack
         m_Mode: 0
@@ -27087,7 +27032,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 2121165423}
+      - m_Target: {fileID: 2100829119}
         m_TargetAssemblyTypeName: AnimatorController, Assembly-CSharp
         m_MethodName: PlayAttack
         m_Mode: 0
@@ -27105,18 +27050,6 @@ MonoBehaviour:
   OnMiss:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2100829119}
-        m_TargetAssemblyTypeName: AnimatorController, Assembly-CSharp
-        m_MethodName: PlayAttack
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 2121165423}
         m_TargetAssemblyTypeName: AnimatorController, Assembly-CSharp
         m_MethodName: PlayAttack
@@ -27129,6 +27062,28 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 2100829119}
+        m_TargetAssemblyTypeName: AnimatorController, Assembly-CSharp
+        m_MethodName: PlayAttack
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnAttackReady:
+    m_PersistentCalls:
+      m_Calls: []
+  OnAttackUnready:
+    m_PersistentCalls:
+      m_Calls: []
+  playerCam: {fileID: 1482657015}
+  mask:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!1 &1693765133 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -243425138072885115, guid: 78c31c91ce039e549a636ffe5e3ae365, type: 3}
@@ -32696,6 +32651,14 @@ PrefabInstance:
     - target: {fileID: 4110873048797802989, guid: 81e85e814b11fbf42ae6a7a11ec3bcd9, type: 3}
       propertyPath: m_LocalRotation.z
       value: -0.16723445
+      objectReference: {fileID: 0}
+    - target: {fileID: 4131799121602821577, guid: 81e85e814b11fbf42ae6a7a11ec3bcd9, type: 3}
+      propertyPath: m_ExcludeLayers.m_Bits
+      value: 72
+      objectReference: {fileID: 0}
+    - target: {fileID: 4131799121602821577, guid: 81e85e814b11fbf42ae6a7a11ec3bcd9, type: 3}
+      propertyPath: m_IncludeLayers.m_Bits
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4343707567868736513, guid: 81e85e814b11fbf42ae6a7a11ec3bcd9, type: 3}
       propertyPath: m_LocalPosition.x
