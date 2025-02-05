@@ -17,19 +17,18 @@ public class EnemyAI : MonoBehaviour
     [SerializeField] private float[] patrolWaitTimes;
 
     private Weapon weapon;
-    private bool isDead;
     private bool needsDirection = true;
     private int randomDirection = 1;
     private int patrolStage = 0;
     private bool playerDetected;
     private bool setAnotherDestination;
     private bool isWaiting;
-    private bool isAttacking;
+    private bool attakcEnabled;
 
-    public bool IsAttacking
+    public bool AttackEnabled
     {
-        get { return isAttacking; }
-        set { isAttacking = value; }
+        get { return attakcEnabled; }
+        set { attakcEnabled = value; }
     }
 
 
@@ -141,16 +140,8 @@ public class EnemyAI : MonoBehaviour
         weapon = null;
     }
 
-    public void Death()
-    {
-        isDead = true;        
-    }
-
     private void Update()
     {
-        if (isDead)
-            return;
-
         RaycastHit raycastCheck;
         if (Physics.CheckBox(enemy.position + enemy.forward * detectionRange / 1.75f, new Vector3(detectionRange / 2, detectionRange / 2, detectionRange), Quaternion.identity, playerMask) && Physics.Linecast(enemy.position, player.position, out raycastCheck))
             if (1 << raycastCheck.transform.gameObject.layer == playerMask.value)
@@ -161,7 +152,7 @@ public class EnemyAI : MonoBehaviour
 
         if (!playerDetected)
             Patrol(patrolDestinations, patrolRoatations, patrolWaitTimes);
-        else if (!isAttacking && Physics.CheckBox(enemy.position + enemy.forward * weapon.Range / 2, new Vector3(weapon.Range, weapon.Range, weapon.Range / 2), enemy.rotation, playerMask) && Physics.CheckSphere(enemy.position, weapon.Range, playerMask))
+        else if (!attakcEnabled && Physics.CheckBox(enemy.position + enemy.forward * weapon.Range / 2, new Vector3(weapon.Range, weapon.Range, weapon.Range / 2), enemy.rotation, playerMask) && Physics.CheckSphere(enemy.position, weapon.Range, playerMask))
             AttackPlayer();
         else if (Physics.CheckSphere(enemy.position, weapon.Range*0.75f, playerMask) && Physics.CheckBox(enemy.position + enemy.forward * weapon.Range / 2, new Vector3(weapon.Range, weapon.Range, weapon.Range / 2), enemy.rotation, playerMask))
             CirclePlayer();
