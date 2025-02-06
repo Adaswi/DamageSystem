@@ -26440,7 +26440,7 @@ PrefabInstance:
       objectReference: {fileID: 9100000, guid: 32456634ac8f2a249b4dbf611081d7b9, type: 2}
     - target: {fileID: 2640996444692788344, guid: 6a3c3c37133b6ae4d9590995c8166d88, type: 3}
       propertyPath: m_UpdateMode
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2640996444692788344, guid: 6a3c3c37133b6ae4d9590995c8166d88, type: 3}
       propertyPath: m_WarningMessage
