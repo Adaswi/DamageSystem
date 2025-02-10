@@ -31,7 +31,7 @@ public class BodypartUI : MonoBehaviour, IDropHandler
             OnConsumableDropped?.Invoke(consumable.gameObject.GetComponent<Item>());
             if (consumable as TimedConsumable<HealthSystem> && !consumable.gameObject.activeSelf)
                 consumable.transform.SetParent(null, false);
-            if(!consumable.gameObject || !consumable.gameObject.activeSelf)
+
                 OnConsumableDroppedWithIndex?.Invoke(dragDrop.Index);
         }
 

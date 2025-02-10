@@ -18,6 +18,7 @@ public class Inventory : MonoBehaviour
         {
             itemFrames[i] = new GameObject("ItemContainer " + i);
             itemFrames[i].transform.SetParent(containerObject.transform, false);
+            itemFrames[i].transform.Translate(new Vector3(1, 0, 0), Space.Self);
         }
     }
 
