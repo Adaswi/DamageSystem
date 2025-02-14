@@ -145,6 +145,6 @@ public class Movement : MonoBehaviour
 
     public void UnImpair()
     {
-        CurrentMovementSpeed /= 1 + impairProcentage;
+        CurrentMovementSpeed /= 1 - impairProcentage;
     }
 }
