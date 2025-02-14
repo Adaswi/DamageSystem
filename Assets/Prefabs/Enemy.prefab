@@ -1623,7 +1623,7 @@ MonoBehaviour:
   environmentMask:
     serializedVersion: 2
     m_Bits: 512
-  startMovementSpeed: 180
+  startMovementSpeed: 200
   onGroundDrag: 5
   inAirDrag: 0.1
 --- !u!114 &7272537782929639064
@@ -1640,6 +1640,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colliders: []
   isGrounded: 0
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 512
   OnGroundedChange:
     m_PersistentCalls:
       m_Calls:
@@ -1736,7 +1739,7 @@ MonoBehaviour:
   enemyView: {fileID: 910193655088079383}
   mask:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 2048
 --- !u!114 &4882658950672005780
 MonoBehaviour:
   m_ObjectHideFlags: 0

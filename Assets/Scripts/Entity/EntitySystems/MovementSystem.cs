@@ -12,6 +12,7 @@ public class Movement : MonoBehaviour
     [SerializeField] private float startMovementSpeed;
     [SerializeField] private float onGroundDrag = 5;
     [SerializeField] private float inAirDrag = 0.1f;
+    [SerializeField] private float impairProcentage = 0.25f;
 
     private bool isJumping;
     private float currentMovementSpeed;
@@ -139,11 +140,11 @@ public class Movement : MonoBehaviour
 
     public void Impair()
     {
-        currentMovementSpeed /= 2;
+        currentMovementSpeed *= 1 - impairProcentage;
     }
 
     public void UnImpair()
     {
-        CurrentMovementSpeed *= 2;
+        CurrentMovementSpeed /= 1 + impairProcentage;
     }
 }

@@ -65,10 +65,10 @@ public class EnemyAI : MonoBehaviour
     public void CirclePlayer()
     {
         agent.ReachDestination();
-        var rotation = Quaternion.LookRotation(player.position - transform.position);
+        Quaternion rotation = Quaternion.LookRotation(player.position - transform.position);
         rotation.x = 0;
         rotation.z = 0;
-        rb.MoveRotation(rotation);
+        rb.MoveRotation(rotation.normalized);
         if (needsDirection)
         {
             needsDirection = false;

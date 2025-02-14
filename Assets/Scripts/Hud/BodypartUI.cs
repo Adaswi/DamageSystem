@@ -26,13 +26,15 @@ public class BodypartUI : MonoBehaviour, IDropHandler
     {
         var consumable = eventData.pointerDrag.GetComponent<Consumable<HealthSystem>>();
         var dragDrop = eventData.pointerDrag.GetComponent<DragAndDrop>();
+        var dragDropIndex = dragDrop.Index;
         if (consumable && dragDrop)
         {
             OnConsumableDropped?.Invoke(consumable.gameObject.GetComponent<Item>());
             if (consumable as TimedConsumable<HealthSystem> && !consumable.gameObject.activeSelf)
                 consumable.transform.SetParent(null, false);
 
-                OnConsumableDroppedWithIndex?.Invoke(dragDrop.Index);
+            if (consumable.gameObject != null || !consumable.gameObject.activeSelf)
+                OnConsumableDroppedWithIndex?.Invoke(dragDropIndex);
         }
 
     }
